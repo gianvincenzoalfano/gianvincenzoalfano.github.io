@@ -214,7 +214,11 @@ dl.facts dd { margin: 0 0 0.6rem; }
 .reduced .progress, html:not(.js) .progress { display: none; }
 
 /* Hero */
-.hero { padding-top: 1.2rem; }
+.hero { padding-top: 1.2rem; position: relative; }
+.hero-logo { display: block; width: 11rem; margin: 0 0 1.4rem; }
+.hero-logo img { display: block; width: 100%; height: auto; }
+@media (min-width: 52rem) { .hero-logo { position: absolute; right: 0; top: 1.2rem; width: 13.5rem; margin: 0; } }
+@media (prefers-color-scheme: dark) { .hero-logo { background: #fff; border-radius: 10px; padding: 0.5rem 0.7rem; } }
 .badge { display: inline-flex; align-items: center; gap: 0.55rem; border: 1px solid color-mix(in srgb, var(--in) 35%, var(--rule)); background: color-mix(in srgb, var(--in-soft) 70%, transparent); border-radius: 999px; padding: 0.2rem 0.9rem; font-size: var(--step--1); color: var(--ink); margin-bottom: 1.6rem; }
 .pulse-dot { width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--in); display: inline-block; flex: none; }
 .hero-name { display: flex; align-items: center; gap: 1.4rem; flex-wrap: wrap; }

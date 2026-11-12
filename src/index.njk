@@ -5,6 +5,9 @@ layout: layouts/base.njk
 {%- set bio2 = "He also studies explainable AI, in particular the complexity and computation of counterfactual and semifactual explanations for machine learning models, and semantic imputation of missing values in relational databases. His work on argumentation received the Best Technical Paper Award at ICLP 2020 and a Best Paper Award at ACM SAC 2019." -%}
 
 <section class="hero">
+  {%- if site.logo %}
+  <a class="hero-logo" href="{{ site.departmentUrl }}"><img src="{{ site.logo }}" alt="{{ site.department }}, {{ site.university }}" width="560" height="204"></a>
+  {%- endif %}
   <p class="badge"><span class="pulse-dot" aria-hidden="true"></span>{{ site.position }}</p>
   <div class="hero-name">
     {%- if site.photo %}
