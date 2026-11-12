@@ -1,0 +1,33 @@
+{
+  "url": "https://gianvincenzoalfano.github.io",
+  "lang": "en",
+  "name": "Gianvincenzo Alfano",
+  "givenName": "Gianvincenzo",
+  "familyName": "Alfano",
+  "position": "Tenure-Track Assistant Professor (RTT)",
+  "field": "Computer Science and Engineering (SSD IINF-05/A)",
+  "department": "Department of Informatics, Modeling, Electronics and System Engineering (DIMES)",
+  "departmentUrl": "https://www.dimes.unical.it/",
+  "university": "University of Calabria",
+  "universityUrl": "https://www.unical.it/",
+  "address": "Via P. Bucci, Cubo 44Z, first floor, 87036 Rende (CS), Italy",
+  "emailUser": "g.alfano",
+  "emailDomain": "dimes.unical.it",
+  "photo": "",
+  "description": "Gianvincenzo Alfano, tenure-track assistant professor at DIMES, University of Calabria. Research in formal argumentation, computational complexity, explainable AI and knowledge representation and reasoning.",
+  "profiles": [
+    { "name": "DBLP", "url": "https://dblp.org/pid/204/2966.html" },
+    { "name": "Google Scholar", "url": "https://scholar.google.com/citations?user=0ndOUs8AAAAJ" },
+    { "name": "ORCID", "url": "https://orcid.org/0000-0002-7280-4759" },
+    { "name": "Scopus", "url": "https://www.scopus.com/authid/detail.uri?authorId=57196120726" },
+    { "name": "IRIS UniCal", "url": "https://iris.unical.it/browse?type=author&authority=rp42363&authority_lang=en" }
+  ],
+  "nav": [
+    { "title": "Research", "url": "/research/" },
+    { "title": "Publications", "url": "/publications/" },
+    { "title": "Teaching", "url": "/teaching/" },
+    { "title": "Service", "url": "/service/" },
+    { "title": "Projects", "url": "/projects/" },
+    { "title": "CV", "url": "/cv/" }
+  ]
+}
