@@ -51,22 +51,11 @@
 
   initFramework(reduced);
 
-  // Streaming bio with a live DF-QuAD computation over the research topics.
+  // Streaming bio.
   var bio = document.querySelector("[data-stream]");
   if (!bio || reduced) return;
   var paras = Array.prototype.map.call(bio.querySelectorAll("p"), function (p) { return p.textContent; });
-  var items = Array.prototype.map.call(document.querySelectorAll(".qbaf [data-topic]"), function (li) {
-    return { li: li, re: new RegExp(li.getAttribute("data-topic"), "gi"), val: li.querySelector(".bar-val") };
-  });
   var words = document.querySelector(".js-words");
-  var BASE = 0.5, SUPPORT = 0.35;
-  // DF-QuAD with supporters only: sigma = tau + (1 - tau) * (1 - prod(1 - s_i)).
-  var strength = function (k) { return BASE + (1 - BASE) * (1 - Math.pow(1 - SUPPORT, k)); };
-  var show = function (it, k) {
-    var v = strength(k);
-    it.li.style.setProperty("--v", v.toFixed(3));
-    it.val.textContent = (v + 1e-9).toFixed(2);
-  };
 
   // Fix the panel height so the page does not jump while the text grows.
   bio.style.minHeight = bio.offsetHeight + "px";
@@ -81,7 +70,6 @@
   sr.textContent = paras.join(" ");
   bio.parentNode.insertBefore(sr, bio);
   bio.setAttribute("aria-hidden", "true");
-  items.forEach(function (it) { show(it, 0); });
   if (words) words.textContent = "000";
 
   var start = function () {
@@ -93,13 +81,12 @@
       var done = text.slice(0, ci);
       outs[pi].textContent = done;
       outs[pi].appendChild(caret);
-      // count completed words and topic mentions in all text streamed so far
+      // count the words streamed so far
       var all = paras.slice(0, pi).join(" ") + " " + done;
       if (words) {
         var w = (all.match(/\S+/g) || []).length;
         words.textContent = ("00" + w).slice(-3);
       }
-      items.forEach(function (it) { show(it, (all.match(it.re) || []).length); });
       if (ci >= text.length) { pi++; ci = 0; }
       if (pi < paras.length) setTimeout(step, 28 + Math.random() * 30);
       else { bio.removeAttribute("aria-busy"); caret.classList.add("done"); }
