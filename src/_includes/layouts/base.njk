@@ -34,6 +34,7 @@
 <link rel="preload" href="/assets/fonts/alegreya-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/site.css">
 <script src="/assets/js/site.js" defer></script>
+<script src="/assets/js/af-bg.js" defer></script>
 {%- if math %}
 <link rel="stylesheet" href="/assets/katex/katex.min.css">
 {%- endif %}
@@ -65,6 +66,7 @@
 </head>
 <body id="top">
 <div class="aurora" aria-hidden="true"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
+<canvas class="af-bg" aria-hidden="true"></canvas>
 <div class="progress" aria-hidden="true"></div>
 <a class="skip" href="#main">{{ "Vai al contenuto" if lang == "it" else "Skip to content" }}</a>
 <header class="site-header">
@@ -86,6 +88,7 @@
   <div class="wrap">
     <p>{{ site.name }}, {{ site.department }}, {{ site.university }}.</p>
     <p>{{ site.address }}</p>
+    <p class="bg-note">{{ "Sullo sfondo: un framework di argomentazione bipolare. Le frecce continue sono attacchi, quelle tratteggiate supporti; i colori sono l'etichettatura grounded, ricalcolata a ogni cambiamento." if lang == "it" else "In the background: a bipolar argumentation framework. Solid arrows are attacks, dashed arrows supports; colours show its grounded labelling, recomputed after every change." }}</p>
   </div>
 </footer>
 <a class="to-top" href="#top" aria-label="{{ 'Torna su' if lang == 'it' else 'Back to top' }}"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 12.5 10 7.5l5 5"/></svg></a>
