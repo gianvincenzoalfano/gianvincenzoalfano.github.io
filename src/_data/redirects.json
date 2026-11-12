@@ -1,0 +1,7 @@
+[
+  { "from": "/86-2/", "to": "/" },
+  { "from": "/teaching-activities-and-cv/", "to": "/teaching/" },
+  { "from": "/insegnamenti-anni-precedenti/", "to": "/teaching/" },
+  { "from": "/tesisti/", "to": "/teaching/#tesi" },
+  { "from": "/scientific-activities/", "to": "/service/" }
+]

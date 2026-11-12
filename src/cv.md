@@ -1,0 +1,51 @@
+---
+layout: layouts/base.njk
+title: CV
+description: Curriculum vitae of Gianvincenzo Alfano, positions, education, habilitations and awards.
+---
+<h1>Curriculum vitae</h1>
+<p class="page-intro">A summary. The full curriculum, in Italian, lists all publications, talks, teaching and service.</p>
+
+<p><a class="button" href="/assets/files/cv-alfano.pdf">Download the full CV (PDF, Italian)</a></p>
+
+<h2 id="positions">Positions</h2>
+
+<dl class="facts">
+  <dt>2025–</dt>
+  <dd>Tenure-track assistant professor (Ricercatore a tempo determinato in tenure track, RTT), SSD IINF-05/A, DIMES, University of Calabria.</dd>
+  <dt>2022–2024</dt>
+  <dd>Assistant professor (Ricercatore a tempo determinato di tipo A), SSD ING-INF/05, DIMES, University of Calabria.</dd>
+  <dt>2019–2021</dt>
+  <dd>Postdoctoral research fellow (assegnista di ricerca), SSD ING-INF/05, DIMES, University of Calabria, on argumentation for decision support.</dd>
+</dl>
+
+<h2 id="education">Education</h2>
+
+<dl class="facts">
+  <dt>2020</dt>
+  <dd>PhD in Information and Communication Technologies, University of Calabria (XXXII cycle). Thesis: <em>Dynamic Argumentation in Artificial Intelligence</em>. Supervisors: Sergio Greco and Francesco Parisi.</dd>
+  <dt>2016</dt>
+  <dd>Master's degree in Computer Engineering, University of Calabria, 110/110 cum laude. Thesis: <em>Calcolo incrementale di semantiche deterministiche per Argumentation Frameworks</em>.</dd>
+  <dt>2014</dt>
+  <dd>Bachelor's degree in Computer Engineering, University of Calabria.</dd>
+</dl>
+
+<h2 id="habilitations">Habilitations</h2>
+
+- National Scientific Habilitation (ASN) as associate professor, sector 09/H1 (Information Processing Systems), 2023.
+- National Scientific Habilitation (ASN) as associate professor, sector 01/B1 (Computer Science), 2023.
+- Licensed professional engineer (Esame di Stato), 2018.
+
+<h2 id="awards">Awards and recognitions</h2>
+
+- Silver Tier reviewer distinction, IJCAI-ECAI 2026.
+- Best Technical Paper Award, 36th International Conference on Logic Programming (ICLP 2020), for “On the Semantics of Abstract Argumentation Frameworks: A Logic Programming Approach”. The paper was invited to *Theory and Practice of Logic Programming* and to the Sister Conferences Best Papers track of IJCAI 2021.
+- Best Paper Award, Knowledge Representation and Reasoning track, 34th ACM/SIGAPP Symposium on Applied Computing (SAC 2019), for “On Scaling the Enumeration of the Preferred Extensions of Abstract Argumentation Frameworks”.
+- The ICLP 2024 paper “Cyclic Supports in Recursive Bipolar Argumentation Frameworks: Semantics and LP Mapping” was invited to *Theory and Practice of Logic Programming*.
+- The AI<sup>3</sup> 2017 paper “Computing Stable and Preferred Extensions of Dynamic Bipolar Argumentation Frameworks” was selected for the special issue of *Intelligenza Artificiale*.
+- EurAI grant to attend the Advanced Course on AI (ACAI 2019), Crete.
+- Student grant, 16th International Conference on Principles of Knowledge Representation and Reasoning (KR 2018).
+
+<h2 id="talks">Selected talks</h2>
+
+Speaker (talks and poster sessions) at AAAI (2021, 2022, 2023, 2024, 2025, 2026), IJCAI (2019, 2021, 2022, 2024, 2025), KR (2018, 2020, 2024), ECAI (2020, 2023), AAMAS 2023, COMMA 2020, ACM SAC 2018 and IDEAS 2018. Invited speaker at the 6th Madeira Workshop on Belief Revision, Argumentation, Ontologies, and Norms (2024).

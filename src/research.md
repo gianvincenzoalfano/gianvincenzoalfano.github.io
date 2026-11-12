@@ -1,0 +1,54 @@
+---
+layout: layouts/base.njk
+title: Research
+description: Research lines of Gianvincenzo Alfano, from abstract argumentation and its complexity to explainable AI and incomplete data management.
+math: true
+---
+{%- set P = publications.byKey -%}
+{%- macro cite(keys) -%}
+{%- for k in keys %}<a href="/publications/#{{ k }}">{{ P[k].short | safe }}</a>{% if not loop.last %}; {% endif %}{% endfor -%}
+{%- endmacro -%}
+
+<h1>Research</h1>
+<p class="page-intro">The research is carried out at DIMES, University of Calabria, within the argumentation group led by Sergio Greco, and in collaboration with groups in Argentina, the United Kingdom and Italy. Each line below links to its main publications.</p>
+
+<h2 id="frameworks">Semantics and complexity of abstract argumentation frameworks</h2>
+
+An abstract argumentation framework represents a dispute as a directed graph of arguments and attacks; its semantics select the sets of arguments that can be jointly accepted. This line extends Dung's framework with richer forms of knowledge, defines their semantics and characterizes the complexity of verification, existence and credulous and skeptical acceptance.
+
+- **Constraints and preferences.** Strong and weak constraints on extensions, preferences and priority rules, conditional preferences, and their interaction in lifting-based preferences ({{ cite(["aaai2021", "aaai21-journal", "ijcai22", "ijcai23", "aaai2023", "preferencejournal"]) }}).
+- **Epistemic knowledge.** Epistemic constraints and epistemic attacks that express what an agent believes certainly or possibly holds ({{ cite(["aamas2023", "ecai2023", "aaai2024", "ijcai2024"]) }}).
+- **Acceptance conditions and features.** Argument-level acceptance conditions based on set atoms, featured arguments described by first-order facts, and frameworks combined with DL-Lite knowledge bases ({{ cite(["sottomissioneINFSCIENCE", "aaai25-submission-faf", "kr2025"]) }}).
+- **Uncertainty.** Incomplete and probabilistic frameworks, including explanation-based probabilistic acceptance, which is {% math "\\mathsf{FP}^{\\#\\mathsf{P}}" %}-hard and is approximated with additive and relative error bounds ({{ cite(["kr2020", "journalKR2020", "aaai2022", "aaai2026", "jlc2026"]) }}).
+
+<h2 id="dynamic">Dynamic argumentation and incremental computation</h2>
+
+Arguments and attacks change as a discussion evolves. Incremental algorithms identify the part of a framework affected by an update and reuse the previous extension, which is on average hundreds of times faster than recomputing from scratch. The approach covers abstract frameworks, bipolar and higher-order frameworks with recursive attacks and supports, skeptical preferred acceptance, and structured argumentation in Defeasible Logic Programming ({{ cite(["ijcai2017", "ijcai2019", "kr2018", "journalKR", "ecai2020", "ijcai17-19-journal"]) }}). An algorithm that enumerates the preferred extensions by first computing the ideal extension ({{ cite(["sac2019"]) }}) received the Best Paper Award of the Knowledge Representation and Reasoning track.
+
+<h2 id="lp">Argumentation and logic programming</h2>
+
+Translations from bipolar and recursive argumentation frameworks to normal logic programs establish one-to-one correspondences between complete extensions and partial stable models, and between preferred, stable, semi-stable, grounded and ideal extensions and the corresponding classes of models ({{ cite(["tplp2020", "ijcai21", "tplp2024"]) }}). This work received the Best Technical Paper Award at ICLP 2020.
+
+<h2 id="qbaf">Quantitative bipolar argumentation</h2>
+
+Quantitative bipolar argumentation frameworks assign weights to arguments, attacks and supports, and gradual semantics compute the final strength of each argument. Current work studies modular semantics based on double rectified linear units and their formal properties, and the use of these frameworks to reason about debates extracted from text by large language models ({{ cite(["corr2026drelu", "corr2026fakb"]) }}).
+
+<h2 id="xai">Explainable AI</h2>
+
+Counterfactual explanations say how an input should change to change a model's decision; semifactual (“even-if”) explanations say how it could change while leaving the decision as it is. This line provides formal foundations for both, characterizes their complexity across model classes (perceptrons, free binary decision diagrams, multi-layer perceptrons and graph neural networks), supports user preferences over explanations, and studies counterfactuals under model multiplicity and inside argumentation frameworks ({{ cite(["semifactual-core", "ijcai2026gnn", "ijcai25-toni", "sottomissioneKR24"]) }}).
+
+<h2 id="data">Incomplete data management</h2>
+
+Missing values degrade analyses built on relational data. SENTI is a training-free, incremental algorithm that imputes null values in dynamic relational databases by reasoning on the semantic content of tuples with pre-trained sentence transformers and a vector database ({{ cite(["inffus2026"]) }}). The work is part of the PRIN project S-PIC4CHU on semantics-enriched data preparation ({{ cite(["SEBD25"]) }}).
+
+<h2 id="other">Other topics</h2>
+
+- Approximate consistent query answering over inconsistent knowledge bases ({{ cite(["ISWA-basi"]) }}).
+- Physics-informed decentralized federated learning ({{ cite(["ecmlsubmission"]) }}).
+- Synthetic benchmarks for structured argumentation and a unifying framework for probabilistic argumentation ({{ cite(["mariojournal", "flap2025"]) }}).
+
+<h2 id="collaborations">Collaborations</h2>
+
+- Artificial Intelligence Research and Development Laboratory (LIDIA), Universidad Nacional del Sur, Argentina: incremental computation for recursive and structured argumentation, under a cooperation agreement between DIMES and DCIC signed in 2022, for which he is the scientific coordinator.
+- Computational Logic and Argumentation group (CLArg), Imperial College London, since 2024: explainable AI, including argumentation-based explanations.
+- Argumentation in Artificial Intelligence Working Group of the Italian Association for Artificial Intelligence (AIxIA).

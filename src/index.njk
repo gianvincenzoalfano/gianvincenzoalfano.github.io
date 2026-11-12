@@ -1,0 +1,72 @@
+---
+layout: layouts/base.njk
+---
+<div class="intro">
+  <div>
+    {%- if site.photo %}
+    <img class="portrait" src="{{ site.photo }}" alt="Portrait of {{ site.name }}" width="144" height="187">
+    {%- endif %}
+    <h1>{{ site.name }}</h1>
+    <p class="role">{{ site.position }}</p>
+    <p class="affil"><a href="{{ site.departmentUrl }}">{{ site.department }}</a><br>{{ site.university }}, Italy</p>
+
+    <div class="statement">
+      <p>Gianvincenzo Alfano is a tenure-track assistant professor at the University of Calabria, where he also received his PhD in Information and Communication Technologies in 2020. His research is in knowledge representation and reasoning, with a focus on formal argumentation: the semantics and computational complexity of abstract argumentation frameworks and their extensions with supports, constraints, preferences, epistemic knowledge, uncertainty and quantitative weights, and their incremental computation in dynamic settings.</p>
+      <p>He also studies explainable AI, in particular the complexity and computation of counterfactual and semifactual explanations for machine learning models, and semantic imputation of missing values in relational databases. His work on argumentation received the Best Technical Paper Award at ICLP 2020 and a Best Paper Award at ACM SAC 2019.</p>
+    </div>
+
+    <dl class="contact">
+      <dt>Email</dt>
+      <dd>{{ site.emailUser }} [at] {{ site.emailDomain }}</dd>
+      <dt>Office</dt>
+      <dd>{{ site.address }}</dd>
+      <dt>Profiles</dt>
+      <dd>
+        <ul class="profiles">
+        {%- for p in site.profiles %}
+          <li><a href="{{ p.url }}">{{ p.name }}</a></li>
+        {%- endfor %}
+        </ul>
+      </dd>
+    </dl>
+  </div>
+
+  <figure class="af" aria-labelledby="af-caption">
+    <svg viewBox="0 0 300 200" role="img" aria-labelledby="af-title">
+      <title id="af-title">An abstract argumentation framework with five arguments: a attacks b, b attacks c, and d and e attack each other.</title>
+      <defs>
+        <marker id="tip" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path class="arrow" d="M0,0 L10,5 L0,10 z"/>
+        </marker>
+      </defs>
+      <line class="edge" x1="64" y1="55" x2="122" y2="55" marker-end="url(#tip)"/>
+      <line class="edge" x1="174" y1="55" x2="232" y2="55" marker-end="url(#tip)"/>
+      <path class="edge" d="M118,140 Q150,124 182,140" marker-end="url(#tip)"/>
+      <path class="edge" d="M182,160 Q150,176 118,160" marker-end="url(#tip)"/>
+      <circle class="node-in" cx="40" cy="55" r="22"/>
+      <circle class="node-out" cx="150" cy="55" r="22" stroke-width="2"/>
+      <circle class="node-in" cx="260" cy="55" r="22"/>
+      <circle class="node-undec" cx="95" cy="150" r="22" stroke-width="2"/>
+      <circle class="node-undec" cx="205" cy="150" r="22" stroke-width="2"/>
+      <text class="lbl-in" x="40" y="54">a</text>
+      <text class="lbl-out" x="150" y="54">b</text>
+      <text class="lbl-in" x="260" y="54">c</text>
+      <text class="lbl-undec" x="95" y="149">d</text>
+      <text class="lbl-undec" x="205" y="149">e</text>
+    </svg>
+    <figcaption id="af-caption">Under the grounded semantics, the unattacked argument <i>a</i> is accepted, so <i>b</i> is rejected and <i>c</i> is defended; <i>d</i> and <i>e</i> attack each other and stay undecided.
+      <ul class="legend">
+        <li><span class="dot dot-in" aria-hidden="true"></span>accepted</li>
+        <li><span class="dot dot-out" aria-hidden="true"></span>rejected</li>
+        <li><span class="dot dot-undec" aria-hidden="true"></span>undecided</li>
+      </ul>
+    </figcaption>
+  </figure>
+</div>
+
+<h2>News</h2>
+<ul class="news">
+{%- for n in news | head(5) %}
+  <li><span class="when">{{ n.date }}</span><p>{% if n.link %}<a href="{{ n.link }}">{{ n.text }}</a>{% else %}{{ n.text }}{% endif %}</p></li>
+{%- endfor %}
+</ul>
