@@ -104,7 +104,7 @@
   function choose(it) {
     if (streaming && finish) finish();
     selected = selected === it ? null : it;
-    items.forEach(function (x) { x.li.setAttribute("aria-pressed", String(x === selected)); });
+    items.forEach(function (x) { x.btn.setAttribute("aria-pressed", String(x === selected)); });
     highlight(selected);
     if (selected) {
       var name = selected.li.querySelector(".bar-name").textContent;
@@ -116,12 +116,16 @@
       more.appendChild(a);
     } else more.textContent = "";
   }
+  // Each row becomes a real button (keeps list semantics and keyboard support).
   items.forEach(function (it) {
-    it.li.setAttribute("role", "button");
-    it.li.setAttribute("tabindex", "0");
-    it.li.setAttribute("aria-pressed", "false");
-    it.li.addEventListener("click", function () { choose(it); });
-    it.li.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); choose(it); } });
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "bar-btn";
+    btn.setAttribute("aria-pressed", "false");
+    while (it.li.firstChild) btn.appendChild(it.li.firstChild);
+    it.li.appendChild(btn);
+    it.btn = btn;
+    btn.addEventListener("click", function () { choose(it); });
   });
   render(paras.join(" "));
   if (reduced) return;
