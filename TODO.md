@@ -4,7 +4,7 @@ Items that the sources (the WordPress export of 12 Nov 2026 and CV.tex) did not 
 
 ## Needed from you
 
-- [ ] **Profile photo.** None was provided. Put it in `src/assets/img/` (e.g. `portrait.jpg`, about 400 px wide) and set `"photo": "/assets/img/portrait.jpg"` in `src/_data/site.json`. It appears on the home page, in the JSON-LD and in link previews.
+- [x] **Profile photo.** Added (`src/assets/img/portrait.jpg`, round crop for the home page; `portrait-full.jpg` for link previews).
 - [ ] **Custom domain.** Decide whether gianvincenzoalfano.net moves to GitHub Pages (see MIGRATION.md).
 - [ ] **GitHub profile.** Add it to `profiles` in `src/_data/site.json` if you want it linked.
 - [ ] **Slides links.** 11 entries link slides hosted at `wwwinfo.deis.unical.it/parisi/slides/` (taken from the old Publications page). I could not reach that server to check them; remove the `slides` field of any that no longer loads.

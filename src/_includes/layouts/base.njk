@@ -23,7 +23,7 @@
 <meta property="profile:last_name" content="{{ site.familyName }}">
 {%- endif %}
 {%- if site.photo %}
-<meta property="og:image" content="{{ site.photo | absolute(site.url) }}">
+<meta property="og:image" content="{{ (site.photoShare or site.photo) | absolute(site.url) }}">
 <meta name="twitter:card" content="summary">
 {%- else %}
 <meta name="twitter:card" content="summary">
@@ -33,6 +33,7 @@
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/assets/fonts/alegreya-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/site.css">
+<script src="/assets/js/site.js" defer></script>
 {%- if math %}
 <link rel="stylesheet" href="/assets/katex/katex.min.css">
 {%- endif %}
@@ -62,7 +63,9 @@
 </script>
 {%- endif %}
 </head>
-<body>
+<body id="top">
+<div class="aurora" aria-hidden="true"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
+<div class="progress" aria-hidden="true"></div>
 <a class="skip" href="#main">{{ "Vai al contenuto" if lang == "it" else "Skip to content" }}</a>
 <header class="site-header">
   <div class="wrap header-row">
@@ -85,5 +88,6 @@
     <p>{{ site.address }}</p>
   </div>
 </footer>
+<a class="to-top" href="#top" aria-label="{{ 'Torna su' if lang == 'it' else 'Back to top' }}"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 12.5 10 7.5l5 5"/></svg></a>
 </body>
 </html>
