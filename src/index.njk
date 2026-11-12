@@ -1,91 +1,160 @@
 ---
 layout: layouts/base.njk
 ---
-<div class="intro">
-  <div>
+{%- set bio1 = "Gianvincenzo Alfano is a tenure-track assistant professor at the University of Calabria, where he also received his PhD in Information and Communication Technologies in 2020. His research is in knowledge representation and reasoning, with a focus on formal argumentation: the semantics and computational complexity of abstract argumentation frameworks and their extensions with supports, constraints, preferences, epistemic knowledge, uncertainty and quantitative weights, and their incremental computation in dynamic settings." -%}
+{%- set bio2 = "He also studies explainable AI, in particular the complexity and computation of counterfactual and semifactual explanations for machine learning models, and semantic imputation of missing values in relational databases. His work on argumentation received the Best Technical Paper Award at ICLP 2020 and a Best Paper Award at ACM SAC 2019." -%}
+
+<section class="hero">
+  <p class="badge"><span class="pulse-dot" aria-hidden="true"></span>{{ site.position }}</p>
+  <div class="hero-name">
     {%- if site.photo %}
-    <img class="portrait" src="{{ site.photo }}" alt="Portrait of {{ site.name }}" width="144" height="187">
+    <img class="portrait" src="{{ site.photo }}" alt="Portrait of {{ site.name }}" width="112" height="112">
     {%- endif %}
-    <h1>{{ site.name }}</h1>
-    <p class="role">{{ site.position }}</p>
-    <p class="affil"><a href="{{ site.departmentUrl }}">{{ site.department }}</a><br>{{ site.university }}, Italy</p>
-
-    <div class="statement">
-      <p>Gianvincenzo Alfano is a tenure-track assistant professor at the University of Calabria, where he also received his PhD in Information and Communication Technologies in 2020. His research is in knowledge representation and reasoning, with a focus on formal argumentation: the semantics and computational complexity of abstract argumentation frameworks and their extensions with supports, constraints, preferences, epistemic knowledge, uncertainty and quantitative weights, and their incremental computation in dynamic settings.</p>
-      <p>He also studies explainable AI, in particular the complexity and computation of counterfactual and semifactual explanations for machine learning models, and semantic imputation of missing values in relational databases. His work on argumentation received the Best Technical Paper Award at ICLP 2020 and a Best Paper Award at ACM SAC 2019.</p>
-    </div>
-
-    <dl class="contact">
-      <dt>Email</dt>
-      <dd>{{ site.emailUser }} [at] {{ site.emailDomain }}</dd>
-      <dt>Office</dt>
-      <dd>{{ site.address }}</dd>
-      <dt>Profiles</dt>
-      <dd>
-        <ul class="profiles">
-        {%- for p in site.profiles %}
-          <li><a href="{{ p.url }}">{{ p.name }}</a></li>
-        {%- endfor %}
-        </ul>
-      </dd>
-    </dl>
+    <h1>{{ site.name }}<span class="name-node" aria-hidden="true"></span></h1>
   </div>
+  <p class="hero-meta">PhD <span aria-hidden="true">/</span> <a href="{{ site.departmentUrl }}">DIMES</a>, {{ site.university }} <span aria-hidden="true">/</span> ORCID <a href="https://orcid.org/0000-0002-7280-4759">0000-0002-7280-4759</a></p>
+  <p class="hero-actions">
+    <a class="chip chip-strong" href="/assets/files/cv-alfano.pdf">CV</a>
+    <a class="chip" href="https://scholar.google.com/citations?user=0ndOUs8AAAAJ">Scholar</a>
+    <a class="chip" href="https://dblp.org/pid/204/2966.html">DBLP</a>
+    <a class="chip" href="#contact" data-mail="{{ site.emailUser }}|{{ site.emailDomain }}">Email</a>
+  </p>
+</section>
 
-  <figure class="af" id="af" aria-labelledby="af-caption">
-    <svg viewBox="0 0 300 200" role="img" aria-labelledby="af-title">
-      <title id="af-title">An abstract argumentation framework with five arguments: a attacks b, b attacks c, and d and e attack each other.</title>
-      <defs>
-        <marker id="tip" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-          <path class="arrow" d="M0,0 L10,5 L0,10 z"/>
-        </marker>
-      </defs>
-      <line class="edge e-ab" x1="64" y1="55" x2="122" y2="55" marker-end="url(#tip)"/>
-      <line class="edge e-bc" x1="174" y1="55" x2="232" y2="55" marker-end="url(#tip)"/>
-      <path class="edge e-de" d="M118,140 Q150,124 182,140" marker-end="url(#tip)"/>
-      <path class="edge e-ed" d="M182,160 Q150,176 118,160" marker-end="url(#tip)"/>
-      <circle class="node-in s1" cx="40" cy="55" r="22"/>
-      <circle class="node-out s2" cx="150" cy="55" r="22" stroke-width="2"/>
-      <circle class="node-in s3" cx="260" cy="55" r="22"/>
-      <circle class="node-undec" cx="95" cy="150" r="22" stroke-width="2"/>
-      <circle class="node-undec" cx="205" cy="150" r="22" stroke-width="2"/>
-      <text class="lbl-in s1" x="40" y="54">a</text>
-      <text class="lbl-out s2" x="150" y="54">b</text>
-      <text class="lbl-in s3" x="260" y="54">c</text>
-      <text class="lbl-undec" x="95" y="149">d</text>
-      <text class="lbl-undec" x="205" y="149">e</text>
-    </svg>
-    <figcaption id="af-caption">
-      <p>Computing the grounded semantics:</p>
-      <ol class="trace">
-        <li class="s1"><i>a</i> has no attackers, so it is accepted.</li>
-        <li class="s2"><i>b</i> is attacked by <i>a</i>, so it is rejected.</li>
-        <li class="s3">The only attacker of <i>c</i> is rejected, so <i>c</i> is accepted.</li>
-        <li class="s4"><i>d</i> and <i>e</i> attack each other; nothing settles them, so they stay undecided.</li>
-      </ol>
-      <ul class="legend">
-        <li><span class="dot dot-in" aria-hidden="true"></span>accepted</li>
-        <li><span class="dot dot-out" aria-hidden="true"></span>rejected</li>
-        <li><span class="dot dot-undec" aria-hidden="true"></span>undecided</li>
+<section class="console" aria-label="Short biography" data-reveal>
+  <div class="console-bar">
+    <span class="console-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+    <span class="console-title">about.alfano <span aria-hidden="true">/</span> dialectical bio <span aria-hidden="true">/</span> <span class="js-words">0</span> words</span>
+    <span class="live"><span class="pulse-dot" aria-hidden="true"></span>live</span>
+  </div>
+  <div class="console-body">
+    <div class="bio" data-stream>
+      <p>{{ bio1 }}</p>
+      <p>{{ bio2 }}</p>
+    </div>
+    <aside class="qbaf" aria-label="Acceptability degree of each research topic">
+      <p class="qbaf-title">Acceptability degree, DF-QuAD</p>
+      <ul class="bars">
+        <li data-topic="argumentation" style="--v: 0.86"><span class="bar-name">Argumentation</span><span class="bar"><span class="bar-fill"></span></span><span class="bar-val">0.86</span></li>
+        <li data-topic="complexity" style="--v: 0.79"><span class="bar-name">Complexity</span><span class="bar"><span class="bar-fill"></span></span><span class="bar-val">0.79</span></li>
+        <li data-topic="explanations|explainable" style="--v: 0.79"><span class="bar-name">Explainable AI</span><span class="bar"><span class="bar-fill"></span></span><span class="bar-val">0.79</span></li>
+        <li data-topic="imputation|databases" style="--v: 0.79"><span class="bar-name">Data management</span><span class="bar"><span class="bar-fill"></span></span><span class="bar-val">0.79</span></li>
+        <li data-topic="knowledge representation" style="--v: 0.68"><span class="bar-name">KR&amp;R</span><span class="bar"><span class="bar-fill"></span></span><span class="bar-val">0.68</span></li>
       </ul>
-      <button type="button" class="replay" hidden>Replay</button>
-    </figcaption>
-  </figure>
-  <script>
-    // Optional: replay the animation. Without JavaScript the figure still animates once.
-    (function () {
-      var fig = document.getElementById("af"), btn = fig.querySelector(".replay");
-      if (!fig.getAnimations || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-      btn.hidden = false;
-      btn.addEventListener("click", function () {
-        fig.getAnimations({ subtree: true }).forEach(function (a) { a.currentTime = 0; a.play(); });
-      });
-    })();
-  </script>
-</div>
+      <p class="qbaf-note">Each topic is an argument with base score 0.5; every mention in the bio adds a supporter of strength 0.35, and its strength is computed with the DF-QuAD gradual semantics.</p>
+    </aside>
+  </div>
+</section>
 
-<h2>News</h2>
-<ul class="news">
-{%- for n in news | head(5) %}
-  <li><span class="when">{{ n.date }}</span><p>{% if n.link %}<a href="{{ n.link }}">{{ n.text }}</a>{% else %}{{ n.text }}{% endif %}</p></li>
-{%- endfor %}
-</ul>
+<section class="block" aria-labelledby="interests">
+  <div class="block-head" data-reveal>
+    <span class="counter" aria-hidden="true">01 / 03</span>
+    <h2 id="interests">Research interests</h2>
+    <a class="more" href="/research/">All research lines</a>
+  </div>
+  <ul class="cards">
+    <li class="card" data-reveal>
+      <svg class="card-icon" viewBox="0 0 40 40" aria-hidden="true"><circle cx="9" cy="11" r="5" class="ic-in"/><circle cx="31" cy="11" r="5" class="ic-out"/><circle cx="20" cy="31" r="5" class="ic-in"/><path d="M14.5 11h10" class="ic-edge"/><path d="M27.5 15.5 23 26" class="ic-edge"/></svg>
+      <h3><a href="/research/#frameworks">Formal argumentation</a></h3>
+      <p>Semantics and complexity of abstract frameworks with supports, constraints, preferences, epistemic knowledge and uncertainty, and their incremental computation.</p>
+    </li>
+    <li class="card" data-reveal>
+      <svg class="card-icon" viewBox="0 0 40 40" aria-hidden="true"><rect x="3" y="5" width="34" height="30" rx="8" class="ic-ring"/><rect x="9" y="11" width="22" height="18" rx="6" class="ic-ring"/><rect x="15" y="16" width="10" height="8" rx="3" class="ic-core"/></svg>
+      <h3><a href="/research/#xai">Explainable AI</a></h3>
+      <p>Formal foundations, complexity and computation of counterfactual and semifactual explanations, from perceptrons and decision diagrams to graph neural networks.</p>
+    </li>
+    <li class="card" data-reveal>
+      <svg class="card-icon" viewBox="0 0 40 40" aria-hidden="true"><path d="M5 33 35 7" class="ic-edge"/><circle cx="12" cy="13" r="4" class="ic-in"/><circle cx="28" cy="27" r="4" class="ic-undec"/><path d="M15.5 16 24.5 24" class="ic-dash"/></svg>
+      <h3><a href="/research/#lp">Logic and knowledge</a></h3>
+      <p>Argumentation and logic programming, quantitative bipolar argumentation, knowledge bases and semantic imputation of incomplete data.</p>
+    </li>
+  </ul>
+</section>
+
+<section class="block" aria-labelledby="news">
+  <div class="block-head" data-reveal>
+    <span class="counter" aria-hidden="true">02 / 03</span>
+    <h2 id="news">Latest news</h2>
+    <a class="more" href="/publications/">All publications</a>
+  </div>
+  <ul class="news" data-reveal>
+  {%- for n in news | head(5) %}
+    <li><span class="when">{{ n.date }}</span><p>{% if n.link %}<a href="{{ n.link }}">{{ n.text }}</a>{% else %}{{ n.text }}{% endif %}</p></li>
+  {%- endfor %}
+  </ul>
+</section>
+
+<section class="block" aria-labelledby="grounded">
+  <div class="block-head" data-reveal>
+    <span class="counter" aria-hidden="true">03 / 03</span>
+    <h2 id="grounded">Argumentation, live</h2>
+  </div>
+  <figure class="afx" id="afx" data-reveal>
+    <div class="afx-stage">
+      <svg viewBox="0 0 504 262" role="img" aria-labelledby="afx-svg-title">
+        <title id="afx-svg-title">An abstract argumentation framework with nine arguments: a attacks b, b attacks c, c attacks h, h attacks i, d and e attack each other, e attacks f and f attacks i.</title>
+        <defs>
+          <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"/></marker>
+        </defs>
+        <g class="edges">
+        <path class="edge new" data-from="j" data-to="a" d="M65.0,62.0 L107.0,62.0" marker-end="url(#ah)"/>
+        <path class="edge" data-from="a" data-to="b" d="M155.0,62.0 L217.0,62.0" marker-end="url(#ah)"/>
+        <path class="edge" data-from="b" data-to="c" d="M265.0,62.0 L327.0,62.0" marker-end="url(#ah)"/>
+        <path class="edge" data-from="c" data-to="h" d="M375.0,62.0 L437.0,62.0" marker-end="url(#ah)"/>
+        <path class="edge" data-from="h" data-to="i" d="M462.0,85.0 L462.0,181.0" marker-end="url(#ah)"/>
+        <path class="edge" data-from="d" data-to="e" d="M152.8,196.2 Q187.0,180.0 219.4,195.3" marker-end="url(#ah)"/>
+        <path class="edge" data-from="e" data-to="d" d="M221.2,215.8 Q187.0,232.0 154.6,216.7" marker-end="url(#ah)"/>
+        <path class="edge" data-from="e" data-to="f" d="M265.0,206.0 L327.0,206.0" marker-end="url(#ah)"/>
+        <path class="edge" data-from="f" data-to="i" d="M375.0,206.0 L437.0,206.0" marker-end="url(#ah)"/>
+        </g>
+        <g class="flows"></g>
+        <g class="nodes">
+        <g class="node in new" data-arg="j" transform="translate(42 62)"><circle r="22"/><text y="-1">j</text></g>
+        <g class="node in" data-arg="a" transform="translate(132 62)"><circle r="22"/><text y="-1">a</text></g>
+        <g class="node out" data-arg="b" transform="translate(242 62)"><circle r="22"/><text y="-1">b</text></g>
+        <g class="node in" data-arg="c" transform="translate(352 62)"><circle r="22"/><text y="-1">c</text></g>
+        <g class="node out" data-arg="h" transform="translate(462 62)"><circle r="22"/><text y="-1">h</text></g>
+        <g class="node undec" data-arg="d" transform="translate(132 206)"><circle r="22"/><text y="-1">d</text></g>
+        <g class="node undec" data-arg="e" transform="translate(242 206)"><circle r="22"/><text y="-1">e</text></g>
+        <g class="node undec" data-arg="f" transform="translate(352 206)"><circle r="22"/><text y="-1">f</text></g>
+        <g class="node undec" data-arg="i" transform="translate(462 206)"><circle r="22"/><text y="-1">i</text></g>
+        </g>
+      </svg>
+    </div>
+    <div class="afx-side">
+      <div class="afx-tabs" role="group" aria-label="Choose what to show" hidden>
+        <button type="button" data-scene="0" aria-pressed="true">Grounded</button>
+        <button type="button" data-scene="1" aria-pressed="false">Preferred</button>
+        <button type="button" data-scene="2" aria-pressed="false">Dynamic update</button>
+      </div>
+      <figcaption>
+        <p class="afx-title">Grounded semantics</p>
+        <p class="afx-text" aria-live="polite">The unattacked argument <i>a</i> is accepted, so <i>b</i> is rejected and <i>c</i>, defended by <i>a</i>, is accepted; <i>c</i> rejects <i>h</i>. The conflict between <i>d</i> and <i>e</i> is not settled, so <i>d</i>, <i>e</i>, <i>f</i> and <i>i</i> stay undecided.</p>
+      </figcaption>
+      <dl class="afx-read" aria-label="Current labelling">
+        <div><dt><span class="dot dot-in" aria-hidden="true"></span>in</dt><dd data-set="in">&#123;a, c&#125;</dd></div>
+        <div><dt><span class="dot dot-out" aria-hidden="true"></span>out</dt><dd data-set="out">&#123;b, h&#125;</dd></div>
+        <div><dt><span class="dot dot-undec" aria-hidden="true"></span>undec</dt><dd data-set="undec">&#123;d, e, f, i&#125;</dd></div>
+      </dl>
+      <p class="afx-controls" hidden><button type="button" class="afx-pause" aria-pressed="false">Pause</button></p>
+    </div>
+  </figure>
+</section>
+
+<section class="block contact-block" id="contact" aria-labelledby="contact-h" data-reveal>
+  <h2 id="contact-h">Contact</h2>
+  <dl class="contact">
+    <dt>Email</dt>
+    <dd>{{ site.emailUser }} [at] {{ site.emailDomain }}</dd>
+    <dt>Office</dt>
+    <dd>{{ site.address }}</dd>
+    <dt>Profiles</dt>
+    <dd>
+      <ul class="profiles">
+      {%- for p in site.profiles %}
+        <li><a href="{{ p.url }}">{{ p.name }}</a></li>
+      {%- endfor %}
+      </ul>
+    </dd>
+  </dl>
+</section>
