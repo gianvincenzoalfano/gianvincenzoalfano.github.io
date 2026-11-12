@@ -32,12 +32,24 @@ layout: layouts/base.njk
       <p>{{ bio1 }}</p>
       <p>{{ bio2 }}</p>
     </div>
+    <aside class="topics" aria-label="Research topics mentioned in the bio">
+      <p class="topics-title">Topics in this bio <span aria-hidden="true">/</span> live</p>
+      <ul class="bars">
+        <li data-topic="argumentation" data-href="/research/#frameworks" style="--v: 0.30"><span class="bar-name">Argumentation</span><span class="bar"><span class="bar-fill"></span></span><span class="bar-val">0.30</span></li>
+        <li data-topic="complexity" data-href="/research/#frameworks" style="--v: 0.20"><span class="bar-name">Complexity</span><span class="bar"><span class="bar-fill"></span></span><span class="bar-val">0.20</span></li>
+        <li data-topic="explanations|explainable" data-href="/research/#xai" style="--v: 0.20"><span class="bar-name">Explainable AI</span><span class="bar"><span class="bar-fill"></span></span><span class="bar-val">0.20</span></li>
+        <li data-topic="imputation|databases" data-href="/research/#data" style="--v: 0.20"><span class="bar-name">Data management</span><span class="bar"><span class="bar-fill"></span></span><span class="bar-val">0.20</span></li>
+        <li data-topic="knowledge representation" data-href="/research/#frameworks" style="--v: 0.10"><span class="bar-name">KR&amp;R</span><span class="bar"><span class="bar-fill"></span></span><span class="bar-val">0.10</span></li>
+      </ul>
+      <p class="topics-note">Share of the topic mentions in the bio.<span class="js-only"> Select a topic to highlight it in the text.</span></p>
+      <p class="topics-more" aria-live="polite"></p>
+    </aside>
   </div>
 </section>
 
 <section class="block" aria-labelledby="interests">
   <div class="block-head" data-reveal>
-    <span class="counter" aria-hidden="true">01 / 03</span>
+    <span class="counter" aria-hidden="true">01 / 02</span>
     <h2 id="interests">Research interests</h2>
     <a class="more" href="/research/">All research lines</a>
   </div>
@@ -62,7 +74,7 @@ layout: layouts/base.njk
 
 <section class="block" aria-labelledby="news">
   <div class="block-head" data-reveal>
-    <span class="counter" aria-hidden="true">02 / 03</span>
+    <span class="counter" aria-hidden="true">02 / 02</span>
     <h2 id="news">Latest news</h2>
     <a class="more" href="/publications/">All publications</a>
   </div>
@@ -71,63 +83,6 @@ layout: layouts/base.njk
     <li><span class="when">{{ n.date }}</span><p>{% if n.link %}<a href="{{ n.link }}">{{ n.text }}</a>{% else %}{{ n.text }}{% endif %}</p></li>
   {%- endfor %}
   </ul>
-</section>
-
-<section class="block" aria-labelledby="grounded">
-  <div class="block-head" data-reveal>
-    <span class="counter" aria-hidden="true">03 / 03</span>
-    <h2 id="grounded">Argumentation, live</h2>
-  </div>
-  <figure class="afx" id="afx" data-reveal>
-    <div class="afx-stage">
-      <svg viewBox="0 0 504 262" role="img" aria-labelledby="afx-svg-title">
-        <title id="afx-svg-title">An abstract argumentation framework with nine arguments: a attacks b, b attacks c, c attacks h, h attacks i, d and e attack each other, e attacks f and f attacks i.</title>
-        <defs>
-          <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"/></marker>
-        </defs>
-        <g class="edges">
-        <path class="edge new" data-from="j" data-to="a" d="M65.0,62.0 L107.0,62.0" marker-end="url(#ah)"/>
-        <path class="edge" data-from="a" data-to="b" d="M155.0,62.0 L217.0,62.0" marker-end="url(#ah)"/>
-        <path class="edge" data-from="b" data-to="c" d="M265.0,62.0 L327.0,62.0" marker-end="url(#ah)"/>
-        <path class="edge" data-from="c" data-to="h" d="M375.0,62.0 L437.0,62.0" marker-end="url(#ah)"/>
-        <path class="edge" data-from="h" data-to="i" d="M462.0,85.0 L462.0,181.0" marker-end="url(#ah)"/>
-        <path class="edge" data-from="d" data-to="e" d="M152.8,196.2 Q187.0,180.0 219.4,195.3" marker-end="url(#ah)"/>
-        <path class="edge" data-from="e" data-to="d" d="M221.2,215.8 Q187.0,232.0 154.6,216.7" marker-end="url(#ah)"/>
-        <path class="edge" data-from="e" data-to="f" d="M265.0,206.0 L327.0,206.0" marker-end="url(#ah)"/>
-        <path class="edge" data-from="f" data-to="i" d="M375.0,206.0 L437.0,206.0" marker-end="url(#ah)"/>
-        </g>
-        <g class="flows"></g>
-        <g class="nodes">
-        <g class="node in new" data-arg="j" transform="translate(42 62)"><circle r="22"/><text y="-1">j</text></g>
-        <g class="node in" data-arg="a" transform="translate(132 62)"><circle r="22"/><text y="-1">a</text></g>
-        <g class="node out" data-arg="b" transform="translate(242 62)"><circle r="22"/><text y="-1">b</text></g>
-        <g class="node in" data-arg="c" transform="translate(352 62)"><circle r="22"/><text y="-1">c</text></g>
-        <g class="node out" data-arg="h" transform="translate(462 62)"><circle r="22"/><text y="-1">h</text></g>
-        <g class="node undec" data-arg="d" transform="translate(132 206)"><circle r="22"/><text y="-1">d</text></g>
-        <g class="node undec" data-arg="e" transform="translate(242 206)"><circle r="22"/><text y="-1">e</text></g>
-        <g class="node undec" data-arg="f" transform="translate(352 206)"><circle r="22"/><text y="-1">f</text></g>
-        <g class="node undec" data-arg="i" transform="translate(462 206)"><circle r="22"/><text y="-1">i</text></g>
-        </g>
-      </svg>
-    </div>
-    <div class="afx-side">
-      <div class="afx-tabs" role="group" aria-label="Choose what to show" hidden>
-        <button type="button" data-scene="0" aria-pressed="true">Grounded</button>
-        <button type="button" data-scene="1" aria-pressed="false">Preferred</button>
-        <button type="button" data-scene="2" aria-pressed="false">Dynamic update</button>
-      </div>
-      <figcaption>
-        <p class="afx-title">Grounded semantics</p>
-        <p class="afx-text" aria-live="polite">The unattacked argument <i>a</i> is accepted, so <i>b</i> is rejected and <i>c</i>, defended by <i>a</i>, is accepted; <i>c</i> rejects <i>h</i>. The conflict between <i>d</i> and <i>e</i> is not settled, so <i>d</i>, <i>e</i>, <i>f</i> and <i>i</i> stay undecided.</p>
-      </figcaption>
-      <dl class="afx-read" aria-label="Current labelling">
-        <div><dt><span class="dot dot-in" aria-hidden="true"></span>in</dt><dd data-set="in">&#123;a, c&#125;</dd></div>
-        <div><dt><span class="dot dot-out" aria-hidden="true"></span>out</dt><dd data-set="out">&#123;b, h&#125;</dd></div>
-        <div><dt><span class="dot dot-undec" aria-hidden="true"></span>undec</dt><dd data-set="undec">&#123;d, e, f, i&#125;</dd></div>
-      </dl>
-      <p class="afx-controls" hidden><button type="button" class="afx-pause" aria-pressed="false">Pause</button></p>
-    </div>
-  </figure>
 </section>
 
 <section class="block contact-block" id="contact" aria-labelledby="contact-h" data-reveal>
