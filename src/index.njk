@@ -31,7 +31,7 @@ layout: layouts/base.njk
     </dl>
   </div>
 
-  <figure class="af" aria-labelledby="af-caption">
+  <figure class="af" id="af" aria-labelledby="af-caption">
     <svg viewBox="0 0 300 200" role="img" aria-labelledby="af-title">
       <title id="af-title">An abstract argumentation framework with five arguments: a attacks b, b attacks c, and d and e attack each other.</title>
       <defs>
@@ -39,29 +39,48 @@ layout: layouts/base.njk
           <path class="arrow" d="M0,0 L10,5 L0,10 z"/>
         </marker>
       </defs>
-      <line class="edge" x1="64" y1="55" x2="122" y2="55" marker-end="url(#tip)"/>
-      <line class="edge" x1="174" y1="55" x2="232" y2="55" marker-end="url(#tip)"/>
-      <path class="edge" d="M118,140 Q150,124 182,140" marker-end="url(#tip)"/>
-      <path class="edge" d="M182,160 Q150,176 118,160" marker-end="url(#tip)"/>
-      <circle class="node-in" cx="40" cy="55" r="22"/>
-      <circle class="node-out" cx="150" cy="55" r="22" stroke-width="2"/>
-      <circle class="node-in" cx="260" cy="55" r="22"/>
+      <line class="edge e-ab" x1="64" y1="55" x2="122" y2="55" marker-end="url(#tip)"/>
+      <line class="edge e-bc" x1="174" y1="55" x2="232" y2="55" marker-end="url(#tip)"/>
+      <path class="edge e-de" d="M118,140 Q150,124 182,140" marker-end="url(#tip)"/>
+      <path class="edge e-ed" d="M182,160 Q150,176 118,160" marker-end="url(#tip)"/>
+      <circle class="node-in s1" cx="40" cy="55" r="22"/>
+      <circle class="node-out s2" cx="150" cy="55" r="22" stroke-width="2"/>
+      <circle class="node-in s3" cx="260" cy="55" r="22"/>
       <circle class="node-undec" cx="95" cy="150" r="22" stroke-width="2"/>
       <circle class="node-undec" cx="205" cy="150" r="22" stroke-width="2"/>
-      <text class="lbl-in" x="40" y="54">a</text>
-      <text class="lbl-out" x="150" y="54">b</text>
-      <text class="lbl-in" x="260" y="54">c</text>
+      <text class="lbl-in s1" x="40" y="54">a</text>
+      <text class="lbl-out s2" x="150" y="54">b</text>
+      <text class="lbl-in s3" x="260" y="54">c</text>
       <text class="lbl-undec" x="95" y="149">d</text>
       <text class="lbl-undec" x="205" y="149">e</text>
     </svg>
-    <figcaption id="af-caption">Under the grounded semantics, the unattacked argument <i>a</i> is accepted, so <i>b</i> is rejected and <i>c</i> is defended; <i>d</i> and <i>e</i> attack each other and stay undecided.
+    <figcaption id="af-caption">
+      <p>Computing the grounded semantics:</p>
+      <ol class="trace">
+        <li class="s1"><i>a</i> has no attackers, so it is accepted.</li>
+        <li class="s2"><i>b</i> is attacked by <i>a</i>, so it is rejected.</li>
+        <li class="s3">The only attacker of <i>c</i> is rejected, so <i>c</i> is accepted.</li>
+        <li class="s4"><i>d</i> and <i>e</i> attack each other; nothing settles them, so they stay undecided.</li>
+      </ol>
       <ul class="legend">
         <li><span class="dot dot-in" aria-hidden="true"></span>accepted</li>
         <li><span class="dot dot-out" aria-hidden="true"></span>rejected</li>
         <li><span class="dot dot-undec" aria-hidden="true"></span>undecided</li>
       </ul>
+      <button type="button" class="replay" hidden>Replay</button>
     </figcaption>
   </figure>
+  <script>
+    // Optional: replay the animation. Without JavaScript the figure still animates once.
+    (function () {
+      var fig = document.getElementById("af"), btn = fig.querySelector(".replay");
+      if (!fig.getAnimations || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      btn.hidden = false;
+      btn.addEventListener("click", function () {
+        fig.getAnimations({ subtree: true }).forEach(function (a) { a.currentTime = 0; a.play(); });
+      });
+    })();
+  </script>
 </div>
 
 <h2>News</h2>
