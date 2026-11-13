@@ -31,8 +31,10 @@
   --step-2: 1.6rem;
   --step-3: 2.3rem;
 }
+/* Dark theme: follows the system unless the visitor picks a theme with the
+   moon button (stored as data-theme on <html>). */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --paper: #151a22;
     --ink: #e4e7ec;
     --muted: #a3abb9;
@@ -42,8 +44,22 @@
     --out: #e08a85;
     --undec: #8f97a5;
     --code-bg: #1c222c;
+    color-scheme: dark;
   }
 }
+:root[data-theme="dark"] {
+  --paper: #151a22;
+  --ink: #e4e7ec;
+  --muted: #a3abb9;
+  --rule: #2c3441;
+  --in: #74c7a8;
+  --in-soft: #1d3029;
+  --out: #e08a85;
+  --undec: #8f97a5;
+  --code-bg: #1c222c;
+  color-scheme: dark;
+}
+:root[data-theme="light"] { color-scheme: light; }
 
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
@@ -87,6 +103,33 @@ sup { line-height: 0; }
 .site-header nav a { text-decoration: none; color: var(--muted); padding: 0.2rem 0; }
 .site-header nav a:hover { color: var(--ink); }
 .site-header nav a[aria-current="page"] { color: var(--ink); box-shadow: inset 0 -2px 0 var(--in); }
+.header-row { align-items: center; }
+.site-header nav { margin-left: auto; }
+.controls { display: flex; align-items: center; gap: 0.35rem; }
+.controls svg { width: 1.15rem; height: 1.15rem; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.lang-menu { position: relative; }
+.lang-menu summary, .theme-toggle { display: inline-flex; align-items: center; gap: 0.3rem; min-height: 2.2rem; padding: 0 0.55rem; border: 1px solid var(--rule); border-radius: 999px; background: transparent; color: var(--muted); font: inherit; font-size: var(--step--1); cursor: pointer; list-style: none; }
+.lang-menu summary::-webkit-details-marker { display: none; }
+.lang-menu summary:hover, .theme-toggle:hover, .lang-menu[open] summary { color: var(--ink); border-color: var(--in); }
+.lang-code { font-weight: 700; letter-spacing: 0.02em; }
+.lang-list { position: absolute; right: 0; top: calc(100% + 0.4rem); z-index: 20; list-style: none; margin: 0; padding: 0.35rem; min-width: 11rem; background: var(--paper); border: 1px solid var(--rule); border-radius: 0.6rem; box-shadow: 0 0.8rem 2rem -1rem color-mix(in srgb, var(--ink) 45%, transparent); }
+.lang-list li { margin: 0; }
+.lang-list a { display: flex; align-items: center; gap: 0.6rem; padding: 0.4rem 0.6rem; border-radius: 0.4rem; text-decoration: none; color: var(--ink); }
+.lang-list a:hover { background: var(--in-soft); }
+.lang-list a[aria-current="true"] { font-weight: 700; color: var(--in); }
+.lang-short { display: inline-block; width: 1.6rem; color: var(--muted); font-size: var(--step--1); }
+.theme-toggle { display: none; width: 2.2rem; justify-content: center; padding: 0; }
+.js .theme-toggle { display: inline-flex; }
+.theme-toggle .i-sun { display: none; }
+.theme-toggle.is-dark { color: var(--in); border-color: var(--in); }
+.theme-toggle.is-dark .i-moon { fill: currentColor; }
+:lang(zh) body, body:lang(zh) { font-family: "Alegreya", "PingFang SC", "Hiragino Sans GB", "Noto Serif CJK SC", "Source Han Serif SC", "Microsoft YaHei", serif; }
+.nf-alt { margin-top: 1.6rem; padding-top: 1rem; border-top: 1px solid var(--rule); color: var(--muted); }
+.nf-alt h2 { font-size: var(--step-1); margin-top: 0; }
+@media (max-width: 40rem) {
+  .site-header nav { order: 3; width: 100%; margin-left: 0; }
+  .controls { margin-left: auto; }
+}
 
 main.wrap { padding-top: 2.6rem; padding-bottom: 4rem; min-height: 60vh; }
 .page-intro { color: var(--muted); max-width: var(--measure); margin-top: 0.6rem; }
@@ -188,7 +231,7 @@ dl.facts dd { margin: 0 0 0.6rem; }
   .news li { grid-template-columns: 4.5rem minmax(0, 1fr); }
 }
 @media print {
-  .site-header nav, .pub-filter, .pub-links, .skip { display: none; }
+  .site-header nav, .controls, .pub-filter, .pub-links, .skip { display: none; }
   body { background: #fff; color: #000; }
 }
 .katex { font-size: 1em; }
@@ -207,7 +250,8 @@ dl.facts dd { margin: 0 0 0.6rem; }
 .aurora .a1 { width: 900px; height: 700px; left: -260px; top: -380px; background: radial-gradient(closest-side, color-mix(in srgb, var(--in) 16%, transparent), transparent); }
 .aurora .a2 { width: 620px; height: 620px; right: -220px; top: 60px; background: radial-gradient(closest-side, color-mix(in srgb, var(--out) 13%, transparent), transparent); }
 .aurora .a3 { width: 720px; height: 720px; left: 30%; top: 55vh; background: radial-gradient(closest-side, color-mix(in srgb, var(--undec) 12%, transparent), transparent); }
-@media (prefers-color-scheme: dark) { .aurora span { opacity: 0.8; } }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .aurora span { opacity: 0.8; } }
+:root[data-theme="dark"] .aurora span { opacity: 0.8; }
 
 /* Argumentation framework in the background: visible at the sides, faint behind the text */
 .af-bg { position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: 0.9;
@@ -225,7 +269,8 @@ html:not(.js) .af-bg { display: none; }
 .hero-logo { display: block; width: 11rem; margin: 0 0 1.4rem; }
 .hero-logo img { display: block; width: 100%; height: auto; }
 @media (min-width: 52rem) { .hero-logo { position: absolute; right: 0; top: 1.2rem; width: 13.5rem; margin: 0; } }
-@media (prefers-color-scheme: dark) { .hero-logo { background: #fff; border-radius: 10px; padding: 0.5rem 0.7rem; } }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .hero-logo { background: #fff; border-radius: 10px; padding: 0.5rem 0.7rem; } }
+:root[data-theme="dark"] .hero-logo { background: #fff; border-radius: 10px; padding: 0.5rem 0.7rem; }
 .badge { display: inline-flex; align-items: center; gap: 0.55rem; border: 1px solid color-mix(in srgb, var(--in) 35%, var(--rule)); background: color-mix(in srgb, var(--in-soft) 70%, transparent); border-radius: 999px; padding: 0.2rem 0.9rem; font-size: var(--step--1); color: var(--ink); margin-bottom: 1.6rem; }
 .pulse-dot { width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--in); display: inline-block; flex: none; }
 .hero-name { display: flex; align-items: center; gap: 1.4rem; flex-wrap: wrap; }

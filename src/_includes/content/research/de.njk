@@ -1,0 +1,43 @@
+<h1>Forschung</h1>
+<p class="page-intro">Die Forschung findet am DIMES der Universität Kalabrien statt, in der von Sergio Greco geleiteten Argumentationsgruppe und in Zusammenarbeit mit Gruppen in Argentinien, im Vereinigten Königreich und in Italien. Jeder Schwerpunkt verweist auf seine wichtigsten Publikationen.</p>
+
+<h2 id="frameworks">Semantik und Komplexität abstrakter Argumentationssysteme</h2>
+
+Ein abstraktes Argumentationssystem stellt einen Streit als gerichteten Graphen aus Argumenten und Angriffen dar; seine Semantiken wählen die Mengen von Argumenten aus, die gemeinsam akzeptiert werden können. Dieser Schwerpunkt erweitert Dungs System um reichhaltigere Formen von Wissen, definiert deren Semantik und bestimmt die Komplexität von Verifikation, Existenz sowie leichtgläubiger und skeptischer Akzeptanz.
+
+- **Bedingungen und Präferenzen.** Starke und schwache Bedingungen an Extensionen, Präferenzen und Prioritätsregeln, bedingte Präferenzen und ihr Zusammenspiel in Lifting-basierten Präferenzen ({{ cite(["aaai2021", "aaai21-journal", "ijcai22", "ijcai23", "aaai2023", "preferencejournal"]) }}).
+- **Epistemisches Wissen.** Epistemische Bedingungen und epistemische Angriffe, die ausdrücken, was ein Agent für sicher oder möglicherweise wahr hält ({{ cite(["aamas2023", "ecai2023", "aaai2024", "ijcai2024"]) }}).
+- **Akzeptanzbedingungen und Merkmale.** Akzeptanzbedingungen auf Argumentebene auf Basis von Set-Atomen, durch Fakten erster Stufe beschriebene Argumente und mit DL-Lite-Wissensbasen kombinierte Systeme ({{ cite(["sottomissioneINFSCIENCE", "aaai25-submission-faf", "kr2025"]) }}).
+- **Unsicherheit.** Unvollständige und probabilistische Systeme, darunter die erklärungsbasierte probabilistische Akzeptanz, die {% math "\\mathsf{FP}^{\\#\\mathsf{P}}" %}-schwer ist und mit additiven und relativen Fehlerschranken approximiert wird ({{ cite(["kr2020", "journalKR2020", "aaai2022", "aaai2026", "jlc2026"]) }}).
+
+<h2 id="dynamic">Dynamische Argumentation und inkrementelle Berechnung</h2>
+
+Argumente und Angriffe ändern sich im Verlauf einer Diskussion. Inkrementelle Algorithmen bestimmen den von einer Änderung betroffenen Teil des Systems und verwenden die bisherige Extension weiter; das ist im Mittel hundertfach schneller als eine Neuberechnung. Der Ansatz umfasst abstrakte Systeme, bipolare Systeme und Systeme höherer Ordnung mit rekursiven Angriffen und Unterstützungen, skeptische Akzeptanz unter der präferierten Semantik und strukturierte Argumentation in Defeasible Logic Programming ({{ cite(["ijcai2017", "ijcai2019", "kr2018", "journalKR", "ecai2020", "ijcai17-19-journal"]) }}). Ein Algorithmus, der die präferierten Extensionen aufzählt, indem er zuerst die ideale Extension berechnet ({{ cite(["sac2019"]) }}), erhielt den Best Paper Award des Tracks Knowledge Representation and Reasoning.
+
+<h2 id="lp">Argumentation und logische Programmierung</h2>
+
+Übersetzungen bipolarer und rekursiver Argumentationssysteme in normale logische Programme stellen eineindeutige Entsprechungen her zwischen vollständigen Extensionen und partiellen stabilen Modellen sowie zwischen präferierten, stabilen, semi-stabilen, fundierten und idealen Extensionen und den jeweiligen Modellklassen ({{ cite(["tplp2020", "ijcai21", "tplp2024"]) }}). Diese Arbeit erhielt den Best Technical Paper Award der ICLP 2020.
+
+<h2 id="qbaf">Quantitative bipolare Argumentation</h2>
+
+Quantitative bipolare Argumentationssysteme versehen Argumente, Angriffe und Unterstützungen mit Gewichten; graduelle Semantiken berechnen die endgültige Stärke jedes Arguments. Aktuelle Arbeiten untersuchen modulare Semantiken auf Basis von Double Rectified Linear Units und deren formale Eigenschaften sowie den Einsatz dieser Systeme, um über Debatten zu schließen, die große Sprachmodelle aus Texten extrahiert haben ({{ cite(["corr2026drelu", "corr2026fakb"]) }}).
+
+<h2 id="xai">Erklärbare KI</h2>
+
+Kontrafaktische Erklärungen geben an, wie sich eine Eingabe ändern müsste, damit sich die Entscheidung eines Modells ändert; semifaktische („even-if“) Erklärungen geben an, wie sie sich ändern könnte, ohne dass sich die Entscheidung ändert. Dieser Schwerpunkt liefert formale Grundlagen für beide, bestimmt ihre Komplexität für verschiedene Modellklassen (Perzeptronen, Free Binary Decision Diagrams, mehrschichtige Perzeptronen und Graph Neural Networks), unterstützt Nutzerpräferenzen über Erklärungen und untersucht Kontrafaktika unter Modellmultiplizität und innerhalb von Argumentationssystemen ({{ cite(["semifactual-core", "ijcai2026gnn", "ijcai25-toni", "sottomissioneKR24"]) }}).
+
+<h2 id="data">Umgang mit unvollständigen Daten</h2>
+
+Fehlende Werte beeinträchtigen Analysen auf relationalen Daten. SENTI ist ein trainingsfreier, inkrementeller Algorithmus, der Nullwerte in dynamischen relationalen Datenbanken imputiert, indem er mit vortrainierten Sentence Transformern und einer Vektordatenbank über den semantischen Inhalt der Tupel schließt ({{ cite(["inffus2026"]) }}). Die Arbeit ist Teil des PRIN-Projekts S-PIC4CHU zur semantisch angereicherten Datenaufbereitung ({{ cite(["SEBD25"]) }}).
+
+<h2 id="other">Weitere Themen</h2>
+
+- Approximative konsistente Anfragebeantwortung über inkonsistenten Wissensbasen ({{ cite(["ISWA-basi"]) }}).
+- Physikinformiertes dezentrales föderiertes Lernen ({{ cite(["ecmlsubmission"]) }}).
+- Synthetische Benchmarks für strukturierte Argumentation und ein vereinheitlichender Rahmen für probabilistische Argumentation ({{ cite(["mariojournal", "flap2025"]) }}).
+
+<h2 id="collaborations">Kooperationen</h2>
+
+- Laboratorio de Investigación y Desarrollo en Inteligencia Artificial (LIDIA), Universidad Nacional del Sur, Argentinien: inkrementelle Berechnung für rekursive und strukturierte Argumentation, im Rahmen des 2022 unterzeichneten Kooperationsabkommens zwischen DIMES und DCIC, dessen wissenschaftlicher Koordinator er ist.
+- Gruppe Computational Logic and Argumentation (CLArg), Imperial College London, seit 2024: erklärbare KI, einschließlich argumentationsbasierter Erklärungen.
+- Arbeitsgruppe Argumentation in der Künstlichen Intelligenz der Italienischen Gesellschaft für Künstliche Intelligenz (AIxIA).

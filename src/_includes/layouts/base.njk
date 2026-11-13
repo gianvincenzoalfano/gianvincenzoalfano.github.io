@@ -1,10 +1,14 @@
 <!doctype html>
-<html lang="{{ lang or site.lang }}">
+{%- set L = L or languages[0] %}
+{%- set T = i18n[L.code] %}
+{%- set pagePath = pagePath or "/" %}
+<html lang="{{ L.code }}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-{%- set pageTitle = (title + " | " + site.name) if title else (site.name + ", " + site.university) %}
-{%- set pageDesc = description or site.description %}
+<script>(function(d){d.classList.add("js");try{var t=localStorage.getItem("theme");if(t==="dark"||t==="light")d.setAttribute("data-theme",t)}catch(e){}})(document.documentElement)</script>
+{%- set pageTitle = (title + " | " + site.name) if title else (site.name + ", " + T.person.university) %}
+{%- set pageDesc = description or T.desc.home %}
 {%- set canonical = page.url | absolute(site.url) %}
 <title>{{ pageTitle }}</title>
 <meta name="description" content="{{ pageDesc }}">
@@ -12,13 +16,22 @@
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#fcfcfa" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#151a22" media="(prefers-color-scheme: dark)">
-<meta property="og:type" content="{{ 'profile' if page.url == '/' else 'website' }}">
+<meta property="og:type" content="{{ 'profile' if pagePath == '/' else 'website' }}">
 <meta property="og:title" content="{{ pageTitle }}">
 <meta property="og:description" content="{{ pageDesc }}">
 <meta property="og:url" content="{{ canonical }}">
 <meta property="og:site_name" content="{{ site.name }}">
-<meta property="og:locale" content="{{ 'it_IT' if lang == 'it' else 'en_US' }}">
-{%- if page.url == '/' %}
+<meta property="og:locale" content="{{ L.locale }}">
+{%- for l in languages %}{% if l.code != L.code %}
+<meta property="og:locale:alternate" content="{{ l.locale }}">
+{%- endif %}{% endfor %}
+{%- if not noAlternates %}
+{%- for l in languages %}
+<link rel="alternate" hreflang="{{ l.code }}" href="{{ (l.prefix + pagePath) | absolute(site.url) }}">
+{%- endfor %}
+<link rel="alternate" hreflang="x-default" href="{{ pagePath | absolute(site.url) }}">
+{%- endif %}
+{%- if pagePath == '/' %}
 <meta property="profile:first_name" content="{{ site.givenName }}">
 <meta property="profile:last_name" content="{{ site.familyName }}">
 {%- endif %}
@@ -38,7 +51,7 @@
 {%- if math %}
 <link rel="stylesheet" href="/assets/katex/katex.min.css">
 {%- endif %}
-{%- if page.url == '/' %}
+{%- if pagePath == '/' and not noAlternates %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -46,8 +59,8 @@
   "name": {{ site.name | json | safe }},
   "givenName": {{ site.givenName | json | safe }},
   "familyName": {{ site.familyName | json | safe }},
-  "jobTitle": {{ site.position | json | safe }},
-  "url": {{ site.url | json | safe }},
+  "jobTitle": {{ T.person.position | json | safe }},
+  "url": {{ page.url | absolute(site.url) | json | safe }},
   {%- if site.photo %}
   "image": {{ site.photo | absolute(site.url) | json | safe }},
   {%- endif %}
@@ -68,17 +81,31 @@
 <div class="aurora" aria-hidden="true"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
 <canvas class="af-bg" aria-hidden="true"></canvas>
 <div class="progress" aria-hidden="true"></div>
-<a class="skip" href="#main">{{ "Vai al contenuto" if lang == "it" else "Skip to content" }}</a>
+<a class="skip" href="#main">{{ T.ui.skip }}</a>
 <header class="site-header">
   <div class="wrap header-row">
-    <a class="wordmark" href="/"{% if page.url == "/" %} aria-current="page"{% endif %}>{{ site.name }}</a>
-    <nav aria-label="Main">
+    <a class="wordmark" href="{{ L.prefix }}/"{% if pagePath == "/" %} aria-current="page"{% endif %}>{{ site.name }}</a>
+    <nav aria-label="{{ T.ui.nav }}">
       <ul>
-      {%- for item in site.nav %}
-        <li><a href="{{ item.url }}"{% if page.url.startsWith(item.url) %} aria-current="page"{% endif %}>{{ item.title }}</a></li>
+      {%- for key in ["research", "publications", "teaching", "service", "projects", "cv"] %}
+        {%- set path = "/" + key + "/" %}
+        <li><a href="{{ L.prefix }}{{ path }}"{% if pagePath == path %} aria-current="page"{% endif %}>{{ T.nav[key] }}</a></li>
       {%- endfor %}
       </ul>
     </nav>
+    <div class="controls">
+      <details class="lang-menu">
+        <summary title="{{ T.ui.language }}"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.5 3.9 5.5 3.9 9s-1.3 6.5-3.9 9M12 3c-2.6 2.5-3.9 5.5-3.9 9s1.3 6.5 3.9 9"/></svg><span class="visually-hidden">{{ T.ui.language }}: </span><span class="lang-code" aria-hidden="true">{{ L.short }}</span><span class="visually-hidden">{{ L.name }}</span></summary>
+        <ul class="lang-list">
+        {%- for l in languages %}
+          <li><a href="{{ l.prefix }}{{ pagePath }}" hreflang="{{ l.code }}" lang="{{ l.code }}"{% if l.code == L.code %} aria-current="true"{% endif %}><span class="lang-short" aria-hidden="true">{{ l.short }}</span>{{ l.name }}</a></li>
+        {%- endfor %}
+        </ul>
+      </details>
+      <button class="theme-toggle" type="button" aria-label="{{ T.ui.dark }}" title="{{ T.ui.dark }}" data-dark="{{ T.ui.dark }}" data-light="{{ T.ui.light }}">
+        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 14.6A8.5 8.5 0 0 1 9.4 3.8a8.5 8.5 0 1 0 10.8 10.8Z"/></svg>
+      </button>
+    </div>
   </div>
 </header>
 <main id="main" class="wrap">
@@ -86,10 +113,10 @@
 </main>
 <footer class="site-footer">
   <div class="wrap">
-    <p>{{ site.name }}, {{ site.department }}, {{ site.university }}.</p>
-    <p>{{ site.address }}</p>
+    <p>{{ site.name }}, {{ T.person.department }}, {{ T.person.university }}.</p>
+    <p>{{ T.person.address }}</p>
   </div>
 </footer>
-<a class="to-top" href="#top" aria-label="{{ 'Torna su' if lang == 'it' else 'Back to top' }}"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 12.5 10 7.5l5 5"/></svg></a>
+<a class="to-top" href="#top" aria-label="{{ T.ui.top }}"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 12.5 10 7.5l5 5"/></svg></a>
 </body>
 </html>

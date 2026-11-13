@@ -1,0 +1,16 @@
+---
+layout: layouts/base.njk
+permalink: /404.html
+noAlternates: true
+eleventyExcludeFromCollections: true
+eleventyComputed:
+  title: "{{ i18n.en.notfound.title }}"
+---
+{%- for l in languages %}
+{%- set N = i18n[l.code].notfound %}
+{%- set nav = i18n[l.code].nav %}
+<section lang="{{ l.code }}"{% if not loop.first %} class="nf-alt"{% endif %}>
+  {% if loop.first %}<h1>{{ N.title }}</h1>{% else %}<h2>{{ N.title }}</h2>{% endif %}
+  <p>{{ N.text | fmt({ home: '<a href="' + l.prefix + '/">' + N.home + '</a>', pubs: '<a href="' + l.prefix + '/publications/">' + nav.publications + '</a>', teaching: '<a href="' + l.prefix + '/teaching/">' + nav.teaching + '</a>', service: '<a href="' + l.prefix + '/service/">' + nav.service + '</a>' }) | safe }}</p>
+</section>
+{%- endfor %}

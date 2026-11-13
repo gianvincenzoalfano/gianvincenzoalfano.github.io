@@ -11,10 +11,11 @@ Each task is a single-file edit, made directly on GitHub (pencil icon) or locall
 | To… | Edit | How |
 |---|---|---|
 | Add or fix a paper | `publications.bib` | Paste the BibTeX (e.g. from DBLP) and add `keywords = {journal}` (or `conference`, `workshop`, `national`, `chapter`, `editorship`, `preprint`). Optional fields: `award = {...}` highlights it, `slides = {url}`, `pdf = {url}`, `note = {...}`, `hidden = {true}` keeps it off the site. Order is by `year`. |
-| Add a news item | `src/_data/news.json` | Add `{ "date": "Mon YYYY", "text": "...", "link": "/publications/#key" }` at the top. The home page shows the first five. |
+| Add a news item | `src/_data/news.json` | Add `{ "date": "YYYY-MM", "text": { "en": "...", "it": "...", ... }, "link": "/publications/#key" }` at the top, with one text per language (`date` can also be just `YYYY`). The home page shows the first five. |
 | Update the CV | `src/assets/files/cv-alfano.pdf` | Upload the new PDF with the same name. Make sure it contains no personal data (see TODO.md). |
-| Change a course | `src/teaching.md` | The page is in Italian; current year at the top. |
-| Change service, projects, research, CV summary | `src/service.md`, `src/projects.md`, `src/research.md`, `src/cv.md` | Markdown with a little HTML. |
+| Change a course or a thesis | `src/_data/teaching.json` | Shared by all languages; course names stay in Italian. Role and degree labels come from `src/_data/i18n/<lang>.json`. |
+| Change service, projects, research, CV summary | `src/_includes/content/<page>/<lang>.njk` | One file per language (`en`, `it`, `es`, `fr`, `de`, `zh`), Markdown with a little HTML. Edit every language, or at least `en` and `it`. |
+| Change menus, home page text, bio, labels | `src/_data/i18n/<lang>.json` | One file per language. The bars next to the bio are computed from the bio text with the `topics` patterns. |
 | Change title, address, profile links, photo | `src/_data/site.json` | |
 
 A paper is linked from other pages as `/publications/#key`, where `key` is its BibTeX key.
@@ -49,7 +50,9 @@ npm run build && npm run check
 
 ## Files
 
-- `src/`: pages (`index.njk`, `research.md`, `publications.njk`, `teaching.md`, `service.md`, `projects.md`, `cv.md`), layout, CSS, data
+- `src/pages/`: one template per page, generated once per language (English at `/`, the others at `/it/`, `/es/`, `/fr/`, `/de/`, `/zh/`; list in `src/_data/languages.json`)
+- `src/_includes/content/`: per-language page text; `src/_data/i18n/`: per-language interface strings
+- Dark mode: the moon button in the header; the choice is stored in the browser, otherwise the system setting applies
 - `src/_data/redirects.json`: old WordPress paths and their new pages
 - `TODO.md`: open points and every change made to the source material
 - `MIGRATION.md`: URL mapping and domain instructions

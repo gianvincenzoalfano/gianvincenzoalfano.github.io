@@ -1,0 +1,43 @@
+<h1>Ricerca</h1>
+<p class="page-intro">La ricerca si svolge al DIMES dell'Università della Calabria, nel gruppo di argomentazione guidato da Sergio Greco, in collaborazione con gruppi in Argentina, nel Regno Unito e in Italia. Ogni linea rimanda alle sue pubblicazioni principali.</p>
+
+<h2 id="frameworks">Semantica e complessità dei framework di argomentazione astratta</h2>
+
+Un framework di argomentazione astratta rappresenta una disputa come un grafo orientato di argomenti e attacchi; le sue semantiche selezionano gli insiemi di argomenti che possono essere accettati congiuntamente. Questa linea estende il framework di Dung con forme di conoscenza più ricche, ne definisce la semantica e caratterizza la complessità dei problemi di verifica, esistenza e accettazione credula e scettica.
+
+- **Vincoli e preferenze.** Vincoli forti e deboli sulle estensioni, preferenze e regole di priorità, preferenze condizionali e la loro interazione nelle preferenze basate su lifting ({{ cite(["aaai2021", "aaai21-journal", "ijcai22", "ijcai23", "aaai2023", "preferencejournal"]) }}).
+- **Conoscenza epistemica.** Vincoli epistemici e attacchi epistemici, che esprimono ciò che un agente ritiene certamente o possibilmente vero ({{ cite(["aamas2023", "ecai2023", "aaai2024", "ijcai2024"]) }}).
+- **Condizioni di accettazione e feature.** Condizioni di accettazione a livello di argomento basate su set atom, argomenti descritti da fatti del primo ordine e framework combinati con basi di conoscenza DL-Lite ({{ cite(["sottomissioneINFSCIENCE", "aaai25-submission-faf", "kr2025"]) }}).
+- **Incertezza.** Framework incompleti e probabilistici, tra cui l'accettazione probabilistica basata su spiegazioni, che è {% math "\\mathsf{FP}^{\\#\\mathsf{P}}" %}-hard e viene approssimata con garanzie sull'errore additivo e relativo ({{ cite(["kr2020", "journalKR2020", "aaai2022", "aaai2026", "jlc2026"]) }}).
+
+<h2 id="dynamic">Argomentazione dinamica e calcolo incrementale</h2>
+
+Argomenti e attacchi cambiano man mano che una discussione evolve. Gli algoritmi incrementali individuano la parte del framework interessata da un aggiornamento e riutilizzano l'estensione precedente, risultando in media centinaia di volte più veloci del ricalcolo da zero. L'approccio copre i framework astratti, i framework bipolari e di ordine superiore con attacchi e supporti ricorsivi, l'accettazione scettica preferita e l'argomentazione strutturata in Defeasible Logic Programming ({{ cite(["ijcai2017", "ijcai2019", "kr2018", "journalKR", "ecai2020", "ijcai17-19-journal"]) }}). Un algoritmo che enumera le estensioni preferite calcolando prima l'estensione ideale ({{ cite(["sac2019"]) }}) ha ricevuto il Best Paper Award della track Knowledge Representation and Reasoning.
+
+<h2 id="lp">Argomentazione e programmazione logica</h2>
+
+Traduzioni di framework di argomentazione bipolari e ricorsivi in programmi logici normali stabiliscono corrispondenze biunivoche tra estensioni complete e modelli stabili parziali, e tra estensioni preferite, stabili, semi-stabili, grounded e ideali e le corrispondenti classi di modelli ({{ cite(["tplp2020", "ijcai21", "tplp2024"]) }}). Questo lavoro ha ricevuto il Best Technical Paper Award a ICLP 2020.
+
+<h2 id="qbaf">Argomentazione bipolare quantitativa</h2>
+
+I framework di argomentazione bipolare quantitativa assegnano pesi ad argomenti, attacchi e supporti, e le semantiche graduali calcolano la forza finale di ciascun argomento. Il lavoro in corso studia semantiche modulari basate su double rectified linear unit e le loro proprietà formali, e l'uso di questi framework per ragionare su dibattiti estratti da testi mediante large language model ({{ cite(["corr2026drelu", "corr2026fakb"]) }}).
+
+<h2 id="xai">Intelligenza artificiale spiegabile</h2>
+
+Le spiegazioni controfattuali dicono come dovrebbe cambiare un input per cambiare la decisione di un modello; quelle semifattuali (“even-if”) dicono come potrebbe cambiare lasciando la decisione invariata. Questa linea fornisce fondamenti formali per entrambe, ne caratterizza la complessità per diverse classi di modelli (perceptron, free binary decision diagram, multi-layer perceptron e graph neural network), supporta le preferenze dell'utente sulle spiegazioni e studia i controfattuali in presenza di molteplicità di modelli e all'interno dei framework di argomentazione ({{ cite(["semifactual-core", "ijcai2026gnn", "ijcai25-toni", "sottomissioneKR24"]) }}).
+
+<h2 id="data">Gestione di dati incompleti</h2>
+
+I valori mancanti degradano le analisi basate su dati relazionali. SENTI è un algoritmo incrementale, che non richiede addestramento, per imputare valori nulli in basi di dati relazionali dinamiche ragionando sul contenuto semantico delle tuple con sentence transformer pre-addestrati e un database vettoriale ({{ cite(["inffus2026"]) }}). Il lavoro fa parte del progetto PRIN S-PIC4CHU sulla preparazione dei dati arricchita dalla semantica ({{ cite(["SEBD25"]) }}).
+
+<h2 id="other">Altri temi</h2>
+
+- Risposte approssimate e consistenti a interrogazioni su basi di conoscenza inconsistenti ({{ cite(["ISWA-basi"]) }}).
+- Federated learning decentralizzato physics-informed ({{ cite(["ecmlsubmission"]) }}).
+- Benchmark sintetici per l'argomentazione strutturata e un framework unificante per l'argomentazione probabilistica ({{ cite(["mariojournal", "flap2025"]) }}).
+
+<h2 id="collaborations">Collaborazioni</h2>
+
+- Laboratorio di Investigación y Desarrollo en Inteligencia Artificial (LIDIA), Universidad Nacional del Sur, Argentina: calcolo incrementale per l'argomentazione ricorsiva e strutturata, nell'ambito dell'accordo di cooperazione tra DIMES e DCIC firmato nel 2022, di cui è coordinatore scientifico.
+- Gruppo Computational Logic and Argumentation (CLArg), Imperial College London, dal 2024: intelligenza artificiale spiegabile, comprese le spiegazioni basate sull'argomentazione.
+- Gruppo di lavoro Argomentazione nell'Intelligenza Artificiale dell'Associazione Italiana per l'Intelligenza Artificiale (AIxIA).

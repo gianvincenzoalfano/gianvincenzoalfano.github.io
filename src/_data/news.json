@@ -1,7 +1,42 @@
 [
-  { "date": "2026", "text": "Program committee member of AAMAS 2027, KR 2027, AAAI 2027 and IJCAI 2027." },
-  { "date": "Aug 2026", "text": "Paper on semifactual explanations for GNN-based classification published at IJCAI-ECAI 2026, Bremen.", "link": "/publications/#ijcai2026gnn" },
-  { "date": "2026", "text": "Silver Tier reviewer distinction, Primary Paper Initiative of IJCAI-ECAI 2026." },
-  { "date": "Jul 2026", "text": "Extended abstract on combining abstract argumentation frameworks with knowledge bases at NMR 2026, Lisbon.", "link": "/publications/#nmr26" },
-  { "date": "2026", "text": "Article on semantic-aware data imputation in dynamic relational databases published in Information Fusion.", "link": "/publications/#inffus2026" }
+  { "date": "2026",
+    "text": {
+      "en": "Program committee member of AAMAS 2027, KR 2027, AAAI 2027 and IJCAI 2027.",
+      "it": "Membro del comitato di programma di AAMAS 2027, KR 2027, AAAI 2027 e IJCAI 2027.",
+      "es": "Miembro del comité de programa de AAMAS 2027, KR 2027, AAAI 2027 e IJCAI 2027.",
+      "fr": "Membre du comité de programme d'AAMAS 2027, KR 2027, AAAI 2027 et IJCAI 2027.",
+      "de": "Mitglied der Programmkomitees von AAMAS 2027, KR 2027, AAAI 2027 und IJCAI 2027.",
+      "zh": "担任 AAMAS 2027、KR 2027、AAAI 2027 与 IJCAI 2027 程序委员会委员。" } },
+  { "date": "2026-08", "link": "/publications/#ijcai2026gnn",
+    "text": {
+      "en": "Paper on semifactual explanations for GNN-based classification published at IJCAI-ECAI 2026, Bremen.",
+      "it": "Articolo sulle spiegazioni semifattuali per la classificazione basata su GNN pubblicato a IJCAI-ECAI 2026, Brema.",
+      "es": "Artículo sobre explicaciones semifactuales para la clasificación basada en GNN publicado en IJCAI-ECAI 2026, Bremen.",
+      "fr": "Article sur les explications semi-factuelles pour la classification par GNN publié à IJCAI-ECAI 2026, Brême.",
+      "de": "Beitrag zu semifaktischen Erklärungen für GNN-basierte Klassifikation auf der IJCAI-ECAI 2026 in Bremen veröffentlicht.",
+      "zh": "关于基于图神经网络分类的半事实解释的论文发表于 IJCAI-ECAI 2026（不来梅）。" } },
+  { "date": "2026",
+    "text": {
+      "en": "Silver Tier reviewer distinction, Primary Paper Initiative of IJCAI-ECAI 2026.",
+      "it": "Riconoscimento Silver Tier come revisore, Primary Paper Initiative di IJCAI-ECAI 2026.",
+      "es": "Distinción de revisor Silver Tier, Primary Paper Initiative de IJCAI-ECAI 2026.",
+      "fr": "Distinction de relecteur Silver Tier, Primary Paper Initiative d'IJCAI-ECAI 2026.",
+      "de": "Auszeichnung als Gutachter (Silver Tier), Primary Paper Initiative der IJCAI-ECAI 2026.",
+      "zh": "获 IJCAI-ECAI 2026 Primary Paper Initiative 银级审稿人称号。" } },
+  { "date": "2026-07", "link": "/publications/#nmr26",
+    "text": {
+      "en": "Extended abstract on combining abstract argumentation frameworks with knowledge bases at NMR 2026, Lisbon.",
+      "it": "Extended abstract sulla combinazione di framework di argomentazione astratta e basi di conoscenza a NMR 2026, Lisbona.",
+      "es": "Resumen extendido sobre la combinación de marcos de argumentación abstracta con bases de conocimiento en NMR 2026, Lisboa.",
+      "fr": "Résumé étendu sur la combinaison de systèmes d'argumentation abstraits et de bases de connaissances à NMR 2026, Lisbonne.",
+      "de": "Erweiterte Kurzfassung zur Verbindung abstrakter Argumentationssysteme mit Wissensbasen auf der NMR 2026 in Lissabon.",
+      "zh": "关于抽象论辩框架与知识库结合的扩展摘要发表于 NMR 2026（里斯本）。" } },
+  { "date": "2026", "link": "/publications/#inffus2026",
+    "text": {
+      "en": "Article on semantic-aware data imputation in dynamic relational databases published in Information Fusion.",
+      "it": "Articolo sull'imputazione semantica dei dati in basi di dati relazionali dinamiche pubblicato su Information Fusion.",
+      "es": "Artículo sobre la imputación semántica de datos en bases de datos relacionales dinámicas publicado en Information Fusion.",
+      "fr": "Article sur l'imputation sémantique de données dans les bases de données relationnelles dynamiques publié dans Information Fusion.",
+      "de": "Artikel zur semantischen Datenimputation in dynamischen relationalen Datenbanken in Information Fusion erschienen.",
+      "zh": "关于动态关系数据库中语义感知数据插补的论文发表于 Information Fusion。" } }
 ]

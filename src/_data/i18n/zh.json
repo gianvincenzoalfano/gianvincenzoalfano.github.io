@@ -1,0 +1,150 @@
+{
+ "ui": {
+  "skip": "跳到正文",
+  "top": "返回顶部",
+  "language": "语言",
+  "dark": "切换到深色模式",
+  "light": "切换到浅色模式",
+  "nav": "主菜单"
+ },
+ "nav": {
+  "research": "研究",
+  "publications": "论文",
+  "teaching": "教学",
+  "service": "学术服务",
+  "projects": "项目",
+  "cv": "简历"
+ },
+ "desc": {
+  "home": "Gianvincenzo Alfano，卡拉布里亚大学 DIMES 终身教职轨助理教授，研究方向为形式化论辩、计算复杂性、可解释人工智能与知识表示。",
+  "research": "Gianvincenzo Alfano 的研究方向：从抽象论辩及其复杂性到可解释人工智能与不完整数据管理。",
+  "publications": "Gianvincenzo Alfano 关于形式化论辩、计算复杂性、可解释人工智能与数据管理的论文。",
+  "teaching": "Gianvincenzo Alfano 在卡拉布里亚大学讲授的课程、博士课程及指导的学位论文。",
+  "service": "Gianvincenzo Alfano 的程序委员会、会议组织、编辑与审稿工作及院系职务。",
+  "projects": "Gianvincenzo Alfano 参与的科研项目、指导工作与科研合作协议。",
+  "cv": "Gianvincenzo Alfano 的简历：职位、教育背景、资格认定与奖项。"
+ },
+ "person": {
+  "position": "终身教职轨助理教授（RTT）",
+  "department": "Department of Informatics, Modeling, Electronics and System Engineering (DIMES)",
+  "university": "卡拉布里亚大学",
+  "country": "意大利",
+  "address": "Via P. Bucci, Cubo 44Z, 一楼, 87036 Rende (CS), Italy",
+  "phd": "博士",
+  "email": "邮箱",
+  "office": "办公室",
+  "profiles": "学术主页",
+  "contact": "联系方式"
+ },
+ "home": {
+  "bio1": "Gianvincenzo Alfano 是卡拉布里亚大学的终身教职轨助理教授，并于2020年在该校获得信息与通信技术博士学位。他的研究方向为知识表示与推理，重点是形式化论辩：抽象论辩框架及其扩展（支持关系、约束、偏好、认知知识、不确定性与量化权重）的语义与计算复杂性，以及它们在动态环境中的增量计算。",
+  "bio2": "他还研究可解释人工智能，特别是机器学习模型的反事实与半事实解释的复杂性和计算，以及关系数据库中缺失值的语义插补。他在论辩方面的工作获得了 ICLP 2020 最佳技术论文奖和 ACM SAC 2019 最佳论文奖。",
+  "bioLabel": "简介",
+  "console": "论辩式简介",
+  "words": "字",
+  "count": "chars",
+  "live": "实时",
+  "topicsLabel": "简介中提到的研究主题",
+  "topicsTitle": "简介中的主题",
+  "topicsNote": "各主题在简介中被提及的比例。",
+  "topicsHint": "点击主题可在文中高亮显示。",
+  "one": "次",
+  "many": "次",
+  "read": "在研究页面了解{x}",
+  "topics": [
+   [
+    "论辩",
+    "论辩",
+    "frameworks"
+   ],
+   [
+    "复杂性",
+    "复杂性",
+    "frameworks"
+   ],
+   [
+    "可解释人工智能",
+    "解释",
+    "xai"
+   ],
+   [
+    "数据管理",
+    "插补|数据库",
+    "data"
+   ],
+   [
+    "知识表示与推理",
+    "知识表示",
+    "frameworks"
+   ]
+  ],
+  "interests": "研究方向",
+  "allResearch": "全部研究方向",
+  "news": "最新动态",
+  "allPubs": "全部论文",
+  "cards": [
+   [
+    "形式化论辩",
+    "带支持、约束、偏好、认知知识与不确定性的抽象论辩框架的语义与复杂性，及其增量计算。",
+    "frameworks"
+   ],
+   [
+    "可解释人工智能",
+    "反事实与半事实解释的形式化基础、复杂性与计算，涵盖感知机、决策图以及图神经网络。",
+    "xai"
+   ],
+   [
+    "逻辑与知识",
+    "论辩与逻辑程序设计、量化双极论辩、知识库以及不完整数据的语义插补。",
+    "lp"
+   ]
+  ]
+ },
+ "pubs": {
+  "title": "论文",
+  "intro": "共 {n} 篇，按时间倒序排列，每篇附 BibTeX。完整且最新的列表亦见 {dblp} 与 {scholar}。",
+  "show": "显示",
+  "all": "全部",
+  "cats": {
+   "journal": "期刊论文",
+   "conference": "会议论文",
+   "workshop": "研讨会论文",
+   "other": "其他"
+  },
+  "slides": "幻灯片"
+ },
+ "teach": {
+  "title": "教学",
+  "intro": "自2016/2017学年起在卡拉布里亚大学讲授 IINF-05/A（原 ING-INF/05）学科领域的课程。课程时间、大纲与资料以各专业官方页面为准。课程名称保留意大利语原名。",
+  "year": "学年",
+  "current": "2026/2027 学年",
+  "previous": "往年",
+  "phd": "博士课程",
+  "theses": "指导的学位论文",
+  "thesesNote": "计算机工程方向的论文在 DIMES 完成，管理工程方向的论文在 DIMEG 完成。此外，他还担任过一项 15 学分（ECTS）实习的学术导师（2023/2024 学年）。论文题目保留意大利语原文。",
+  "roles": {
+   "titolare": "主讲教师",
+   "docente": "授课教师",
+   "esercitatore": "习题课教师",
+   "contratto": "合同教师及习题课教师",
+   "tutor": "学术辅导及习题课教师"
+  },
+  "degree": {
+   "L": "本科",
+   "LM": "硕士"
+  },
+  "cfu": "学分",
+  "hours": "学时",
+  "phdItems": [
+   "<strong>Argumentation in Artificial Intelligence</strong>（2 学分，12 学时），第二期，2024年1月22日至25日。卡拉布里亚大学 DIMES 信息与通信技术博士项目。",
+   "<strong>Argumentation: Incremental Computation, Uncertainty, and relations with Logic Programming</strong>（40 学时），2022年2月至3月。阿根廷布兰卡港南方国立大学（Universidad Nacional del Sur）计算机科学与工程系。",
+   "<strong>Argumentation in Artificial Intelligence</strong>（2 学分，12 学时），2021年5月10日至14日。卡拉布里亚大学 DIMES 信息与通信技术博士项目。"
+  ]
+ },
+ "notfound": {
+  "title": "页面未找到",
+  "text": "该地址不对应本站任何页面。旧网站的页面已迁移：请从{home}开始，或前往{pubs}、{teaching}或{service}。",
+  "home": "首页"
+ },
+ "cvlink": "下载完整简历（PDF，意大利语）"
+}

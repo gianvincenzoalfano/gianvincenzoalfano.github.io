@@ -1,0 +1,150 @@
+{
+ "ui": {
+  "skip": "Zum Inhalt springen",
+  "top": "Nach oben",
+  "language": "Sprache",
+  "dark": "Dunkles Design einschalten",
+  "light": "Helles Design einschalten",
+  "nav": "Hauptmenü"
+ },
+ "nav": {
+  "research": "Forschung",
+  "publications": "Publikationen",
+  "teaching": "Lehre",
+  "service": "Gremien",
+  "projects": "Projekte",
+  "cv": "Lebenslauf"
+ },
+ "desc": {
+  "home": "Gianvincenzo Alfano, Tenure-Track-Assistenzprofessor am DIMES der Universität Kalabrien. Forschung zu formaler Argumentation, Komplexitätstheorie, erklärbarer KI und Wissensrepräsentation.",
+  "research": "Forschungsschwerpunkte von Gianvincenzo Alfano, von abstrakter Argumentation und ihrer Komplexität bis zu erklärbarer KI und unvollständigen Daten.",
+  "publications": "Publikationen von Gianvincenzo Alfano zu formaler Argumentation, Komplexitätstheorie, erklärbarer KI und Datenmanagement.",
+  "teaching": "Lehrveranstaltungen von Gianvincenzo Alfano an der Universität Kalabrien, Doktorandenkurse und betreute Abschlussarbeiten.",
+  "service": "Programmkomitees, Organisation, Herausgeber- und Gutachtertätigkeit sowie Gremienarbeit von Gianvincenzo Alfano.",
+  "projects": "Forschungsprojekte, Betreuung und wissenschaftliche Kooperationsabkommen von Gianvincenzo Alfano.",
+  "cv": "Lebenslauf von Gianvincenzo Alfano: Positionen, Ausbildung, Habilitationen und Auszeichnungen."
+ },
+ "person": {
+  "position": "Tenure-Track-Assistenzprofessor (RTT)",
+  "department": "Department of Informatics, Modeling, Electronics and System Engineering (DIMES)",
+  "university": "Universität Kalabrien",
+  "country": "Italien",
+  "address": "Via P. Bucci, Cubo 44Z, erster Stock, 87036 Rende (CS), Italien",
+  "phd": "Dr.",
+  "email": "E-Mail",
+  "office": "Büro",
+  "profiles": "Profile",
+  "contact": "Kontakt"
+ },
+ "home": {
+  "bio1": "Gianvincenzo Alfano ist Tenure-Track-Assistenzprofessor an der Universität Kalabrien, wo er 2020 auch im Fach Information and Communication Technologies promovierte. Seine Forschung liegt in der Wissensrepräsentation und dem automatischen Schließen, mit Schwerpunkt auf formaler Argumentation: Semantik und Berechnungskomplexität abstrakter Argumentationssysteme und ihrer Erweiterungen um Unterstützungen, Bedingungen, Präferenzen, epistemisches Wissen, Unsicherheit und quantitative Gewichte sowie deren inkrementelle Berechnung in dynamischen Umgebungen.",
+  "bio2": "Außerdem beschäftigt er sich mit erklärbarer KI, insbesondere mit der Komplexität und Berechnung kontrafaktischer und semifaktischer Erklärungen für Modelle des maschinellen Lernens, sowie mit der semantischen Imputation fehlender Werte in relationalen Datenbanken. Seine Arbeiten zur Argumentation wurden mit dem Best Technical Paper Award der ICLP 2020 und einem Best Paper Award der ACM SAC 2019 ausgezeichnet.",
+  "bioLabel": "Kurzbiografie",
+  "console": "dialektische Bio",
+  "words": "Wörter",
+  "count": "words",
+  "live": "live",
+  "topicsLabel": "In der Biografie genannte Forschungsthemen",
+  "topicsTitle": "Themen dieser Bio",
+  "topicsNote": "Anteil der Nennungen jedes Themas in der Biografie.",
+  "topicsHint": " Wählen Sie ein Thema, um es im Text hervorzuheben.",
+  "one": "Nennung",
+  "many": "Nennungen",
+  "read": "Mehr zu {x} auf der Seite Forschung",
+  "topics": [
+   [
+    "Argumentation",
+    "argumentation",
+    "frameworks"
+   ],
+   [
+    "Komplexität",
+    "komplexität",
+    "frameworks"
+   ],
+   [
+    "Erklärbare KI",
+    "erklärbar|erklärungen",
+    "xai"
+   ],
+   [
+    "Datenmanagement",
+    "imputation|datenbanken",
+    "data"
+   ],
+   [
+    "KR&R",
+    "wissensrepräsentation",
+    "frameworks"
+   ]
+  ],
+  "interests": "Forschungsschwerpunkte",
+  "allResearch": "Alle Schwerpunkte",
+  "news": "Neuigkeiten",
+  "allPubs": "Alle Publikationen",
+  "cards": [
+   [
+    "Formale Argumentation",
+    "Semantik und Komplexität abstrakter Systeme mit Unterstützungen, Bedingungen, Präferenzen, epistemischem Wissen und Unsicherheit sowie ihre inkrementelle Berechnung.",
+    "frameworks"
+   ],
+   [
+    "Erklärbare KI",
+    "Formale Grundlagen, Komplexität und Berechnung kontrafaktischer und semifaktischer Erklärungen, von Perzeptronen und Entscheidungsdiagrammen bis zu Graph Neural Networks.",
+    "xai"
+   ],
+   [
+    "Logik und Wissen",
+    "Argumentation und logische Programmierung, quantitative bipolare Argumentation, Wissensbasen und semantische Imputation unvollständiger Daten.",
+    "lp"
+   ]
+  ]
+ },
+ "pubs": {
+  "title": "Publikationen",
+  "intro": "{n} Arbeiten, die neuesten zuerst, jeweils mit BibTeX. Vollständige und aktuelle Verzeichnisse gibt es auch bei {dblp} und {scholar}.",
+  "show": "Anzeigen",
+  "all": "Alle",
+  "cats": {
+   "journal": "Zeitschriftenartikel",
+   "conference": "Konferenzbeiträge",
+   "workshop": "Workshopbeiträge",
+   "other": "Sonstiges"
+  },
+  "slides": "Folien"
+ },
+ "teach": {
+  "title": "Lehre",
+  "intro": "Lehrveranstaltungen im Fachgebiet IINF-05/A (vormals ING-INF/05) an der Universität Kalabrien, wo er seit 2016/2017 lehrt. Maßgeblich für Termine, Inhalte und Materialien sind die offiziellen Seiten der Studiengänge.",
+  "year": "Studienjahr",
+  "current": "Studienjahr 2026/2027",
+  "previous": "Frühere Jahre",
+  "phd": "Doktorandenkurse",
+  "theses": "Betreute Abschlussarbeiten",
+  "thesesNote": "Die Arbeiten in Informatikingenieurwesen entstanden am DIMES, die in Wirtschaftsingenieurwesen am DIMEG. Außerdem betreute er ein Praktikum im Umfang von 15 ECTS (2023/2024) als akademischer Tutor.",
+  "roles": {
+   "titolare": "verantwortlicher Dozent",
+   "docente": "Dozent",
+   "esercitatore": "Übungsleiter",
+   "contratto": "Lehrbeauftragter und Übungsleiter",
+   "tutor": "akademischer Tutor und Übungsleiter"
+  },
+  "degree": {
+   "L": "Bachelor",
+   "LM": "Master"
+  },
+  "cfu": "ECTS",
+  "hours": "Stunden",
+  "phdItems": [
+   "<strong>Argumentation in Artificial Intelligence</strong> (2 ECTS, 12 Stunden), zweite Ausgabe, 22.–25. Januar 2024. Promotionsprogramm Information and Communication Technologies, DIMES, Universität Kalabrien.",
+   "<strong>Argumentation: Incremental Computation, Uncertainty, and relations with Logic Programming</strong> (40 Stunden), Februar–März 2022. Department of Computer Science and Engineering, Universidad Nacional del Sur, Bahía Blanca, Argentinien.",
+   "<strong>Argumentation in Artificial Intelligence</strong> (2 ECTS, 12 Stunden), 10.–14. Mai 2021. Promotionsprogramm Information and Communication Technologies, DIMES, Universität Kalabrien."
+  ]
+ },
+ "notfound": {
+  "title": "Seite nicht gefunden",
+  "text": "Diese Adresse entspricht keiner Seite der Website. Die Seiten der früheren Website wurden verschoben: Beginnen Sie auf der {home} oder gehen Sie zu {pubs}, {teaching} oder {service}.",
+  "home": "Startseite"
+ },
+ "cvlink": "Vollständigen Lebenslauf herunterladen (PDF, Italienisch)"
+}

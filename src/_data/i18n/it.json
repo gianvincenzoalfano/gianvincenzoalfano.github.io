@@ -1,0 +1,150 @@
+{
+ "ui": {
+  "skip": "Vai al contenuto",
+  "top": "Torna su",
+  "language": "Lingua",
+  "dark": "Passa al tema scuro",
+  "light": "Passa al tema chiaro",
+  "nav": "Principale"
+ },
+ "nav": {
+  "research": "Ricerca",
+  "publications": "Pubblicazioni",
+  "teaching": "Didattica",
+  "service": "Servizio",
+  "projects": "Progetti",
+  "cv": "CV"
+ },
+ "desc": {
+  "home": "Gianvincenzo Alfano, ricercatore in tenure track al DIMES, Università della Calabria. Ricerca in argomentazione formale, complessità computazionale, intelligenza artificiale spiegabile e rappresentazione della conoscenza.",
+  "research": "Linee di ricerca di Gianvincenzo Alfano, dall'argomentazione astratta e la sua complessità all'IA spiegabile e alla gestione di dati incompleti.",
+  "publications": "Pubblicazioni di Gianvincenzo Alfano su argomentazione formale, complessità computazionale, IA spiegabile e gestione dei dati.",
+  "teaching": "Insegnamenti di Gianvincenzo Alfano all'Università della Calabria, corsi di dottorato e tesi di laurea seguite.",
+  "service": "Comitati di programma, organizzazione, attività editoriale e di revisione, incarichi istituzionali di Gianvincenzo Alfano.",
+  "projects": "Progetti di ricerca, supervisione e accordi scientifici di Gianvincenzo Alfano.",
+  "cv": "Curriculum vitae di Gianvincenzo Alfano: posizioni, formazione, abilitazioni e premi."
+ },
+ "person": {
+  "position": "Ricercatore in tenure track (RTT)",
+  "department": "Dipartimento di Ingegneria Informatica, Modellistica, Elettronica e Sistemistica (DIMES)",
+  "university": "Università della Calabria",
+  "country": "Italia",
+  "address": "Via P. Bucci, Cubo 44Z, primo piano, 87036 Rende (CS)",
+  "phd": "Dottore di ricerca",
+  "email": "Email",
+  "office": "Ufficio",
+  "profiles": "Profili",
+  "contact": "Contatti"
+ },
+ "home": {
+  "bio1": "Gianvincenzo Alfano è ricercatore in tenure track all'Università della Calabria, dove ha conseguito anche il dottorato in Information and Communication Technologies nel 2020. La sua ricerca riguarda la rappresentazione della conoscenza e il ragionamento automatico, con particolare attenzione all'argomentazione formale: semantica e complessità computazionale dei framework di argomentazione astratta e delle loro estensioni con supporti, vincoli, preferenze, conoscenza epistemica, incertezza e pesi quantitativi, e il loro calcolo incrementale in contesti dinamici.",
+  "bio2": "Si occupa inoltre di intelligenza artificiale spiegabile, in particolare della complessità e del calcolo di spiegazioni controfattuali e semifattuali per modelli di apprendimento automatico, e dell'imputazione semantica di valori mancanti in basi di dati relazionali. I suoi lavori sull'argomentazione hanno ricevuto il Best Technical Paper Award a ICLP 2020 e un Best Paper Award ad ACM SAC 2019.",
+  "bioLabel": "Breve biografia",
+  "console": "bio dialettica",
+  "words": "parole",
+  "count": "words",
+  "live": "live",
+  "topicsLabel": "Temi di ricerca citati nella biografia",
+  "topicsTitle": "Temi in questa bio",
+  "topicsNote": "Quota delle citazioni di ciascun tema nella biografia.",
+  "topicsHint": " Seleziona un tema per evidenziarlo nel testo.",
+  "one": "citazione",
+  "many": "citazioni",
+  "read": "Approfondisci {x} nella pagina Ricerca",
+  "topics": [
+   [
+    "Argomentazione",
+    "argomentazione",
+    "frameworks"
+   ],
+   [
+    "Complessità",
+    "complessità",
+    "frameworks"
+   ],
+   [
+    "IA spiegabile",
+    "spiegabile|spiegazioni",
+    "xai"
+   ],
+   [
+    "Gestione dei dati",
+    "imputazione|basi di dati",
+    "data"
+   ],
+   [
+    "KR&R",
+    "rappresentazione della conoscenza",
+    "frameworks"
+   ]
+  ],
+  "interests": "Temi di ricerca",
+  "allResearch": "Tutte le linee di ricerca",
+  "news": "Ultime notizie",
+  "allPubs": "Tutte le pubblicazioni",
+  "cards": [
+   [
+    "Argomentazione formale",
+    "Semantica e complessità di framework astratti con supporti, vincoli, preferenze, conoscenza epistemica e incertezza, e il loro calcolo incrementale.",
+    "frameworks"
+   ],
+   [
+    "IA spiegabile",
+    "Fondamenti formali, complessità e calcolo di spiegazioni controfattuali e semifattuali, dai perceptron e diagrammi di decisione alle graph neural network.",
+    "xai"
+   ],
+   [
+    "Logica e conoscenza",
+    "Argomentazione e programmazione logica, argomentazione bipolare quantitativa, basi di conoscenza e imputazione semantica di dati incompleti.",
+    "lp"
+   ]
+  ]
+ },
+ "pubs": {
+  "title": "Pubblicazioni",
+  "intro": "{n} lavori, dal più recente, ciascuno con il suo BibTeX. L'elenco completo e aggiornato è anche su {dblp} e {scholar}.",
+  "show": "Mostra",
+  "all": "Tutti",
+  "cats": {
+   "journal": "Articoli su rivista",
+   "conference": "Articoli a conferenza",
+   "workshop": "Articoli a workshop",
+   "other": "Altro"
+  },
+  "slides": "Slide"
+ },
+ "teach": {
+  "title": "Didattica",
+  "intro": "Insegnamenti del settore IINF-05/A (già ING-INF/05) presso l'Università della Calabria, dove svolge attività didattica dall'a.a. 2016/2017. Per orari, programmi e materiale dei corsi fanno fede le pagine ufficiali dei corsi di studio.",
+  "year": "Anno accademico",
+  "current": "Anno accademico 2026/2027",
+  "previous": "Anni precedenti",
+  "phd": "Corsi di dottorato",
+  "theses": "Tesi di laurea seguite come relatore",
+  "thesesNote": "Le tesi di Ingegneria Informatica sono state svolte presso il DIMES, quelle di Ingegneria Gestionale presso il DIMEG. È stato inoltre tutor accademico di un tirocinio formativo da 15 CFU (a.a. 2023/2024).",
+  "roles": {
+   "titolare": "docente titolare",
+   "docente": "docente",
+   "esercitatore": "esercitatore",
+   "contratto": "professore a contratto ed esercitatore",
+   "tutor": "tutor accademico ed esercitatore"
+  },
+  "degree": {
+   "L": "L",
+   "LM": "LM"
+  },
+  "cfu": "CFU",
+  "hours": "ore",
+  "phdItems": [
+   "<strong>Argumentation in Artificial Intelligence</strong> (2 CFU, 12 ore), seconda edizione, 22–25 gennaio 2024. Dottorato di Ricerca in Information and Communication Technologies, DIMES, Università della Calabria.",
+   "<strong>Argumentation: Incremental Computation, Uncertainty, and relations with Logic Programming</strong> (40 ore), febbraio–marzo 2022. Department of Computer Science and Engineering, Universidad Nacional del Sur, Bahía Blanca, Argentina.",
+   "<strong>Argumentation in Artificial Intelligence</strong> (2 CFU, 12 ore), 10–14 maggio 2021. Dottorato di Ricerca in Information and Communication Technologies, DIMES, Università della Calabria."
+  ]
+ },
+ "notfound": {
+  "title": "Pagina non trovata",
+  "text": "Questo indirizzo non corrisponde a nessuna pagina del sito. Le pagine del sito precedente sono state spostate: parti dalla {home}, oppure vai a {pubs}, {teaching} o {service}.",
+  "home": "pagina iniziale"
+ },
+ "cvlink": "Scarica il CV completo (PDF)"
+}
