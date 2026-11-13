@@ -7,6 +7,7 @@ export default function (eleventyConfig) {
   // Static files
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addPassthroughCopy({ "src/CNAME": "CNAME" });
+  eleventyConfig.addPassthroughCopy({ "src/favicon.ico": "favicon.ico" });
   eleventyConfig.addPassthroughCopy({ "src/.nojekyll": ".nojekyll" });
   const font = "node_modules/@fontsource-variable/alegreya/files";
   for (const f of ["latin", "latin-ext"]) {
