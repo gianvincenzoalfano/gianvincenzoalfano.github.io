@@ -1,17 +1,22 @@
 ---
 layout: layouts/base.njk
-title: Publications
-description: Publications of Gianvincenzo Alfano on formal argumentation, computational complexity, explainable AI and data management.
+pagination: { data: languages, size: 1, alias: L, addAllPagesToCollections: true }
+pagePath: /publications/
+permalink: "{{ L.prefix }}/publications/"
+eleventyComputed:
+  title: "{{ i18n[L.code].nav.publications }}"
+  description: "{{ i18n[L.code].desc.publications }}"
 ---
-<h1>Publications</h1>
-<p class="page-intro">{{ publications.total }} works, newest first. The list is generated from <a href="https://github.com/gianvincenzoalfano/gianvincenzoalfano.github.io/blob/main/publications.bib">publications.bib</a>; each entry has its BibTeX. Complete and up-to-date records are also on <a href="https://dblp.org/pid/204/2966.html">DBLP</a> and <a href="https://scholar.google.com/citations?user=0ndOUs8AAAAJ">Google Scholar</a>.</p>
+{%- set U = i18n[L.code].pubs -%}
+<h1>{{ U.title }}</h1>
+<p class="page-intro">{{ U.intro | fmt({ n: publications.total, dblp: '<a href="https://dblp.org/pid/204/2966.html">DBLP</a>', scholar: '<a href="https://scholar.google.com/citations?user=0ndOUs8AAAAJ">Google Scholar</a>' }) | safe }}</p>
 
 <div class="pub-list">
   <fieldset class="pub-filter">
-    <legend>Show</legend>
-    <input type="radio" name="pubcat" id="f-all" checked><label for="f-all">All<span class="n">{{ publications.total }}</span></label>
+    <legend>{{ U.show }}</legend>
+    <input type="radio" name="pubcat" id="f-all" checked><label for="f-all">{{ U.all }}<span class="n">{{ publications.total }}</span></label>
     {%- for c in publications.categories %}
-    <input type="radio" name="pubcat" id="f-{{ c.id }}"><label for="f-{{ c.id }}">{{ c.label }}<span class="n">{{ publications.counts[c.id] }}</span></label>
+    <input type="radio" name="pubcat" id="f-{{ c.id }}"><label for="f-{{ c.id }}">{{ U.cats[c.id] }}<span class="n">{{ publications.counts[c.id] }}</span></label>
     {%- endfor %}
   </fieldset>
 
@@ -27,7 +32,7 @@ description: Publications of Gianvincenzo Alfano on formal argumentation, comput
         {%- if p.note %}<span class="pub-note">{{ p.note | safe }}</span>{% endif %}
         {%- if p.award %}<span class="award">{{ p.award }}</span>{% endif %}
         <span class="pub-links">
-          {%- for l in p.links %}<a href="{{ l.url }}">{{ l.label }}</a>{% endfor %}
+          {%- for l in p.links %}<a href="{{ l.url }}">{{ U.slides if l.label == "Slides" else l.label }}</a>{% endfor %}
           <details><summary>BibTeX</summary><pre>{{ p.bibtex }}</pre></details>
         </span>
       </li>

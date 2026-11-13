@@ -1,0 +1,320 @@
+{
+ "current": [
+  {
+   "course": "Algoritmi e Strutture Dati",
+   "cfu": 6,
+   "role": "titolare",
+   "degree": "L",
+   "programme": "Ingegneria Informatica",
+   "dept": "DIMES"
+  },
+  {
+   "course": "Fondamenti di Informatica",
+   "cfu": 9,
+   "role": "titolare",
+   "degree": "L",
+   "programme": "Statistica per Data Science",
+   "dept": "DESF"
+  },
+  {
+   "course": "Knowledge Representation and Reasoning",
+   "cfu": 6,
+   "role": "esercitatore",
+   "degree": "LM",
+   "programme": "Ingegneria Informatica",
+   "dept": "DIMES"
+  }
+ ],
+ "previous": [
+  {
+   "year": "2025/2026",
+   "items": [
+    {
+     "course": "Fondamenti di Informatica",
+     "role": "titolare",
+     "degree": "L",
+     "programme": "Statistica per Data Science",
+     "dept": "DESF"
+    },
+    {
+     "course": "Statistica e Informatica",
+     "role": "docente",
+     "degree": "L",
+     "programme": "Fisioterapia",
+     "dept": "DFSSN"
+    },
+    {
+     "course": "Algoritmi e Strutture Dati, Gruppo B",
+     "role": "docente",
+     "degree": "L",
+     "programme": "Ingegneria Informatica",
+     "dept": "DIMES"
+    },
+    {
+     "course": "Knowledge Representation and Reasoning",
+     "role": "esercitatore",
+     "degree": "LM",
+     "programme": "Ingegneria Informatica",
+     "dept": "DIMES"
+    }
+   ]
+  },
+  {
+   "year": "2024/2025",
+   "items": [
+    {
+     "course": "Fondamenti di Informatica",
+     "role": "titolare",
+     "degree": "L",
+     "programme": "Statistica per Data Science",
+     "dept": "DESF"
+    },
+    {
+     "course": "Elementi di Matematica Computazionale, Corso B",
+     "role": "titolare",
+     "degree": "L",
+     "programme": "Ingegneria Informatica",
+     "dept": "DIMES"
+    },
+    {
+     "course": "Knowledge Representation",
+     "role": "esercitatore",
+     "degree": "LM",
+     "programme": "Ingegneria Informatica",
+     "dept": "DIMES"
+    }
+   ]
+  },
+  {
+   "year": "2023/2024",
+   "items": [
+    {
+     "course": "Elementi di Matematica Computazionale, Corso B",
+     "role": "titolare",
+     "degree": "L",
+     "programme": "Ingegneria Informatica",
+     "dept": "DIMES"
+    },
+    {
+     "course": "Knowledge Representation",
+     "role": "esercitatore",
+     "degree": "LM",
+     "programme": "Ingegneria Informatica",
+     "dept": "DIMES"
+    }
+   ]
+  },
+  {
+   "year": "2022/2023",
+   "items": [
+    {
+     "course": "Tecniche di Programmazione",
+     "role": "titolare",
+     "degree": "L",
+     "programme": "Ingegneria Gestionale",
+     "dept": "DIMEG"
+    }
+   ]
+  },
+  {
+   "year": "2021/2022",
+   "items": [
+    {
+     "course": "Fondamenti di Informatica",
+     "role": "titolare",
+     "degree": "L",
+     "programme": "Ingegneria Chimica",
+     "dept": "DIMES"
+    }
+   ]
+  },
+  {
+   "year": "2020/2021",
+   "items": [
+    {
+     "course": "Tecniche di Programmazione",
+     "role": "contratto",
+     "degree": "L",
+     "programme": "Ingegneria Gestionale",
+     "dept": "DIMEG"
+    },
+    {
+     "course": "Elementi di Matematica Computazionale, Corso B",
+     "role": "esercitatore",
+     "degree": "L",
+     "programme": "Ingegneria Informatica",
+     "dept": "DIMES"
+    },
+    {
+     "course": "Fondamenti di Informatica",
+     "role": "esercitatore",
+     "degree": "L",
+     "programme": "Ingegneria Ambientale e Chimica",
+     "dept": "DIAm"
+    }
+   ]
+  },
+  {
+   "year": "2019/2020",
+   "items": [
+    {
+     "course": "Laboratorio di Sistemi Informativi",
+     "role": "esercitatore",
+     "degree": "L",
+     "programme": "Ingegneria Informatica",
+     "dept": "DIMES"
+    },
+    {
+     "course": "Elementi di Matematica Computazionale, Corso B",
+     "role": "esercitatore",
+     "degree": "L",
+     "programme": "Ingegneria Informatica",
+     "dept": "DIMES"
+    },
+    {
+     "course": "Fondamenti di Informatica",
+     "role": "esercitatore",
+     "degree": "L",
+     "programme": "Ingegneria Ambientale e Chimica",
+     "dept": "DIAm"
+    }
+   ]
+  },
+  {
+   "year": "2018/2019",
+   "items": [
+    {
+     "course": "Elementi di Matematica Computazionale, Corso B",
+     "role": "esercitatore",
+     "degree": "L",
+     "programme": "Ingegneria Informatica",
+     "dept": "DIMES"
+    },
+    {
+     "course": "Tecniche di Programmazione",
+     "role": "esercitatore",
+     "degree": "L",
+     "programme": "Ingegneria Gestionale",
+     "dept": "DIMEG"
+    }
+   ]
+  },
+  {
+   "year": "2017/2018",
+   "items": [
+    {
+     "course": "Elementi di Matematica Computazionale, Corso B",
+     "role": "esercitatore",
+     "degree": "L",
+     "programme": "Ingegneria Informatica",
+     "dept": "DIMES"
+    },
+    {
+     "course": "Tecniche di Programmazione",
+     "role": "esercitatore",
+     "degree": "L",
+     "programme": "Ingegneria Gestionale",
+     "dept": "DIMEG"
+    }
+   ]
+  },
+  {
+   "year": "2016/2017",
+   "items": [
+    {
+     "course": "Elementi di Matematica Computazionale, Corso B",
+     "role": "tutor",
+     "degree": "L",
+     "programme": "Ingegneria Informatica",
+     "dept": "DIMES"
+    }
+   ]
+  }
+ ],
+ "theses": [
+  {
+   "student": "V. Loiacono",
+   "title": "Sviluppo ed analisi di un algoritmo per il calcolo di semifactual explanations su SVM",
+   "degree": "L",
+   "programme": "Ingegneria Informatica",
+   "year": "2025/2026"
+  },
+  {
+   "student": "T. Costanzo",
+   "title": "Sviluppo ed Analisi di un Algoritmo per Argumentation Frameworks con Preferenze",
+   "degree": "L",
+   "programme": "Ingegneria Informatica",
+   "year": "2025/2026"
+  },
+  {
+   "student": "P. Pangallo",
+   "title": "Progetto ed analisi di un algoritmo per il calcolo di explanations in Abstract Argumentation",
+   "degree": "L",
+   "programme": "Ingegneria Informatica",
+   "year": "2023/2024"
+  },
+  {
+   "student": "A.A. Cantore",
+   "title": "Sull'utilizzo delle tecnologie IoT in Telemedicina e Remote Care",
+   "degree": "L",
+   "programme": "Ingegneria Informatica",
+   "year": "2023/2024"
+  },
+  {
+   "student": "M. Mascaro",
+   "title": "Ottimizzazione computazionale attraverso NumPy: un confronto empirico",
+   "degree": "L",
+   "programme": "Ingegneria Gestionale",
+   "year": "2023/2024"
+  },
+  {
+   "student": "S. Costanzo",
+   "title": "Sull'implementazione di Explainable AI in Python: Semifactual Explanations per Free Binary Decision Diagrams",
+   "degree": "L",
+   "programme": "Ingegneria Informatica",
+   "year": "2023/2024"
+  },
+  {
+   "student": "V. Iusi",
+   "title": "Sviluppo ed analisi sperimentale di un algoritmo di Explainable AI in Python per perceptrons basato su semifactual explanations",
+   "degree": "L",
+   "programme": "Ingegneria Informatica",
+   "year": "2023/2024"
+  },
+  {
+   "student": "F. Cusato",
+   "title": "Sull'uso delle semantiche di Abstract Argumentation: uno studio preliminare sulle differenze uomo-macchina",
+   "degree": "L",
+   "programme": "Ingegneria Informatica",
+   "year": "2022/2023"
+  },
+  {
+   "student": "G. Ferrari",
+   "title": "Sull'Utilizzo e Confronto dei principali Toolkits per l'Argumentation Mining",
+   "degree": "L",
+   "programme": "Ingegneria Informatica",
+   "year": "2022/2023"
+  },
+  {
+   "student": "G.P. Raspa",
+   "title": "Sull'uso delle matrici in Python: librerie, algoritmi e complessità",
+   "degree": "L",
+   "programme": "Ingegneria Gestionale",
+   "year": "2020/2021"
+  },
+  {
+   "student": "R. Nocifora",
+   "title": "Algoritmi su matrici in Python",
+   "degree": "L",
+   "programme": "Ingegneria Gestionale",
+   "year": "2020/2021"
+  },
+  {
+   "student": "M. Campisi",
+   "title": "Implementazione di un prototipo per il calcolo di risposte approssimate su basi di dati incomplete",
+   "degree": "L",
+   "programme": "Ingegneria Informatica",
+   "year": "2018/2019"
+  }
+ ]
+}

@@ -1,0 +1,101 @@
+---
+layout: layouts/base.njk
+pagination: { data: languages, size: 1, alias: L, addAllPagesToCollections: true }
+pagePath: /
+permalink: "{{ L.prefix }}/"
+---
+{%- set T = i18n[L.code] -%}
+{%- set H = T.home -%}
+
+<section class="hero">
+  {%- if site.logo %}
+  <a class="hero-logo" href="{{ site.departmentUrl }}"><img src="{{ site.logo }}" alt="{{ T.person.department }}, {{ T.person.university }}" width="560" height="204"></a>
+  {%- endif %}
+  <p class="badge"><span class="pulse-dot" aria-hidden="true"></span>{{ T.person.position }}</p>
+  <div class="hero-name">
+    {%- if site.photo %}
+    <img class="portrait" src="{{ site.photo }}" alt="{{ site.name }}" width="112" height="112">
+    {%- endif %}
+    <h1>{{ site.name }}</h1>
+  </div>
+  <p class="hero-meta">{{ T.person.phd }} <span aria-hidden="true">/</span> <a href="{{ site.departmentUrl }}">DIMES</a>, {{ T.person.university }} <span aria-hidden="true">/</span> ORCID <a href="https://orcid.org/0000-0002-7280-4759">0000-0002-7280-4759</a></p>
+  <p class="hero-actions">
+    <a class="chip chip-strong" href="/assets/files/cv-alfano.pdf">CV</a>
+    <a class="chip" href="https://scholar.google.com/citations?user=0ndOUs8AAAAJ">Scholar</a>
+    <a class="chip" href="https://dblp.org/pid/204/2966.html">DBLP</a>
+    <a class="chip" href="#contact" data-mail="{{ site.emailUser }}|{{ site.emailDomain }}">{{ T.person.email }}</a>
+  </p>
+</section>
+
+<section class="console" aria-label="{{ H.bioLabel }}" data-reveal>
+  <div class="console-bar">
+    <span class="console-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+    <span class="console-title">about.alfano <span aria-hidden="true">/</span> {{ H.console }} <span aria-hidden="true">/</span> <span class="js-words">0</span> {{ H.words }}</span>
+    <span class="live"><span class="pulse-dot" aria-hidden="true"></span>{{ H.live }}</span>
+  </div>
+  <div class="console-body">
+    <div class="bio" data-stream data-count="{{ H.count }}" data-one="{{ H.one }}" data-many="{{ H.many }}" data-read="{{ H.read }}">
+      <p>{{ H.bio1 }}</p>
+      <p>{{ H.bio2 }}</p>
+    </div>
+    <aside class="topics" aria-label="{{ H.topicsLabel }}">
+      <p class="topics-title">{{ H.topicsTitle }} <span aria-hidden="true">/</span> {{ H.live }}</p>
+      <ul class="bars">
+      {%- for t in H.topics | topicShares(H.bio1 + " " + H.bio2) %}
+        <li data-topic="{{ t.pattern }}" data-href="{{ L.prefix }}/research/#{{ t.anchor }}" style="--v: {{ t.share }}"><span class="bar-name">{{ t.name | safe }}</span><span class="bar"><span class="bar-fill"></span></span><span class="bar-val">{{ t.share }}</span></li>
+      {%- endfor %}
+      </ul>
+      <p class="topics-note">{{ H.topicsNote }}<span class="js-only">{{ H.topicsHint }}</span></p>
+      <p class="topics-more" aria-live="polite"></p>
+    </aside>
+  </div>
+</section>
+
+<section class="block" aria-labelledby="interests">
+  <div class="block-head" data-reveal>
+    <span class="counter" aria-hidden="true">01 / 02</span>
+    <h2 id="interests">{{ H.interests }}</h2>
+    <a class="more" href="{{ L.prefix }}/research/">{{ H.allResearch }}</a>
+  </div>
+  <ul class="cards">
+  {%- set icons = ['<svg class="card-icon" viewBox="0 0 40 40" aria-hidden="true"><circle cx="9" cy="11" r="5" class="ic-in"/><circle cx="31" cy="11" r="5" class="ic-out"/><circle cx="20" cy="31" r="5" class="ic-in"/><path d="M14.5 11h10" class="ic-edge"/><path d="M27.5 15.5 23 26" class="ic-edge"/></svg>', '<svg class="card-icon" viewBox="0 0 40 40" aria-hidden="true"><rect x="3" y="5" width="34" height="30" rx="8" class="ic-ring"/><rect x="9" y="11" width="22" height="18" rx="6" class="ic-ring"/><rect x="15" y="16" width="10" height="8" rx="3" class="ic-core"/></svg>', '<svg class="card-icon" viewBox="0 0 40 40" aria-hidden="true"><path d="M5 33 35 7" class="ic-edge"/><circle cx="12" cy="13" r="4" class="ic-in"/><circle cx="28" cy="27" r="4" class="ic-undec"/><path d="M15.5 16 24.5 24" class="ic-dash"/></svg>'] %}
+  {%- for c in H.cards %}
+    <li class="card" data-reveal>
+      {{ icons[loop.index0] | safe }}
+      <h3><a href="{{ L.prefix }}/research/#{{ c[2] }}">{{ c[0] }}</a></h3>
+      <p>{{ c[1] }}</p>
+    </li>
+  {%- endfor %}
+  </ul>
+</section>
+
+<section class="block" aria-labelledby="news">
+  <div class="block-head" data-reveal>
+    <span class="counter" aria-hidden="true">02 / 02</span>
+    <h2 id="news">{{ H.news }}</h2>
+    <a class="more" href="{{ L.prefix }}/publications/">{{ H.allPubs }}</a>
+  </div>
+  <ul class="news" data-reveal>
+  {%- for n in news | head(5) %}
+    <li><span class="when">{{ n.date | monthLabel(L.code) }}</span><p>{% if n.link %}<a href="{{ L.prefix }}{{ n.link }}">{{ n.text[L.code] }}</a>{% else %}{{ n.text[L.code] }}{% endif %}</p></li>
+  {%- endfor %}
+  </ul>
+</section>
+
+<section class="block contact-block" id="contact" aria-labelledby="contact-h" data-reveal>
+  <h2 id="contact-h">{{ T.person.contact }}</h2>
+  <dl class="contact">
+    <dt>{{ T.person.email }}</dt>
+    <dd>{{ site.emailUser }} [at] {{ site.emailDomain }}</dd>
+    <dt>{{ T.person.office }}</dt>
+    <dd>{{ T.person.address }}</dd>
+    <dt>{{ T.person.profiles }}</dt>
+    <dd>
+      <ul class="profiles">
+      {%- for p in site.profiles %}
+        <li><a href="{{ p.url }}">{{ p.name }}</a></li>
+      {%- endfor %}
+      </ul>
+    </dd>
+  </dl>
+</section>

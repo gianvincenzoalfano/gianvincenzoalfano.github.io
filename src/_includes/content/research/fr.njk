@@ -1,0 +1,43 @@
+<h1>Recherche</h1>
+<p class="page-intro">Les recherches sont menées au DIMES de l'Université de Calabre, au sein du groupe d'argumentation dirigé par Sergio Greco, en collaboration avec des équipes en Argentine, au Royaume-Uni et en Italie. Chaque axe renvoie à ses principales publications.</p>
+
+<h2 id="frameworks">Sémantique et complexité des systèmes d'argumentation abstraits</h2>
+
+Un système d'argumentation abstrait représente un débat comme un graphe orienté d'arguments et d'attaques ; ses sémantiques sélectionnent les ensembles d'arguments qui peuvent être acceptés conjointement. Cet axe étend le système de Dung avec des formes de connaissance plus riches, en définit la sémantique et caractérise la complexité des problèmes de vérification, d'existence et d'acceptation crédule et sceptique.
+
+- **Contraintes et préférences.** Contraintes fortes et faibles sur les extensions, préférences et règles de priorité, préférences conditionnelles, et leur interaction dans les préférences par lifting ({{ cite(["aaai2021", "aaai21-journal", "ijcai22", "ijcai23", "aaai2023", "preferencejournal"]) }}).
+- **Connaissances épistémiques.** Contraintes et attaques épistémiques exprimant ce qu'un agent croit vrai de façon certaine ou possible ({{ cite(["aamas2023", "ecai2023", "aaai2024", "ijcai2024"]) }}).
+- **Conditions d'acceptation et attributs.** Conditions d'acceptation au niveau des arguments fondées sur des set atoms, arguments décrits par des faits du premier ordre, et systèmes combinés à des bases de connaissances DL-Lite ({{ cite(["sottomissioneINFSCIENCE", "aaai25-submission-faf", "kr2025"]) }}).
+- **Incertitude.** Systèmes incomplets et probabilistes, notamment l'acceptation probabiliste fondée sur les explications, qui est {% math "\\mathsf{FP}^{\\#\\mathsf{P}}" %}-difficile et approchée avec des bornes d'erreur additive et relative ({{ cite(["kr2020", "journalKR2020", "aaai2022", "aaai2026", "jlc2026"]) }}).
+
+<h2 id="dynamic">Argumentation dynamique et calcul incrémental</h2>
+
+Arguments et attaques évoluent au fil d'une discussion. Les algorithmes incrémentaux identifient la partie du système touchée par une mise à jour et réutilisent l'extension précédente, ce qui est en moyenne des centaines de fois plus rapide qu'un recalcul complet. L'approche couvre les systèmes abstraits, les systèmes bipolaires et d'ordre supérieur avec attaques et supports récursifs, l'acceptation sceptique préférée et l'argumentation structurée en Defeasible Logic Programming ({{ cite(["ijcai2017", "ijcai2019", "kr2018", "journalKR", "ecai2020", "ijcai17-19-journal"]) }}). Un algorithme qui énumère les extensions préférées en calculant d'abord l'extension idéale ({{ cite(["sac2019"]) }}) a reçu le Best Paper Award de la session Knowledge Representation and Reasoning.
+
+<h2 id="lp">Argumentation et programmation logique</h2>
+
+Des traductions de systèmes d'argumentation bipolaires et récursifs en programmes logiques normaux établissent des correspondances bijectives entre extensions complètes et modèles stables partiels, et entre extensions préférées, stables, semi-stables, fondées et idéales et les classes de modèles correspondantes ({{ cite(["tplp2020", "ijcai21", "tplp2024"]) }}). Ces travaux ont reçu le Best Technical Paper Award à ICLP 2020.
+
+<h2 id="qbaf">Argumentation bipolaire quantitative</h2>
+
+Les systèmes d'argumentation bipolaires quantitatifs attribuent des poids aux arguments, aux attaques et aux supports, et les sémantiques graduelles calculent la force finale de chaque argument. Les travaux en cours étudient des sémantiques modulaires fondées sur des double rectified linear units et leurs propriétés formelles, ainsi que l'usage de ces systèmes pour raisonner sur des débats extraits de textes par de grands modèles de langage ({{ cite(["corr2026drelu", "corr2026fakb"]) }}).
+
+<h2 id="xai">IA explicable</h2>
+
+Les explications contrefactuelles indiquent comment une entrée devrait changer pour modifier la décision d'un modèle ; les explications semi-factuelles (« even-if ») indiquent comment elle pourrait changer sans modifier la décision. Cet axe fournit des fondements formels pour les deux, caractérise leur complexité selon les classes de modèles (perceptrons, free binary decision diagrams, perceptrons multicouches et réseaux de neurones sur graphes), prend en compte les préférences de l'utilisateur sur les explications et étudie les contrefactuels en présence de multiplicité de modèles et au sein des systèmes d'argumentation ({{ cite(["semifactual-core", "ijcai2026gnn", "ijcai25-toni", "sottomissioneKR24"]) }}).
+
+<h2 id="data">Gestion des données incomplètes</h2>
+
+Les valeurs manquantes dégradent les analyses fondées sur des données relationnelles. SENTI est un algorithme incrémental, sans apprentissage, qui impute les valeurs nulles dans des bases de données relationnelles dynamiques en raisonnant sur le contenu sémantique des tuples à l'aide de sentence transformers pré-entraînés et d'une base de données vectorielle ({{ cite(["inffus2026"]) }}). Ces travaux s'inscrivent dans le projet PRIN S-PIC4CHU sur la préparation de données enrichie par la sémantique ({{ cite(["SEBD25"]) }}).
+
+<h2 id="other">Autres thèmes</h2>
+
+- Réponse cohérente approchée aux requêtes sur des bases de connaissances incohérentes ({{ cite(["ISWA-basi"]) }}).
+- Apprentissage fédéré décentralisé informé par la physique ({{ cite(["ecmlsubmission"]) }}).
+- Bancs d'essai synthétiques pour l'argumentation structurée et un cadre unificateur pour l'argumentation probabiliste ({{ cite(["mariojournal", "flap2025"]) }}).
+
+<h2 id="collaborations">Collaborations</h2>
+
+- Laboratorio de Investigación y Desarrollo en Inteligencia Artificial (LIDIA), Universidad Nacional del Sur, Argentine : calcul incrémental pour l'argumentation récursive et structurée, dans le cadre de l'accord de coopération entre le DIMES et le DCIC signé en 2022, dont il est le coordinateur scientifique.
+- Groupe Computational Logic and Argumentation (CLArg), Imperial College London, depuis 2024 : IA explicable, y compris les explications fondées sur l'argumentation.
+- Groupe de travail Argumentation en intelligence artificielle de l'Association italienne pour l'intelligence artificielle (AIxIA).

@@ -1,0 +1,150 @@
+{
+ "ui": {
+  "skip": "Skip to content",
+  "top": "Back to top",
+  "language": "Language",
+  "dark": "Switch to dark mode",
+  "light": "Switch to light mode",
+  "nav": "Main"
+ },
+ "nav": {
+  "research": "Research",
+  "publications": "Publications",
+  "teaching": "Teaching",
+  "service": "Service",
+  "projects": "Projects",
+  "cv": "CV"
+ },
+ "desc": {
+  "home": "Gianvincenzo Alfano, tenure-track assistant professor at DIMES, University of Calabria. Research in formal argumentation, computational complexity, explainable AI and knowledge representation and reasoning.",
+  "research": "Research lines of Gianvincenzo Alfano, from abstract argumentation and its complexity to explainable AI and incomplete data management.",
+  "publications": "Publications of Gianvincenzo Alfano on formal argumentation, computational complexity, explainable AI and data management.",
+  "teaching": "Courses taught by Gianvincenzo Alfano at the University of Calabria, PhD courses and supervised theses.",
+  "service": "Program committees, organization, editorial and reviewing activity, and institutional roles of Gianvincenzo Alfano.",
+  "projects": "Research projects, supervision and scientific agreements of Gianvincenzo Alfano.",
+  "cv": "Curriculum vitae of Gianvincenzo Alfano: positions, education, habilitations and awards."
+ },
+ "person": {
+  "position": "Tenure-Track Assistant Professor (RTT)",
+  "department": "Department of Informatics, Modeling, Electronics and System Engineering (DIMES)",
+  "university": "University of Calabria",
+  "country": "Italy",
+  "address": "Via P. Bucci, Cubo 44Z, first floor, 87036 Rende (CS), Italy",
+  "phd": "PhD",
+  "email": "Email",
+  "office": "Office",
+  "profiles": "Profiles",
+  "contact": "Contact"
+ },
+ "home": {
+  "bio1": "Gianvincenzo Alfano is a tenure-track assistant professor at the University of Calabria, where he also received his PhD in Information and Communication Technologies in 2020. His research is in knowledge representation and reasoning, with a focus on formal argumentation: the semantics and computational complexity of abstract argumentation frameworks and their extensions with supports, constraints, preferences, epistemic knowledge, uncertainty and quantitative weights, and their incremental computation in dynamic settings.",
+  "bio2": "He also studies explainable AI, in particular the complexity and computation of counterfactual and semifactual explanations for machine learning models, and semantic imputation of missing values in relational databases. His work on argumentation received the Best Technical Paper Award at ICLP 2020 and a Best Paper Award at ACM SAC 2019.",
+  "bioLabel": "Short biography",
+  "console": "dialectical bio",
+  "words": "words",
+  "count": "words",
+  "live": "live",
+  "topicsLabel": "Research topics mentioned in the bio",
+  "topicsTitle": "Topics in this bio",
+  "topicsNote": "Share of the topic mentions in the bio.",
+  "topicsHint": " Select a topic to highlight it in the text.",
+  "one": "mention",
+  "many": "mentions",
+  "read": "Read about {x} on the Research page",
+  "topics": [
+   [
+    "Argumentation",
+    "argumentation",
+    "frameworks"
+   ],
+   [
+    "Complexity",
+    "complexity",
+    "frameworks"
+   ],
+   [
+    "Explainable AI",
+    "explanations|explainable",
+    "xai"
+   ],
+   [
+    "Data management",
+    "imputation|databases",
+    "data"
+   ],
+   [
+    "KR&R",
+    "knowledge representation",
+    "frameworks"
+   ]
+  ],
+  "interests": "Research interests",
+  "allResearch": "All research lines",
+  "news": "Latest news",
+  "allPubs": "All publications",
+  "cards": [
+   [
+    "Formal argumentation",
+    "Semantics and complexity of abstract frameworks with supports, constraints, preferences, epistemic knowledge and uncertainty, and their incremental computation.",
+    "frameworks"
+   ],
+   [
+    "Explainable AI",
+    "Formal foundations, complexity and computation of counterfactual and semifactual explanations, from perceptrons and decision diagrams to graph neural networks.",
+    "xai"
+   ],
+   [
+    "Logic and knowledge",
+    "Argumentation and logic programming, quantitative bipolar argumentation, knowledge bases and semantic imputation of incomplete data.",
+    "lp"
+   ]
+  ]
+ },
+ "pubs": {
+  "title": "Publications",
+  "intro": "{n} works, newest first, each with its BibTeX. Complete and up-to-date records are also on {dblp} and {scholar}.",
+  "show": "Show",
+  "all": "All",
+  "cats": {
+   "journal": "Journal articles",
+   "conference": "Conference papers",
+   "workshop": "Workshop papers",
+   "other": "Other"
+  },
+  "slides": "Slides"
+ },
+ "teach": {
+  "title": "Teaching",
+  "intro": "Courses in the IINF-05/A sector (formerly ING-INF/05) at the University of Calabria, where he has taught since 2016/2017. Official course pages are the reference for timetables, syllabi and materials.",
+  "year": "Academic year",
+  "current": "Academic year 2026/2027",
+  "previous": "Previous years",
+  "phd": "PhD courses",
+  "theses": "Supervised theses",
+  "thesesNote": "Computer Engineering theses were carried out at DIMES, Management Engineering theses at DIMEG. He was also academic tutor of a 15-ECTS internship (2023/2024).",
+  "roles": {
+   "titolare": "lecturer in charge",
+   "docente": "lecturer",
+   "esercitatore": "teaching assistant",
+   "contratto": "adjunct lecturer and teaching assistant",
+   "tutor": "academic tutor and teaching assistant"
+  },
+  "degree": {
+   "L": "BSc",
+   "LM": "MSc"
+  },
+  "cfu": "ECTS",
+  "hours": "hours",
+  "phdItems": [
+   "<strong>Argumentation in Artificial Intelligence</strong> (2 ECTS, 12 hours), second edition, 22–25 January 2024. PhD programme in Information and Communication Technologies, DIMES, University of Calabria.",
+   "<strong>Argumentation: Incremental Computation, Uncertainty, and relations with Logic Programming</strong> (40 hours), February–March 2022. Department of Computer Science and Engineering, Universidad Nacional del Sur, Bahía Blanca, Argentina.",
+   "<strong>Argumentation in Artificial Intelligence</strong> (2 ECTS, 12 hours), 10–14 May 2021. PhD programme in Information and Communication Technologies, DIMES, University of Calabria."
+  ]
+ },
+ "notfound": {
+  "title": "Page not found",
+  "text": "This address does not match any page on the site. Pages from the previous website have moved: start from the {home}, or go to {pubs}, {teaching} or {service}.",
+  "home": "home page"
+ },
+ "cvlink": "Download the full CV (PDF, Italian)"
+}

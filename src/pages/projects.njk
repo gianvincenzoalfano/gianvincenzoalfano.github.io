@@ -1,0 +1,13 @@
+---
+layout: layouts/base.njk
+pagination: { data: languages, size: 1, alias: L, addAllPagesToCollections: true }
+pagePath: /projects/
+permalink: "{{ L.prefix }}/projects/"
+eleventyComputed:
+  title: "{{ i18n[L.code].nav.projects }}"
+  description: "{{ i18n[L.code].desc.projects }}"
+---
+{%- from "macros.njk" import cite with context -%}
+{% markdown %}
+{% include "content/projects/" + L.code + ".njk" %}
+{% endmarkdown %}

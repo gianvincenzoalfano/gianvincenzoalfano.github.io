@@ -1,0 +1,150 @@
+{
+ "ui": {
+  "skip": "Aller au contenu",
+  "top": "Retour en haut",
+  "language": "Langue",
+  "dark": "Passer au thème sombre",
+  "light": "Passer au thème clair",
+  "nav": "Principal"
+ },
+ "nav": {
+  "research": "Recherche",
+  "publications": "Publications",
+  "teaching": "Enseignement",
+  "service": "Service",
+  "projects": "Projets",
+  "cv": "CV"
+ },
+ "desc": {
+  "home": "Gianvincenzo Alfano, professeur assistant en tenure track au DIMES, Université de Calabre. Recherche en argumentation formelle, complexité algorithmique, IA explicable et représentation des connaissances.",
+  "research": "Axes de recherche de Gianvincenzo Alfano, de l'argumentation abstraite et sa complexité à l'IA explicable et à la gestion des données incomplètes.",
+  "publications": "Publications de Gianvincenzo Alfano sur l'argumentation formelle, la complexité algorithmique, l'IA explicable et la gestion des données.",
+  "teaching": "Cours donnés par Gianvincenzo Alfano à l'Université de Calabre, cours doctoraux et mémoires encadrés.",
+  "service": "Comités de programme, organisation, activité éditoriale et d'évaluation, et fonctions institutionnelles de Gianvincenzo Alfano.",
+  "projects": "Projets de recherche, encadrement et accords scientifiques de Gianvincenzo Alfano.",
+  "cv": "Curriculum vitae de Gianvincenzo Alfano : postes, formation, qualifications et distinctions."
+ },
+ "person": {
+  "position": "Professeur assistant en tenure track (RTT)",
+  "department": "Department of Informatics, Modeling, Electronics and System Engineering (DIMES)",
+  "university": "Université de Calabre",
+  "country": "Italie",
+  "address": "Via P. Bucci, Cubo 44Z, premier étage, 87036 Rende (CS), Italie",
+  "phd": "Docteur",
+  "email": "Courriel",
+  "office": "Bureau",
+  "profiles": "Profils",
+  "contact": "Contact"
+ },
+ "home": {
+  "bio1": "Gianvincenzo Alfano est professeur assistant en tenure track à l'Université de Calabre, où il a également obtenu son doctorat en Information and Communication Technologies en 2020. Ses recherches portent sur la représentation des connaissances et le raisonnement, en particulier sur l'argumentation formelle : la sémantique et la complexité algorithmique des systèmes d'argumentation abstraits et de leurs extensions avec supports, contraintes, préférences, connaissances épistémiques, incertitude et poids quantitatifs, ainsi que leur calcul incrémental dans des contextes dynamiques.",
+  "bio2": "Il étudie aussi l'intelligence artificielle explicable, notamment la complexité et le calcul d'explications contrefactuelles et semi-factuelles pour les modèles d'apprentissage automatique, ainsi que l'imputation sémantique de valeurs manquantes dans les bases de données relationnelles. Ses travaux sur l'argumentation ont reçu le Best Technical Paper Award à ICLP 2020 et un Best Paper Award à ACM SAC 2019.",
+  "bioLabel": "Courte biographie",
+  "console": "bio dialectique",
+  "words": "mots",
+  "count": "words",
+  "live": "en direct",
+  "topicsLabel": "Thèmes de recherche cités dans la biographie",
+  "topicsTitle": "Thèmes de cette bio",
+  "topicsNote": "Part des mentions de chaque thème dans la biographie.",
+  "topicsHint": " Sélectionnez un thème pour le surligner dans le texte.",
+  "one": "mention",
+  "many": "mentions",
+  "read": "En savoir plus sur {x} dans la page Recherche",
+  "topics": [
+   [
+    "Argumentation",
+    "argumentation",
+    "frameworks"
+   ],
+   [
+    "Complexité",
+    "complexité",
+    "frameworks"
+   ],
+   [
+    "IA explicable",
+    "explicable|explications",
+    "xai"
+   ],
+   [
+    "Gestion des données",
+    "imputation|bases de données",
+    "data"
+   ],
+   [
+    "KR&R",
+    "représentation des connaissances",
+    "frameworks"
+   ]
+  ],
+  "interests": "Axes de recherche",
+  "allResearch": "Tous les axes",
+  "news": "Actualités",
+  "allPubs": "Toutes les publications",
+  "cards": [
+   [
+    "Argumentation formelle",
+    "Sémantique et complexité des systèmes abstraits avec supports, contraintes, préférences, connaissances épistémiques et incertitude, et leur calcul incrémental.",
+    "frameworks"
+   ],
+   [
+    "IA explicable",
+    "Fondements formels, complexité et calcul des explications contrefactuelles et semi-factuelles, des perceptrons et diagrammes de décision aux réseaux de neurones sur graphes.",
+    "xai"
+   ],
+   [
+    "Logique et connaissances",
+    "Argumentation et programmation logique, argumentation bipolaire quantitative, bases de connaissances et imputation sémantique de données incomplètes.",
+    "lp"
+   ]
+  ]
+ },
+ "pubs": {
+  "title": "Publications",
+  "intro": "{n} travaux, du plus récent au plus ancien, chacun avec son BibTeX. Des listes complètes et à jour sont aussi sur {dblp} et {scholar}.",
+  "show": "Afficher",
+  "all": "Toutes",
+  "cats": {
+   "journal": "Articles de revue",
+   "conference": "Articles de conférence",
+   "workshop": "Articles d'atelier",
+   "other": "Autres"
+  },
+  "slides": "Diapositives"
+ },
+ "teach": {
+  "title": "Enseignement",
+  "intro": "Cours du secteur IINF-05/A (anciennement ING-INF/05) à l'Université de Calabre, où il enseigne depuis 2016/2017. Les pages officielles des formations font foi pour les horaires, programmes et supports.",
+  "year": "Année universitaire",
+  "current": "Année universitaire 2026/2027",
+  "previous": "Années précédentes",
+  "phd": "Cours doctoraux",
+  "theses": "Mémoires encadrés",
+  "thesesNote": "Les mémoires d'ingénierie informatique ont été réalisés au DIMES, ceux d'ingénierie de gestion au DIMEG. Il a aussi été tuteur académique d'un stage de 15 ECTS (2023/2024).",
+  "roles": {
+   "titolare": "responsable du cours",
+   "docente": "enseignant",
+   "esercitatore": "chargé de travaux dirigés",
+   "contratto": "enseignant vacataire et chargé de TD",
+   "tutor": "tuteur académique et chargé de TD"
+  },
+  "degree": {
+   "L": "Licence",
+   "LM": "Master"
+  },
+  "cfu": "ECTS",
+  "hours": "heures",
+  "phdItems": [
+   "<strong>Argumentation in Artificial Intelligence</strong> (2 ECTS, 12 heures), deuxième édition, 22–25 janvier 2024. Doctorat en Information and Communication Technologies, DIMES, Université de Calabre.",
+   "<strong>Argumentation: Incremental Computation, Uncertainty, and relations with Logic Programming</strong> (40 heures), février–mars 2022. Department of Computer Science and Engineering, Universidad Nacional del Sur, Bahía Blanca, Argentine.",
+   "<strong>Argumentation in Artificial Intelligence</strong> (2 ECTS, 12 heures), 10–14 mai 2021. Doctorat en Information and Communication Technologies, DIMES, Université de Calabre."
+  ]
+ },
+ "notfound": {
+  "title": "Page introuvable",
+  "text": "Cette adresse ne correspond à aucune page du site. Les pages de l'ancien site ont été déplacées : partez de la {home}, ou allez à {pubs}, {teaching} ou {service}.",
+  "home": "page d'accueil"
+ },
+ "cvlink": "Télécharger le CV complet (PDF, en italien)"
+}

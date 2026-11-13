@@ -1,0 +1,45 @@
+---
+layout: layouts/base.njk
+pagination: { data: languages, size: 1, alias: L, addAllPagesToCollections: true }
+pagePath: /teaching/
+permalink: "{{ L.prefix }}/teaching/"
+eleventyComputed:
+  title: "{{ i18n[L.code].nav.teaching }}"
+  description: "{{ i18n[L.code].desc.teaching }}"
+---
+{%- set C = i18n[L.code].teach -%}
+{%- macro course(c) -%}
+{{ c.course }}{% if c.cfu %} ({{ c.cfu }} {{ C.cfu }}){% endif %}, {{ C.roles[c.role] }}. {{ C.degree[c.degree] }} {{ c.programme }}, {{ c.dept }}.
+{%- endmacro -%}
+<h1>{{ C.title }}</h1>
+<p class="page-intro">{{ C.intro }}</p>
+
+<h2 id="corrente">{{ C.current }}</h2>
+<ul>
+{%- for c in teaching.current %}
+  <li><strong>{{ c.course }}</strong> ({{ c.cfu }} {{ C.cfu }}), {{ C.roles[c.role] }}. {{ C.degree[c.degree] }} {{ c.programme }}, {{ c.dept }}.</li>
+{%- endfor %}
+</ul>
+
+<h2 id="precedenti">{{ C.previous }}</h2>
+<dl class="facts">
+{%- for y in teaching.previous %}
+  <dt>{{ y.year }}</dt>
+  <dd>{% for c in y.items %}{{ course(c) }}{% if not loop.last %} {% endif %}{% endfor %}</dd>
+{%- endfor %}
+</dl>
+
+<h2 id="dottorato">{{ C.phd }}</h2>
+<ul>
+{%- for p in C.phdItems %}
+  <li>{{ p | safe }}</li>
+{%- endfor %}
+</ul>
+
+<h2 id="tesi">{{ C.theses }}</h2>
+<ul class="entries">
+{%- for t in teaching.theses %}
+  <li>{{ t.student }}, <em>{{ t.title }}</em>. <span class="period">{{ C.degree[t.degree] }} {{ t.programme }}, {{ t.year }}.</span></li>
+{%- endfor %}
+</ul>
+<p>{{ C.thesesNote }}</p>

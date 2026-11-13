@@ -1,0 +1,8 @@
+[
+  { "code": "en", "name": "English", "short": "EN", "prefix": "", "locale": "en_US" },
+  { "code": "it", "name": "Italiano", "short": "IT", "prefix": "/it", "locale": "it_IT" },
+  { "code": "es", "name": "Español", "short": "ES", "prefix": "/es", "locale": "es_ES" },
+  { "code": "fr", "name": "Français", "short": "FR", "prefix": "/fr", "locale": "fr_FR" },
+  { "code": "de", "name": "Deutsch", "short": "DE", "prefix": "/de", "locale": "de_DE" },
+  { "code": "zh", "name": "中文", "short": "中", "prefix": "/zh", "locale": "zh_CN" }
+]

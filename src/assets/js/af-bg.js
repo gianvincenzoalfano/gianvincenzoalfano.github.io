@@ -199,4 +199,5 @@
   addEventListener("pointermove", function (e) { mouse.x = e.clientX; mouse.y = e.clientY; }, { passive: true });
   addEventListener("pointerleave", function () { mouse.x = mouse.y = -1e4; });
   if (window.matchMedia) matchMedia("(prefers-color-scheme: dark)").addEventListener("change", readColours);
+  document.addEventListener("themechange", readColours);
 })();

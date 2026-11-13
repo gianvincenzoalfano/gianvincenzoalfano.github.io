@@ -1,0 +1,43 @@
+<h1>Investigación</h1>
+<p class="page-intro">La investigación se desarrolla en el DIMES de la Universidad de Calabria, dentro del grupo de argumentación dirigido por Sergio Greco, en colaboración con grupos de Argentina, el Reino Unido e Italia. Cada línea enlaza con sus publicaciones principales.</p>
+
+<h2 id="frameworks">Semántica y complejidad de los marcos de argumentación abstracta</h2>
+
+Un marco de argumentación abstracta representa una disputa como un grafo dirigido de argumentos y ataques; sus semánticas seleccionan los conjuntos de argumentos que pueden aceptarse conjuntamente. Esta línea extiende el marco de Dung con formas de conocimiento más ricas, define su semántica y caracteriza la complejidad de la verificación, la existencia y la aceptación crédula y escéptica.
+
+- **Restricciones y preferencias.** Restricciones fuertes y débiles sobre las extensiones, preferencias y reglas de prioridad, preferencias condicionales y su interacción en las preferencias basadas en lifting ({{ cite(["aaai2021", "aaai21-journal", "ijcai22", "ijcai23", "aaai2023", "preferencejournal"]) }}).
+- **Conocimiento epistémico.** Restricciones y ataques epistémicos que expresan lo que un agente cree que se cumple con certeza o posiblemente ({{ cite(["aamas2023", "ecai2023", "aaai2024", "ijcai2024"]) }}).
+- **Condiciones de aceptación y atributos.** Condiciones de aceptación a nivel de argumento basadas en set atoms, argumentos descritos por hechos de primer orden y marcos combinados con bases de conocimiento DL-Lite ({{ cite(["sottomissioneINFSCIENCE", "aaai25-submission-faf", "kr2025"]) }}).
+- **Incertidumbre.** Marcos incompletos y probabilísticos, incluida la aceptación probabilística basada en explicaciones, que es {% math "\\mathsf{FP}^{\\#\\mathsf{P}}" %}-difícil y se aproxima con cotas de error aditivo y relativo ({{ cite(["kr2020", "journalKR2020", "aaai2022", "aaai2026", "jlc2026"]) }}).
+
+<h2 id="dynamic">Argumentación dinámica y cálculo incremental</h2>
+
+Los argumentos y los ataques cambian a medida que evoluciona una discusión. Los algoritmos incrementales identifican la parte del marco afectada por una actualización y reutilizan la extensión anterior, lo que resulta de media cientos de veces más rápido que recalcular desde cero. El enfoque abarca marcos abstractos, marcos bipolares y de orden superior con ataques y apoyos recursivos, la aceptación escéptica preferida y la argumentación estructurada en Defeasible Logic Programming ({{ cite(["ijcai2017", "ijcai2019", "kr2018", "journalKR", "ecai2020", "ijcai17-19-journal"]) }}). Un algoritmo que enumera las extensiones preferidas calculando primero la extensión ideal ({{ cite(["sac2019"]) }}) recibió el Best Paper Award de la sección Knowledge Representation and Reasoning.
+
+<h2 id="lp">Argumentación y programación lógica</h2>
+
+Las traducciones de marcos de argumentación bipolares y recursivos a programas lógicos normales establecen correspondencias biunívocas entre extensiones completas y modelos estables parciales, y entre extensiones preferidas, estables, semiestables, fundamentadas e ideales y las clases de modelos correspondientes ({{ cite(["tplp2020", "ijcai21", "tplp2024"]) }}). Este trabajo recibió el Best Technical Paper Award en ICLP 2020.
+
+<h2 id="qbaf">Argumentación bipolar cuantitativa</h2>
+
+Los marcos de argumentación bipolar cuantitativa asignan pesos a argumentos, ataques y apoyos, y las semánticas graduales calculan la fuerza final de cada argumento. El trabajo actual estudia semánticas modulares basadas en double rectified linear units y sus propiedades formales, así como el uso de estos marcos para razonar sobre debates extraídos de textos mediante grandes modelos de lenguaje ({{ cite(["corr2026drelu", "corr2026fakb"]) }}).
+
+<h2 id="xai">IA explicable</h2>
+
+Las explicaciones contrafácticas indican cómo debería cambiar una entrada para que cambie la decisión de un modelo; las semifactuales (“even-if”) indican cómo podría cambiar sin que la decisión varíe. Esta línea aporta fundamentos formales para ambas, caracteriza su complejidad en distintas clases de modelos (perceptrones, free binary decision diagrams, perceptrones multicapa y redes neuronales de grafos), admite preferencias del usuario sobre las explicaciones y estudia los contrafácticos bajo multiplicidad de modelos y dentro de los marcos de argumentación ({{ cite(["semifactual-core", "ijcai2026gnn", "ijcai25-toni", "sottomissioneKR24"]) }}).
+
+<h2 id="data">Gestión de datos incompletos</h2>
+
+Los valores ausentes degradan los análisis basados en datos relacionales. SENTI es un algoritmo incremental y sin entrenamiento que imputa valores nulos en bases de datos relacionales dinámicas razonando sobre el contenido semántico de las tuplas con sentence transformers preentrenados y una base de datos vectorial ({{ cite(["inffus2026"]) }}). El trabajo forma parte del proyecto PRIN S-PIC4CHU sobre preparación de datos enriquecida con semántica ({{ cite(["SEBD25"]) }}).
+
+<h2 id="other">Otros temas</h2>
+
+- Respuesta consistente aproximada a consultas sobre bases de conocimiento inconsistentes ({{ cite(["ISWA-basi"]) }}).
+- Aprendizaje federado descentralizado informado por la física ({{ cite(["ecmlsubmission"]) }}).
+- Bancos de pruebas sintéticos para la argumentación estructurada y un marco unificador para la argumentación probabilística ({{ cite(["mariojournal", "flap2025"]) }}).
+
+<h2 id="collaborations">Colaboraciones</h2>
+
+- Laboratorio de Investigación y Desarrollo en Inteligencia Artificial (LIDIA), Universidad Nacional del Sur, Argentina: cálculo incremental para la argumentación recursiva y estructurada, en el marco del convenio de cooperación entre el DIMES y el DCIC firmado en 2022, del que es coordinador científico.
+- Grupo Computational Logic and Argumentation (CLArg), Imperial College London, desde 2024: IA explicable, incluidas las explicaciones basadas en argumentación.
+- Grupo de trabajo sobre Argumentación en Inteligencia Artificial de la Asociación Italiana de Inteligencia Artificial (AIxIA).

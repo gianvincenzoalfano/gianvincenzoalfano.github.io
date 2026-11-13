@@ -1,5 +1,7 @@
 # Open points
 
+- [ ] **Translations.** Italian, Spanish, French, German and Chinese versions were written by Claude from the English text. Please check at least the Italian pages; ask a native speaker to look over the others, especially Chinese.
+
 Items that the sources (the WordPress export of 12 Nov 2026 and CV.tex) did not settle. Nothing below was guessed on the site: each item is either left out or flagged here.
 
 ## Needed from you

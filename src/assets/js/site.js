@@ -6,6 +6,43 @@
   doc.classList.add("js");
   if (reduced) doc.classList.add("reduced");
 
+  // Theme: light/dark toggle, stored per browser; without a choice the system setting applies.
+  var themeBtn = document.querySelector(".theme-toggle");
+  var darkMq = window.matchMedia && matchMedia("(prefers-color-scheme: dark)");
+  function isDark() {
+    var t = doc.getAttribute("data-theme");
+    return t ? t === "dark" : !!(darkMq && darkMq.matches);
+  }
+  function syncToggle() {
+    if (!themeBtn) return;
+    var dark = isDark();
+    var label = themeBtn.getAttribute(dark ? "data-light" : "data-dark");
+    themeBtn.setAttribute("aria-label", label);
+    themeBtn.title = label;
+    themeBtn.classList.toggle("is-dark", dark);
+    themeBtn.setAttribute("aria-pressed", String(dark));
+  }
+  if (themeBtn) {
+    themeBtn.addEventListener("click", function () {
+      var next = isDark() ? "light" : "dark";
+      doc.setAttribute("data-theme", next);
+      try { localStorage.setItem("theme", next); } catch (e) {}
+      syncToggle();
+      document.dispatchEvent(new CustomEvent("themechange"));
+    });
+    if (darkMq && darkMq.addEventListener) darkMq.addEventListener("change", syncToggle);
+    syncToggle();
+  }
+
+  // Language menu: close on outside click or Escape.
+  var menu = document.querySelector(".lang-menu");
+  if (menu) {
+    document.addEventListener("click", function (e) { if (menu.open && !menu.contains(e.target)) menu.open = false; });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && menu.open) { menu.open = false; menu.querySelector("summary").focus(); }
+    });
+  }
+
   // Email: build the mailto link only in the browser (the address is not in the HTML).
   document.querySelectorAll("[data-mail]").forEach(function (a) {
     var p = a.getAttribute("data-mail").split("|");
@@ -60,6 +97,12 @@
     return { li: li, k: k, re: new RegExp(li.getAttribute("data-topic"), "gi"), val: li.querySelector(".bar-val"), share: 0, n: 0 };
   });
   var words = document.querySelector(".js-words");
+  // Word count, or character count for scripts without spaces (Chinese).
+  var byChars = bio.getAttribute("data-count") === "chars";
+  var countOf = function (t) { return byChars ? t.replace(/[\s\p{P}]/gu, "").length : (t.match(/\S+/g) || []).length; };
+  var pad = function (n) { return n > 999 ? String(n) : ("00" + n).slice(-3); };
+  var strOne = bio.getAttribute("data-one") || "mention", strMany = bio.getAttribute("data-many") || "mentions";
+  var strRead = bio.getAttribute("data-read") || "Read about {x} on the Research page";
   var streaming = false, finish = null, selected = null;
 
   function render(text) {
@@ -109,10 +152,10 @@
     if (selected) {
       var name = selected.li.querySelector(".bar-name").textContent;
       more.innerHTML = "";
-      more.appendChild(document.createTextNode(selected.n + (selected.n === 1 ? " mention. " : " mentions. ")));
+      more.appendChild(document.createTextNode(selected.n + (byChars ? "" : " ") + (selected.n === 1 ? strOne : strMany) + (byChars ? "。" : ". ")));
       var a = document.createElement("a");
       a.href = selected.li.getAttribute("data-href");
-      a.textContent = "Read about " + name + " on the Research page";
+      a.textContent = strRead.replace("{x}", name);
       more.appendChild(a);
     } else more.textContent = "";
   }
@@ -128,6 +171,7 @@
     btn.addEventListener("click", function () { choose(it); });
   });
   render(paras.join(" "));
+  if (words) words.textContent = pad(countOf(paras.join(" ")));
   if (reduced) return;
 
   // Fix the panel height so the page does not jump while the text grows.
@@ -153,7 +197,7 @@
       outs.forEach(function (p, i) { p.textContent = paras[i]; });
       outs[outs.length - 1].appendChild(caret);
       caret.classList.add("done");
-      if (words) words.textContent = ("00" + (paras.join(" ").match(/\S+/g) || []).length).slice(-3);
+      if (words) words.textContent = pad(countOf(paras.join(" ")));
       render(paras.join(" "));
       streaming = false;
     };
@@ -164,7 +208,7 @@
       outs[pi].textContent = done;
       outs[pi].appendChild(caret);
       var all = paras.slice(0, pi).join(" ") + " " + done;
-      if (words) words.textContent = ("00" + (all.match(/\S+/g) || []).length).slice(-3);
+      if (words) words.textContent = pad(countOf(all));
       render(all);
       if (ci >= text.length) { pi++; ci = 0; }
       if (pi < paras.length) timer = setTimeout(step, 28 + Math.random() * 30);
