@@ -104,6 +104,9 @@ sup { line-height: 0; }
 .site-header nav a:hover { color: var(--ink); }
 .site-header nav a[aria-current="page"] { color: var(--ink); box-shadow: inset 0 -2px 0 var(--in); }
 .header-row { align-items: center; }
+.wordmark { display: inline-flex; align-items: center; gap: 0.6rem; }
+.wordmark .logo { height: 2.1rem; width: auto; flex: none; color: var(--ink); }
+.wordmark:hover .logo path:first-child { stroke-width: 40; }
 .site-header nav { margin-left: auto; }
 .controls { display: flex; align-items: center; gap: 0.35rem; }
 .controls svg { width: 1.15rem; height: 1.15rem; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
@@ -129,6 +132,9 @@ sup { line-height: 0; }
 @media (max-width: 40rem) {
   .site-header nav { order: 3; width: 100%; margin-left: 0; }
   .controls { margin-left: auto; }
+  .header-row { column-gap: 0.5rem; }
+  .wordmark { font-size: var(--step-0); gap: 0.45rem; }
+  .wordmark .logo { height: 1.7rem; }
 }
 
 main.wrap { padding-top: 2.6rem; padding-bottom: 4rem; min-height: 60vh; }
