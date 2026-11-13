@@ -215,7 +215,6 @@ dl.facts dd { margin: 0 0 0.6rem; }
   mask-image: linear-gradient(90deg, #000 0, #000 14%, rgba(0,0,0,.28) 30%, rgba(0,0,0,.28) 70%, #000 86%, #000 100%); }
 @media (max-width: 52rem) { .af-bg { opacity: 0.3; -webkit-mask-image: none; mask-image: none; } }
 html:not(.js) .af-bg { display: none; }
-.bg-note { margin-top: 0.8rem !important; font-size: 0.8rem; }
 
 /* Reading progress */
 .progress { position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 20; transform: scaleX(0); transform-origin: 0 50%; background: linear-gradient(90deg, var(--in), var(--out)); }
