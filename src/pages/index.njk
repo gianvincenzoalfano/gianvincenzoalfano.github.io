@@ -21,7 +21,7 @@ permalink: "{{ L.prefix }}/"
   <p class="hero-meta">{{ T.person.phd }} <span aria-hidden="true">/</span> <a href="{{ site.departmentUrl }}">DIMES</a>, {{ T.person.university }} <span aria-hidden="true">/</span> ORCID <a href="https://orcid.org/0000-0002-7280-4759">0000-0002-7280-4759</a></p>
   <p class="hero-actions">
     <a class="chip chip-strong" href="/assets/files/cv-alfano.pdf">CV</a>
-    <a class="chip" href="https://scholar.google.com/citations?user=0ndOUs8AAAAJ">Scholar</a>
+    <a class="chip" href="https://scholar.google.it/citations?user=0ndOUs8AAAAJ&amp;hl=it&amp;oi=ao">Scholar</a>
     <a class="chip" href="https://dblp.org/pid/204/2966.html">DBLP</a>
     <a class="chip" href="#contact" data-mail="{{ site.emailUser }}|{{ site.emailDomain }}">{{ T.person.email }}</a>
   </p>
@@ -49,6 +49,36 @@ permalink: "{{ L.prefix }}/"
       <p class="topics-more" aria-live="polite"></p>
     </aside>
   </div>
+</section>
+
+<section class="tool" aria-labelledby="tool-h" data-reveal>
+  {%- set TT = T.tool %}
+  <div class="tool-text">
+    <h2 id="tool-h">{{ TT.title }}</h2>
+    <p>{{ TT.text }}</p>
+    <p class="tool-actions"><a class="chip chip-strong" href="{{ site.tool.url }}">{{ TT.open }}</a> <a class="chip" href="{{ site.tool.manual }}">{{ TT.manual }}</a></p>
+  </div>
+  <figure class="tool-fig" aria-hidden="true">
+    <svg viewBox="0 0 300 170" class="tool-graph">
+      <defs>
+        <marker id="tg-att" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" class="tg-att-head"/></marker>
+        <marker id="tg-sup" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 5 5 1 10 5 5 9z" class="tg-sup-head"/></marker>
+      </defs>
+      <path d="M58 52 L122 52" class="tg-att" marker-end="url(#tg-att)"/>
+      <path d="M158 52 L222 52" class="tg-att" marker-end="url(#tg-att)"/>
+      <path d="M44 66 L76 112" class="tg-sup" marker-end="url(#tg-sup)"/>
+      <path d="M108 126 L222 126" class="tg-att" marker-end="url(#tg-att)"/>
+      <path d="M240 112 L240 70" class="tg-att" marker-end="url(#tg-att)"/>
+      <circle cx="40" cy="52" r="16" class="tg-in"/><text x="40" y="52">a</text>
+      <circle cx="140" cy="52" r="16" class="tg-out"/><text x="140" y="52">b</text>
+      <circle cx="240" cy="52" r="16" class="tg-in"/><text x="240" y="52">c</text>
+      <circle cx="90" cy="126" r="16" class="tg-in"/><text x="90" y="126">d</text>
+      <circle cx="240" cy="126" r="16" class="tg-out"/><text x="240" y="126">e</text>
+    </svg>
+    <pre class="tool-code"><span class="tool-code-label">{{ TT.label }}</span>
+arg(a). arg(b). arg(c).
+att(a,b). att(b,c).</pre>
+  </figure>
 </section>
 
 <section class="block" aria-labelledby="interests">

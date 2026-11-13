@@ -146,5 +146,13 @@
   "text": "Questo indirizzo non corrisponde a nessuna pagina del sito. Le pagine del sito precedente sono state spostate: parti dalla {home}, oppure vai a {pubs}, {teaching} o {service}.",
   "home": "pagina iniziale"
  },
- "cvlink": "Scarica il CV completo (PDF)"
+ "cvlink": "Scarica il CV completo (PDF)",
+ "tool": {
+  "title": "Argumentation Designer",
+  "text": "Uno strumento web, sviluppato dal gruppo di argomentazione del DIMES, per costruire framework di argomentazione astratti, bipolari e bipolari quantitativi, disegnandoli o scrivendoli come fatti, e calcolarne le etichettature grounded, complete, preferite e stabili direttamente nel browser. Sviluppato nell'ambito del progetto PNRR FAIR (Spoke 9).",
+  "open": "Apri Argumentation Designer",
+  "manual": "Manuale d'uso (PDF)",
+  "label": "Esempio di input",
+  "h2": "Software"
+ }
 }

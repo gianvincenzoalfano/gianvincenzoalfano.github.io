@@ -146,5 +146,13 @@
   "text": "This address does not match any page on the site. Pages from the previous website have moved: start from the {home}, or go to {pubs}, {teaching} or {service}.",
   "home": "home page"
  },
- "cvlink": "Download the full CV (PDF, Italian)"
+ "cvlink": "Download the full CV (PDF, Italian)",
+ "tool": {
+  "title": "Argumentation Designer",
+  "text": "A web tool, developed by the argumentation group at DIMES, for building abstract, bipolar and quantitative bipolar argumentation frameworks, by drawing them or writing them as facts, and computing their grounded, complete, preferred and stable labellings in the browser. Developed within the PNRR FAIR project (Spoke 9).",
+  "open": "Open Argumentation Designer",
+  "manual": "User manual (PDF)",
+  "label": "Example input",
+  "h2": "Software"
+ }
 }

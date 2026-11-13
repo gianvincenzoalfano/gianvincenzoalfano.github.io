@@ -88,7 +88,8 @@ export default function () {
       if (!CATEGORIES.some((c) => c.id === cat)) throw new Error(`publications.bib: unknown keywords "${kw}" in ${e.key}`);
       const people = splitAuthors(f.author || f.editor).map((n) => ({ name: n, self: n === SELF }));
       const links = [];
-      if (f.doi) links.push({ label: "DOI", url: `https://doi.org/${f.doi}` });
+      // ACM "10.5555" identifiers are not registered DOIs: link the ACM Digital Library page instead.
+      if (f.doi) links.push(f.doi.startsWith("10.5555/") ? { label: "ACM DL", url: `https://dl.acm.org/doi/${f.doi}` } : { label: "DOI", url: `https://doi.org/${f.doi}` });
       if (f.eprint) links.push({ label: "arXiv", url: `https://arxiv.org/abs/${f.eprint}` });
       if (f.pdf) links.push({ label: "PDF", url: f.pdf });
       if (f.url && !f.doi) links.push({ label: f.url.includes("ceur-ws.org") ? "CEUR-WS" : "Link", url: f.url });

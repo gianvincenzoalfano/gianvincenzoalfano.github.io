@@ -45,6 +45,17 @@ export default function (eleventyConfig) {
   });
   eleventyConfig.addFilter("find", (arr, key, val) => arr.find((x) => x[key] === val));
 
+  // External links and files (PDF) open in a new tab, so the site stays open.
+  eleventyConfig.addTransform("external-links", function (html) {
+    if (!(this.page.outputPath || "").endsWith(".html")) return html;
+    return html.replace(/<a\b([^>]*?)\shref="([^"]+)"([^>]*)>/g, (tag, pre, href, post) => {
+      const external = /^https?:\/\//.test(href) && !href.startsWith("https://gianvincenzoalfano.net");
+      const file = /\.pdf($|[?#])/i.test(href);
+      if (!(external || file) || /\starget=/.test(tag)) return tag;
+      return `<a${pre} href="${href}"${post} target="_blank" rel="noopener">`;
+    });
+  });
+
   eleventyConfig.addWatchTarget("publications.bib");
   eleventyConfig.addWatchTarget("lib/");
 
