@@ -22,7 +22,7 @@
     },
     {
       "name": "Google Scholar",
-      "url": "https://scholar.google.com/citations?user=0ndOUs8AAAAJ"
+      "url": "https://scholar.google.it/citations?user=0ndOUs8AAAAJ&hl=it&oi=ao"
     },
     {
       "name": "ORCID",
@@ -64,5 +64,9 @@
     }
   ],
   "photoShare": "/assets/img/portrait-full.jpg",
-  "logo": "/assets/img/dimes-unical.png"
+  "logo": "/assets/img/dimes-unical.png",
+  "tool": {
+    "url": "https://argumentation.dimes.unical.it/",
+    "manual": "https://argumentation.dimes.unical.it/docs/argumentation-designer-user-manual.pdf"
+  }
 }

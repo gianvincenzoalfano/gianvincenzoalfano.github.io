@@ -146,5 +146,13 @@
   "text": "Esta dirección no corresponde a ninguna página del sitio. Las páginas del sitio anterior se han trasladado: empieza por la {home} o ve a {pubs}, {teaching} o {service}.",
   "home": "página de inicio"
  },
- "cvlink": "Descargar el CV completo (PDF, en italiano)"
+ "cvlink": "Descargar el CV completo (PDF, en italiano)",
+ "tool": {
+  "title": "Argumentation Designer",
+  "text": "Una herramienta web, desarrollada por el grupo de argumentación del DIMES, para construir marcos de argumentación abstractos, bipolares y bipolares cuantitativos, dibujándolos o escribiéndolos como hechos, y calcular sus etiquetados fundamentados, completos, preferidos y estables en el navegador. Desarrollada en el marco del proyecto PNRR FAIR (Spoke 9).",
+  "open": "Abrir Argumentation Designer",
+  "manual": "Manual de usuario (PDF)",
+  "label": "Ejemplo de entrada",
+  "h2": "Software"
+ }
 }

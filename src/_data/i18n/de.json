@@ -146,5 +146,13 @@
   "text": "Diese Adresse entspricht keiner Seite der Website. Die Seiten der früheren Website wurden verschoben: Beginnen Sie auf der {home} oder gehen Sie zu {pubs}, {teaching} oder {service}.",
   "home": "Startseite"
  },
- "cvlink": "Vollständigen Lebenslauf herunterladen (PDF, Italienisch)"
+ "cvlink": "Vollständigen Lebenslauf herunterladen (PDF, Italienisch)",
+ "tool": {
+  "title": "Argumentation Designer",
+  "text": "Ein Webwerkzeug der Argumentationsgruppe am DIMES, mit dem sich abstrakte, bipolare und quantitative bipolare Argumentationssysteme zeichnen oder als Fakten eingeben lassen; fundierte, vollständige, präferierte und stabile Markierungen werden direkt im Browser berechnet. Entwickelt im Rahmen des PNRR-Projekts FAIR (Spoke 9).",
+  "open": "Argumentation Designer öffnen",
+  "manual": "Benutzerhandbuch (PDF)",
+  "label": "Beispieleingabe",
+  "h2": "Software"
+ }
 }

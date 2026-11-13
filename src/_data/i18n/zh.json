@@ -146,5 +146,13 @@
   "text": "该地址不对应本站任何页面。旧网站的页面已迁移：请从{home}开始，或前往{pubs}、{teaching}或{service}。",
   "home": "首页"
  },
- "cvlink": "下载完整简历（PDF，意大利语）"
+ "cvlink": "下载完整简历（PDF，意大利语）",
+ "tool": {
+  "title": "Argumentation Designer",
+  "text": "由 DIMES 论辩研究组开发的网页工具：可通过绘图或以事实形式书写，构建抽象、双极和量化双极论辩框架，并直接在浏览器中计算其基础（grounded）、完全、偏好和稳定标注。该工具在 PNRR FAIR 项目（Spoke 9）支持下开发。",
+  "open": "打开 Argumentation Designer",
+  "manual": "用户手册（PDF）",
+  "label": "输入示例",
+  "h2": "软件"
+ }
 }

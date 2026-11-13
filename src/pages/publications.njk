@@ -9,7 +9,7 @@ eleventyComputed:
 ---
 {%- set U = i18n[L.code].pubs -%}
 <h1>{{ U.title }}</h1>
-<p class="page-intro">{{ U.intro | fmt({ n: publications.total, dblp: '<a href="https://dblp.org/pid/204/2966.html">DBLP</a>', scholar: '<a href="https://scholar.google.com/citations?user=0ndOUs8AAAAJ">Google Scholar</a>' }) | safe }}</p>
+<p class="page-intro">{{ U.intro | fmt({ n: publications.total, dblp: '<a href="https://dblp.org/pid/204/2966.html">DBLP</a>', scholar: '<a href="https://scholar.google.it/citations?user=0ndOUs8AAAAJ&amp;hl=it&amp;oi=ao">Google Scholar</a>' }) | safe }}</p>
 
 <div class="pub-list">
   <fieldset class="pub-filter">

@@ -146,5 +146,13 @@
   "text": "Cette adresse ne correspond à aucune page du site. Les pages de l'ancien site ont été déplacées : partez de la {home}, ou allez à {pubs}, {teaching} ou {service}.",
   "home": "page d'accueil"
  },
- "cvlink": "Télécharger le CV complet (PDF, en italien)"
+ "cvlink": "Télécharger le CV complet (PDF, en italien)",
+ "tool": {
+  "title": "Argumentation Designer",
+  "text": "Un outil web, développé par le groupe d'argumentation du DIMES, pour construire des systèmes d'argumentation abstraits, bipolaires et bipolaires quantitatifs, en les dessinant ou en les écrivant sous forme de faits, et calculer leurs étiquetages fondés, complets, préférés et stables dans le navigateur. Développé dans le cadre du projet PNRR FAIR (Spoke 9).",
+  "open": "Ouvrir Argumentation Designer",
+  "manual": "Manuel d'utilisation (PDF)",
+  "label": "Exemple d'entrée",
+  "h2": "Logiciels"
+ }
 }
