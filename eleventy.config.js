@@ -9,6 +9,9 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/CNAME": "CNAME" });
   eleventyConfig.addPassthroughCopy({ "src/favicon.ico": "favicon.ico" });
   eleventyConfig.addPassthroughCopy({ "src/.nojekyll": ".nojekyll" });
+  // Pagina nascosta dell'esercitazione: copiata così com'è, fuori da sitemap e collezioni.
+  eleventyConfig.addPassthroughCopy({ "src/es-d75af3": "es-d75af3" });
+  eleventyConfig.ignores.add("src/es-d75af3/**");
   const font = "node_modules/@fontsource-variable/alegreya/files";
   for (const f of ["latin", "latin-ext"]) {
     for (const s of ["normal", "italic"]) {
