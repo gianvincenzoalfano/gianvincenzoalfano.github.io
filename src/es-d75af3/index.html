@@ -14,11 +14,8 @@
     --r:14px; --shadow:0 1px 0 rgba(255,255,255,.03) inset, 0 8px 24px rgba(0,0,0,.25);
   }
   * { box-sizing:border-box; }
-  html { scroll-behavior:smooth; }
   body { margin:0; background:radial-gradient(1200px 600px at 80% -10%, #16203a 0%, transparent 60%), var(--bg);
          color:var(--fg); font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",sans-serif; min-height:100vh; }
-
-  /* barra superiore */
   .top { position:sticky; top:0; z-index:20; backdrop-filter:blur(10px); background:rgba(13,16,22,.82); border-bottom:1px solid var(--line); }
   .top .in { max-width:1280px; margin:0 auto; padding:10px 20px; display:flex; align-items:center; gap:12px; }
   .logo { width:34px; height:34px; border-radius:9px; background:linear-gradient(135deg,var(--acc),var(--acc2)); display:grid; place-items:center; font-weight:700; color:#fff; font-size:1.15rem; flex:none; }
@@ -27,14 +24,13 @@
   .spazio { flex:1; }
   .chip { display:flex; align-items:center; gap:8px; padding:5px 6px 5px 12px; border:1px solid var(--line); border-radius:999px; background:var(--bg2); font-size:.85rem; }
   .chip .k { font:600 .95rem ui-monospace,Menlo,Consolas,monospace; letter-spacing:.06em; }
-
   button { font:inherit; padding:10px 18px; border:0; border-radius:10px; background:var(--acc2); color:#fff; cursor:pointer; transition:filter .15s, transform .05s; }
   button:hover:not(:disabled) { filter:brightness(1.12); }
   button:active:not(:disabled) { transform:translateY(1px); }
   button.sec { background:transparent; border:1px solid var(--line); color:var(--fg); }
   button.mini { padding:4px 10px; font-size:.8rem; border-radius:999px; }
+  button.grande { font-size:1.05rem; padding:12px 26px; }
   button:disabled { opacity:.45; cursor:not-allowed; }
-
   .wrap { max-width:1280px; margin:0 auto; padding:24px 20px 96px; }
   .stretto { max-width:660px; margin:0 auto; }
   .card { background:var(--card); border:1px solid var(--line); border-radius:var(--r); padding:20px; margin-bottom:16px; box-shadow:var(--shadow); }
@@ -44,7 +40,6 @@
   .pre { white-space:pre-wrap; }
   .msg { margin-top:10px; min-height:1.4em; font-size:.92rem; }
   .err { color:var(--err); }
-
   .anon { background:var(--okbg); border-color:#24452f; }
   .anon h3 { color:var(--ok); }
   .racc { background:var(--warnbg); border-color:#4a3a1c; }
@@ -53,12 +48,10 @@
   .racc li { margin:4px 0; }
   .impegno { display:flex; gap:10px; align-items:flex-start; padding:12px; border-radius:10px; background:rgba(0,0,0,.2); cursor:pointer; }
   .impegno input { width:18px; height:18px; accent-color:var(--warn); margin-top:2px; flex:none; }
-  input[type=text], textarea { width:100%; padding:11px 12px; font:inherit; border-radius:10px; border:1px solid var(--line); background:var(--in); color:var(--fg); }
-  input[type=text]:focus, textarea:focus { outline:2px solid var(--acc); outline-offset:0; border-color:transparent; }
-  textarea { min-height:120px; resize:vertical; }
+  input[type=text] { width:100%; padding:11px 12px; font:inherit; border-radius:10px; border:1px solid var(--line); background:var(--in); color:var(--fg); }
+  input[type=text]:focus { outline:2px solid var(--acc); outline-offset:0; border-color:transparent; }
   .riga { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
 
-  /* layout del questionario */
   .layout { display:grid; gap:24px; grid-template-columns:1fr; }
   @media (min-width: 980px) {
     .layout { grid-template-columns:minmax(0,5fr) minmax(0,6fr); align-items:start; }
@@ -68,61 +61,47 @@
   .testo { background:var(--card2); }
   .testo .etichetta { color:var(--acc); font-size:.78rem; font-weight:600; text-transform:uppercase; letter-spacing:.08em; margin-bottom:6px; }
   .testo h2 { font-size:1.25rem; }
-  .testo img { max-width:100%; border-radius:10px; background:#fff; margin:10px 0 4px; }
-
-  .testa { display:flex; justify-content:space-between; align-items:flex-end; gap:12px; margin-bottom:10px; flex-wrap:wrap; }
-  .testa .n { font-size:1.3rem; font-weight:650; }
-  .stato { font-size:.85rem; color:var(--muted); }
-  .stato.err { color:var(--err); }
-  .stato.ok::before { content:"●"; color:var(--ok); margin-right:6px; font-size:.7rem; vertical-align:2px; }
-  .progresso { height:6px; border-radius:99px; background:var(--line); overflow:hidden; margin-bottom:18px; }
-  .progresso div { height:100%; width:0; background:linear-gradient(90deg,var(--acc2),var(--acc)); transition:width .3s; }
-  .promemoria { font-size:.85rem; color:var(--warn); background:var(--warnbg); border:1px solid #4a3a1c; border-radius:10px; padding:8px 12px; margin-bottom:16px; }
-  .nuovoCodice { background:var(--accbg); border-color:#2c4677; }
-  .nuovoCodice .k { font:700 1.6rem ui-monospace,Menlo,Consolas,monospace; letter-spacing:.1em; color:#fff; margin:6px 0 10px; }
-
-  .q { position:relative; }
   .righe { margin-top:10px; }
   .riga-d { display:grid; grid-template-columns:30px 1fr; gap:8px; padding:7px 0; border-top:1px solid rgba(255,255,255,.05); font-size:.95rem; }
   .riga-d:first-child { border-top:0; }
   .riga-d .num { color:var(--muted); font:500 .8rem ui-monospace,Menlo,Consolas,monospace; text-align:right; padding-top:3px; }
   .riga-d .chi { font-weight:650; color:var(--acc); font-size:.82rem; text-transform:uppercase; letter-spacing:.03em; }
   .riga-d.mod .chi { color:var(--muted); }
-  .tag { display:inline-block; font-size:.72rem; font-weight:600; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); border:1px solid var(--line); border-radius:999px; padding:1px 8px; margin:0 0 6px 38px; }
-  .completo { font-size:.9rem; border-radius:10px; padding:9px 12px; margin-bottom:16px; }
-  .completo.si { color:var(--ok); background:var(--okbg); border:1px solid #24452f; }
-  .completo.no { color:var(--muted); background:var(--bg2); border:1px solid var(--line); }
-  .invio { text-align:center; }
-  #btnInvia { font-size:1.05rem; padding:13px 28px; background:linear-gradient(135deg,var(--acc2),#5b5be0); }
-  .inviato { background:var(--okbg); border-color:#24452f; color:var(--ok); }
-  .anteprima { background:#2a1630; border:1px solid #5b2d66; color:#f0c4ff; border-radius:10px; padding:8px 12px; margin-bottom:16px; font-size:.88rem; }
-  .q .badge { display:inline-grid; place-items:center; min-width:28px; height:28px; border-radius:8px; background:var(--accbg); color:var(--acc); font-weight:700; font-size:.85rem; margin-right:10px; padding:0 6px; }
-  .q .qt { display:flex; align-items:flex-start; font-weight:600; margin-bottom:6px; }
-  .q .qt span.t { padding-top:2px; }
-  .q.fatto .badge { background:var(--acc2); color:#fff; }
-  .info { background:transparent; box-shadow:none; border-style:dashed; }
-  .info img { max-width:100%; border-radius:10px; background:#fff; margin-top:8px; }
 
-  .opts { display:flex; flex-direction:column; gap:8px; margin-top:10px; }
+  .testa { display:flex; justify-content:space-between; align-items:flex-end; gap:12px; margin-bottom:10px; flex-wrap:wrap; }
+  .testa .n { font-size:1.3rem; font-weight:650; }
+  .stato { font-size:.85rem; color:var(--muted); }
+  .stato.err { color:var(--err); }
+  .progresso { height:6px; border-radius:99px; background:var(--line); overflow:hidden; margin-bottom:18px; }
+  .progresso div { height:100%; width:0; background:linear-gradient(90deg,var(--acc2),var(--acc)); transition:width .3s; }
+  .promemoria { font-size:.85rem; color:var(--warn); background:var(--warnbg); border:1px solid #4a3a1c; border-radius:10px; padding:8px 12px; margin-bottom:16px; }
+  .nuovoCodice { background:var(--accbg); border-color:#2c4677; }
+  .nuovoCodice .k { font:700 1.6rem ui-monospace,Menlo,Consolas,monospace; letter-spacing:.1em; color:#fff; margin:6px 0 10px; }
+  .esito { background:var(--okbg); border-color:#24452f; color:var(--ok); }
+
+  .q .badge { display:inline-grid; place-items:center; min-width:28px; height:28px; border-radius:8px; background:var(--acc2); color:#fff; font-weight:700; font-size:.85rem; margin-right:10px; padding:0 6px; }
+  .q .qt { display:flex; align-items:flex-start; font-weight:600; margin-bottom:6px; font-size:1.05rem; }
+  .q .qt span.t { padding-top:1px; }
+  .q.controllo { border-color:#4a3a1c; }
+  .q.controllo .badge { background:var(--warn); color:#1b1306; }
+  .tag { display:inline-block; font-size:.72rem; font-weight:600; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); border:1px solid var(--line); border-radius:999px; padding:1px 8px; margin:0 0 6px 38px; }
+  .citazione { margin:8px 0 4px; padding:8px 12px; border-left:3px solid var(--warn); background:rgba(0,0,0,.18); border-radius:0 8px 8px 0; font-size:.95rem; }
+  .opts { display:flex; flex-direction:column; gap:8px; margin-top:12px; }
   .opts label { display:flex; gap:12px; align-items:flex-start; padding:11px 14px; border:1px solid var(--line); border-radius:10px; cursor:pointer; background:var(--in); transition:border-color .15s, background .15s; }
   .opts label:hover { border-color:#3a4458; }
   .opts label.scelta { border-color:var(--acc); background:var(--accbg); }
   .opts input { accent-color:var(--acc); margin-top:4px; }
-  .celle { display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:8px; margin-top:10px; }
+  .celle { display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:8px; margin-top:12px; }
   .cella { padding:11px 8px; text-align:center; border:1px solid var(--line); border-radius:10px; cursor:pointer; user-select:none; background:var(--in); transition:background .12s, border-color .12s; }
   .cella:hover { border-color:#3a4458; }
   .cella.on { background:var(--acc2); border-color:var(--acc); color:#fff; }
-  .griglia { overflow-x:auto; margin-top:10px; }
-  table { border-collapse:separate; border-spacing:6px; }
-  th { font-weight:500; color:var(--muted); font-size:.88rem; padding:4px; }
-  th.r { text-align:left; color:var(--fg); }
-  td.cella { min-width:64px; height:42px; }
   .nota { color:var(--muted); font-size:.82rem; margin-top:8px; }
+  .azioni { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:16px; flex-wrap:wrap; }
+  .ro .cella, .ro label { cursor:default; }
   .giusta { outline:2px solid var(--ok); outline-offset:1px; }
   .sbagliata { outline:2px solid var(--err); outline-offset:1px; }
-  .ro .cella, .ro label { cursor:default; }
+  .rivedi .q { padding:16px 20px; }
 
-  /* testo a scomparsa su schermi stretti */
   #fabTesto { position:fixed; right:16px; bottom:18px; z-index:30; border-radius:999px; padding:12px 18px; box-shadow:0 8px 24px rgba(0,0,0,.45); }
   #foglio { position:fixed; inset:0; z-index:40; background:rgba(0,0,0,.55); display:flex; align-items:flex-end; }
   #foglio .pannello { width:100%; max-height:82vh; overflow:auto; background:var(--card2); border-radius:18px 18px 0 0; padding:18px 20px 28px; border-top:1px solid var(--line); }
@@ -142,10 +121,7 @@
 <div class="top">
   <div class="in">
     <div class="logo" aria-hidden="true">⇄</div>
-    <div>
-      <h1 data-t="titolo"></h1>
-      <div class="sub" data-t="corso"></div>
-    </div>
+    <div><h1 data-t="titolo"></h1><div class="sub" data-t="corso"></div></div>
     <div class="spazio"></div>
     <div class="chip hidden" id="chip"><span data-t="codiceBreve"></span> <span class="k" id="chipCodice"></span>
       <button class="sec mini" id="btnCopia" data-t="copiaLink"></button></div>
@@ -154,24 +130,20 @@
 </div>
 
 <div class="wrap">
-  <div class="anteprima hidden" id="bannerAnteprima" data-t="anteprima"></div>
   <!-- Schermata iniziale -->
   <section id="home" class="stretto">
     <div class="card anon"><h3 data-t="anonTitolo"></h3><div data-t="anonTesto"></div></div>
-
     <div class="card racc">
       <h3 data-t="raccTitolo"></h3>
       <ul id="raccLista"></ul>
       <label class="impegno"><input type="checkbox" id="chkImpegno"><span data-t="impegno"></span></label>
     </div>
-
     <div class="card">
       <h2 data-t="primaVolta"></h2>
       <p class="muted" data-t="primaVoltaNota"></p>
       <button id="btnNuovo" data-t="inizia" disabled></button>
       <div id="msgNuovo" class="msg"></div>
     </div>
-
     <div class="card">
       <h2 data-t="giaCodice"></h2>
       <div class="riga">
@@ -193,21 +165,14 @@
           <div class="muted" data-t="annotaCodice"></div>
           <div style="margin-top:12px"><button id="btnAnnotato" data-t="annotato"></button></div>
         </div>
-        <div class="card hidden" id="chiuso"></div>
         <div class="testa">
           <div><div class="n" id="titoloDom"></div><div class="muted" id="contatore"></div></div>
           <span id="stato" class="stato"></span>
         </div>
         <div class="progresso"><div id="barra"></div></div>
         <div class="promemoria" id="promemoria" data-t="promemoria"></div>
-        <div class="completo" id="completo"></div>
-        <div id="blocchi"></div>
-        <div class="card invio" id="zonaInvio">
-          <button id="btnInvia" data-t="invia" disabled></button>
-          <div class="muted" style="margin-top:10px" data-t="invioNota"></div>
-          <div id="msgInvia" class="msg"></div>
-        </div>
-        <p class="muted" id="notaSalva" data-t="notaSalva"></p>
+        <div id="passo"></div>
+        <div id="rivedi" class="rivedi ro"></div>
         <button class="sec" id="btnEsci" data-t="esci"></button>
       </div>
     </div>
@@ -230,7 +195,8 @@ const UI = {
     raccTitolo: 'Raccomandazioni',
     racc: [
       'Ti chiediamo la massima serietà: ogni studente riceve un dibattito specifico e le risposte vengono registrate e analizzate.',
-      'Leggi con attenzione il dibattito e rispondi a tutte le domande.',
+      'Leggi con attenzione il dibattito. Le domande arrivano una alla volta e, dopo «Avanti», la risposta non si può più modificare.',
+      'Alcune domande sono di controllo: rispondi sempre in modo coerente con quanto hai indicato prima.',
       'Lavora da solo/a, senza confrontarti con i compagni.',
       'Non usare strumenti di intelligenza artificiale, motori di ricerca o materiale non consentito.',
       'Non condividere il tuo codice personale né il testo del dibattito.',
@@ -243,34 +209,35 @@ const UI = {
     tuoCodice: 'Il tuo codice personale',
     annotaCodice: 'Annotalo o fai uno screenshot: serve per riprendere o rivedere le risposte, anche da un altro dispositivo. Senza codice non è possibile recuperarle.',
     annotato: 'Ho annotato il codice',
-    etichettaTesto: 'Dibattito', domanda: 'Dibattito', quesito: 'Domanda', risposte: 'Domande con risposta',
-    completoSi: 'Hai risposto a tutte le domande: ricontrolla e poi premi «Invia il questionario».',
-    invia: 'Invia il questionario', invioNota: 'Dopo l\'invio non potrai più modificare le risposte, ma potrai rivederle con il tuo codice.',
-    confermaInvio: 'Confermi l\'invio? Dopo l\'invio non potrai più modificare le risposte.',
-    inviatoMsg: 'Questionario inviato il {t}. Grazie! Con il tuo codice puoi rivedere le risposte, ma non modificarle.', inviatoStato: 'Inviato',
-    completoNo: 'Rispondi a tutte le domande: ne mancano {k}.',
-    cat: { speaker: 'Speaker', stato: 'Stato', luogo: 'Luogo', nazione: 'Paese o area', partito: 'Partito', bool: 'Vero o falso' },
-    sel: { speaker: 'Seleziona uno o più speaker.', stato: 'Seleziona uno o più stati.', luogo: 'Seleziona uno o più luoghi.',
-           nazione: 'Seleziona uno o più paesi o aree.', partito: 'Seleziona uno o più partiti.' },
-    anteprima: 'ANTEPRIMA: il backend non è ancora collegato. Le risposte restano solo in questo browser.',
-    salvatoAlle: 'Salvato alle', nessunSalvataggio: 'Nessuna risposta ancora salvata',
-    nonSalvate: 'Modifiche non ancora salvate…', salvataggio: 'Salvataggio…',
-    nonSalvato: 'Non salvato: controlla la connessione. Riprovo tra poco.',
-    promemoria: 'Lavora individualmente, senza strumenti esterni, e rispondi a tutte le domande.',
-    notaSalva: 'Le risposte vengono salvate automaticamente: puoi chiudere la pagina e riprendere più tardi con il tuo codice.',
-    esci: 'Usa un altro codice', esciConferma: 'Vuoi uscire da questo codice? Le risposte restano salvate, ma per tornarci ti servirà il codice {c}.',
-    chiuso: 'Il questionario è chiuso: puoi rivedere le tue risposte ma non modificarle.',
+    dibattito: 'Dibattito', domanda: 'Domanda', di: 'di',
+    avanzamento: 'Domanda {k} di {n}', completato: 'Tutte le domande completate',
+    avanti: 'Avanti', bloccata: 'Dopo «Avanti» la risposta non si può più modificare.',
+    salvato: 'Risposta salvata', salvataggio: 'Salvataggio…',
+    controlloTitolo: 'Domanda di controllo',
+    controlloCoppia: 'Ripensa alla domanda {k}. Tra queste due opzioni, quale è una risposta corretta?',
+    controlloConferma: 'Ripensa alla domanda {k}. «{a}» è una risposta corretta?',
+    vero: 'Vero', falso: 'Falso',
+    promemoria: 'Lavora individualmente e senza strumenti esterni.',
+    fineTitolo: 'Hai risposto a tutte le domande',
+    disponibileDomanda: 'Ultima cosa: saresti disponibile a partecipare a un altro questionario simile, su un altro testo?',
+    si: 'Sì', no: 'No',
+    invia: 'Invia il questionario', invioNota: 'Dopo l\'invio potrai rivedere le risposte con il tuo codice.',
+    inviatoMsg: 'Questionario inviato il {t}. Grazie per la partecipazione!',
+    chiuso: 'Il questionario è chiuso: puoi rivedere le risposte date, ma non continuare.',
     legenda: ' I bordi verdi indicano le risposte corrette, quelli rossi le scelte errate.',
-    selTutte: 'Seleziona tutte le celle che ritieni corrette.', selRiga: 'Seleziona una cella per riga.',
+    rivediTitolo: 'Le tue risposte',
+    selCat: { speaker: 'Seleziona uno o più speaker.', stato: 'Seleziona uno o più stati.', luogo: 'Seleziona uno o più luoghi.',
+              nazione: 'Seleziona uno o più paesi o aree.', partito: 'Seleziona uno o più partiti.' },
+    cat: { speaker: 'Speaker', stato: 'Stato', luogo: 'Luogo', nazione: 'Paese o area', partito: 'Partito', bool: 'Vero o falso' },
     tradotto: 'Traduzione dall\'inglese: in caso di dubbio fa fede il testo originale (pulsante «English» in alto).',
+    esci: 'Usa un altro codice', esciConferma: 'Vuoi uscire da questo codice? Le risposte restano salvate, ma per tornarci ti servirà il codice {c}.',
     mostraTesto: 'Mostra il dibattito', chiudi: 'Chiudi', attendere: 'Attendere…', caricamento: 'Caricamento…',
     err: {
-      codice: 'Codice non trovato: controlla di averlo scritto correttamente.',
-      chiuso: 'Il questionario è chiuso.', esauriti: 'Posti esauriti: tutte le domande sono state assegnate.',
-      nonImportate: 'Il questionario non è ancora pronto.', formato: 'Errore nei dati inviati: ricarica la pagina.',
-      richiesta: 'Richiesta non valida.', rete: 'Errore di connessione, riprova.',
-      inviato: 'Il questionario è già stato inviato.', incompleto: 'Rispondi a tutte le domande prima di inviare.',
-      aula: 'Per iniziare usa il QR code mostrato a lezione.', occupato: 'Il server è molto occupato: riprova tra qualche secondo.'
+      codice: 'Codice non trovato: controlla di averlo scritto correttamente.', chiuso: 'Il questionario è chiuso.',
+      nonImportate: 'Il questionario non è ancora pronto.', richiesta: 'Richiesta non valida: ricarica la pagina.',
+      rete: 'Errore di connessione, riprova.', inviato: 'Il questionario è già stato inviato.',
+      aula: 'Per iniziare usa il QR code mostrato a lezione.', occupato: 'Il server è molto occupato: riprova tra qualche secondo.',
+      passo: 'La pagina era rimasta indietro: ho ripreso dal punto corretto.'
     }
   },
   en: {
@@ -280,7 +247,8 @@ const UI = {
     raccTitolo: 'Guidelines',
     racc: [
       'Please take this seriously: each student receives a specific debate, and the answers are recorded and analysed.',
-      'Read the debate carefully and answer all the questions.',
+      'Read the debate carefully. Questions come one at a time and, after "Next", an answer can no longer be changed.',
+      'Some questions are checks: always answer consistently with what you said before.',
       'Work on your own, without discussing with other students.',
       'Do not use AI tools, search engines or unauthorised material.',
       'Do not share your personal code or the text of the debate.',
@@ -293,48 +261,47 @@ const UI = {
     tuoCodice: 'Your personal code',
     annotaCodice: 'Write it down or take a screenshot: you need it to resume or review your answers, even from another device. Without it your answers cannot be recovered.',
     annotato: 'I have saved my code',
-    etichettaTesto: 'Debate', domanda: 'Debate', quesito: 'Question', risposte: 'Questions answered',
-    completoSi: 'You have answered all the questions: check them and then press "Submit the questionnaire".',
-    invia: 'Submit the questionnaire', invioNota: 'After submitting you can no longer change your answers, but you can review them with your code.',
-    confermaInvio: 'Submit now? After submitting you can no longer change your answers.',
-    inviatoMsg: 'Questionnaire submitted on {t}. Thank you! With your code you can review your answers but not change them.', inviatoStato: 'Submitted',
-    completoNo: 'Answer all the questions: {k} still missing.',
-    cat: { speaker: 'Speaker', stato: 'State', luogo: 'Place', nazione: 'Country or area', partito: 'Party', bool: 'True or false' },
-    sel: { speaker: 'Select one or more speakers.', stato: 'Select one or more states.', luogo: 'Select one or more places.',
-           nazione: 'Select one or more countries or areas.', partito: 'Select one or more parties.' },
-    anteprima: 'PREVIEW: the backend is not connected yet. Answers stay in this browser only.',
-    salvatoAlle: 'Saved at', nessunSalvataggio: 'No answers saved yet',
-    nonSalvate: 'Unsaved changes…', salvataggio: 'Saving…',
-    nonSalvato: 'Not saved: check your connection. Retrying shortly.',
-    promemoria: 'Work individually, without external tools, and answer all the questions.',
-    notaSalva: 'Your answers are saved automatically: you can close the page and resume later with your code.',
-    esci: 'Use a different code', esciConferma: 'Leave this code? Your answers stay saved, but you will need the code {c} to come back.',
-    chiuso: 'The questionnaire is closed: you can review your answers but not change them.',
+    dibattito: 'Debate', domanda: 'Question', di: 'of',
+    avanzamento: 'Question {k} of {n}', completato: 'All questions completed',
+    avanti: 'Next', bloccata: 'After "Next" the answer can no longer be changed.',
+    salvato: 'Answer saved', salvataggio: 'Saving…',
+    controlloTitolo: 'Check question',
+    controlloCoppia: 'Think again about question {k}. Which of these two options is a correct answer?',
+    controlloConferma: 'Think again about question {k}. Is "{a}" a correct answer?',
+    vero: 'True', falso: 'False',
+    promemoria: 'Work individually and without external tools.',
+    fineTitolo: 'You have answered all the questions',
+    disponibileDomanda: 'One last thing: would you be willing to take part in another similar questionnaire, on a different text?',
+    si: 'Yes', no: 'No',
+    invia: 'Submit the questionnaire', invioNota: 'After submitting you can review your answers with your code.',
+    inviatoMsg: 'Questionnaire submitted on {t}. Thank you for taking part!',
+    chiuso: 'The questionnaire is closed: you can review the answers you gave, but not continue.',
     legenda: ' Green borders mark the correct answers, red borders the wrong choices.',
-    selTutte: 'Select all the cells you believe are correct.', selRiga: 'Select one cell per row.',
+    rivediTitolo: 'Your answers',
+    selCat: { speaker: 'Select one or more speakers.', stato: 'Select one or more states.', luogo: 'Select one or more places.',
+              nazione: 'Select one or more countries or areas.', partito: 'Select one or more parties.' },
+    cat: { speaker: 'Speaker', stato: 'State', luogo: 'Place', nazione: 'Country or area', partito: 'Party', bool: 'True or false' },
     tradotto: 'Translated text: if in doubt, the original prevails.',
+    esci: 'Use a different code', esciConferma: 'Leave this code? Your answers stay saved, but you will need the code {c} to come back.',
     mostraTesto: 'Show the debate', chiudi: 'Close', attendere: 'Please wait…', caricamento: 'Loading…',
     err: {
-      codice: 'Code not found: check that you typed it correctly.',
-      chiuso: 'The questionnaire is closed.', esauriti: 'No places left: all questions have been assigned.',
-      nonImportate: 'The questionnaire is not ready yet.', formato: 'Invalid data sent: please reload the page.',
-      richiesta: 'Invalid request.', rete: 'Connection error, please try again.',
-      inviato: 'The questionnaire has already been submitted.', incompleto: 'Answer all the questions before submitting.',
-      aula: 'To start, use the QR code shown in class.', occupato: 'The server is very busy: please try again in a few seconds.'
+      codice: 'Code not found: check that you typed it correctly.', chiuso: 'The questionnaire is closed.',
+      nonImportate: 'The questionnaire is not ready yet.', richiesta: 'Invalid request: please reload the page.',
+      rete: 'Connection error, please try again.', inviato: 'The questionnaire has already been submitted.',
+      aula: 'To start, use the QR code shown in class.', occupato: 'The server is very busy: please try again in a few seconds.',
+      passo: 'The page was out of date: resumed from the right point.'
     }
   }
 };
 
 const $ = id => document.getElementById(id);
-const S = { codice: null, dati: null, risposte: [], aperto: true, timer: null, inVolo: false, pendente: false,
-            stato: null, lingua: null, appenaCreato: false };
+const S = { codice: null, dati: null, lingua: null, appenaCreato: false, bozza: null, invio: false };
 
 function leggi(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
 function scrivi(k, v) { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} }
 S.lingua = leggi('lingua') || ((navigator.language || 'it').toLowerCase().startsWith('it') ? 'it' : 'en');
 const L = () => UI[S.lingua];
 
-const ANTEPRIMA = /INCOLLA/.test(API_URL);
 // codice aula: arriva dal link del QR (?a=...) e resta memorizzato in questo browser
 const AULA = (() => {
   const a = new URLSearchParams(location.search).get('a');
@@ -342,122 +309,63 @@ const AULA = (() => {
 })();
 if (new URLSearchParams(location.search).has('a')) history.replaceState(null, '', location.pathname + location.hash);
 
-async function api(body, keepalive) {
-  if (ANTEPRIMA) return apiAnteprima(body);
+async function api(body) {
   if (body.azione === 'nuovo') body = Object.assign({ aula: AULA }, body);
-  // se il server è occupato (molti studenti insieme) riprova da solo
-  for (let tentativo = 0; ; tentativo++) {
-    const r = await apiUnaVolta(body, keepalive);
-    if (r.errore !== 'occupato' || tentativo >= 6 || keepalive) return r;
+  for (let tentativo = 0; ; tentativo++) {          // se il server è occupato riprova da solo
+    let r;
+    try {
+      r = await (await fetch(API_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(body) })).json();
+    } catch (e) { r = { errore: 'rete' }; }
+    if (!['occupato', 'rete'].includes(r.errore) || tentativo >= 6) return r;
     await new Promise(ok => setTimeout(ok, 800 + Math.random() * 1500 * (tentativo + 1)));
   }
 }
-async function apiUnaVolta(body, keepalive) {
-  // text/plain evita la richiesta preflight CORS, che Apps Script non gestisce
-  const r = await fetch(API_URL, { method: 'POST', keepalive: !!keepalive,
-    headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(body) });
-  return r.json();
-}
-/* Backend simulato per l'anteprima: dati senza soluzioni in anteprima.js, risposte nel localStorage. */
-async function apiAnteprima(body) {
-  if (!window.DATI_ANTEPRIMA) await new Promise((ok, ko) => {
-    const sc = document.createElement('script'); sc.src = 'anteprima.js'; sc.onload = ok; sc.onerror = ko; document.head.appendChild(sc);
-  });
-  const db = JSON.parse(leggi('anteprimaDb') || '{}');
-  const pacchetto = (codice) => {
-    const v = db[codice], d = window.DATI_ANTEPRIMA[v.n - 1];
-    return { codice, domanda: v.n, aperto: true, soluzioni: false, lingua: 'en', titolo: d.titolo, descrizione: '',
-             righe: d.righe, blocchi: d.blocchi, tr: d.tr, risposte: v.risposte, salvato: v.salvato, inviato: v.inviato || '' };
-  };
-  if (body.azione === 'nuovo') {
-    const n = Object.keys(db).length % window.DATI_ANTEPRIMA.length + 1;
-    const codice = 'DEMO-' + 'ABCDEFGHJK'.charAt(n - 1) + 'AAA';
-    db[codice] = db[codice] || { n, risposte: null, salvato: '' };
-    scrivi('anteprimaDb', JSON.stringify(db));
-    return pacchetto(codice);
-  }
-  const c = String(body.codice || '').toUpperCase().trim();
-  if (!db[c]) return { errore: 'codice' };
-  if (body.azione === 'carica') return pacchetto(c);
-  if (db[c].inviato) return { errore: 'inviato' };
-  if (body.azione === 'invia') {
-    const d = window.DATI_ANTEPRIMA[db[c].n - 1];
-    if (!d.blocchi.every((b, i) => risposto(b, body.risposte[i]))) return { errore: 'incompleto' };
-    db[c].inviato = new Date().toISOString();
-  }
-  db[c].risposte = body.risposte; db[c].salvato = new Date().toISOString();
-  scrivi('anteprimaDb', JSON.stringify(db));
-  return { ok: true, salvato: db[c].salvato, inviato: db[c].inviato };
-}
-
 const erroreTesto = c => L().err[c] || L().err.richiesta;
 function el(tag, cls, testo) { const e = document.createElement(tag); if (cls) e.className = cls; if (testo != null) e.textContent = testo; return e; }
 function mostra(id) { ['home', 'quiz'].forEach(s => $(s).classList.toggle('hidden', s !== id)); }
-function ora(iso) { return new Date(iso).toLocaleTimeString(S.lingua === 'it' ? 'it-IT' : 'en-GB', { hour: '2-digit', minute: '2-digit' }); }
 function dataOra(iso) { return new Date(iso).toLocaleString(S.lingua === 'it' ? 'it-IT' : 'en-GB', { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' }); }
 function linkPersonale() { return location.origin + location.pathname + '#' + S.codice; }
-
-/* stato del salvataggio, memorizzato come chiave per seguire il cambio di lingua */
-function setStato(chiave, extra, tipo) { S.stato = chiave ? { chiave, extra, tipo } : null; disegnaStato(); }
-function disegnaStato() {
-  const s = S.stato, n = $('stato');
-  n.textContent = !s ? '' : (s.tipo === 'srv' ? erroreTesto(s.chiave) : L()[s.chiave] + (s.extra ? ' ' + s.extra : ''));
-  n.className = 'stato' + (s && (s.tipo === 'err' || s.tipo === 'srv') ? ' err' : '') + (s && s.chiave === 'salvatoAlle' ? ' ok' : '');
-}
+function stato(testo, err) { $('stato').textContent = testo || ''; $('stato').className = 'stato' + (err ? ' err' : ''); }
 
 /* ---------- lingua ---------- */
 function applicaLingua() {
   document.documentElement.lang = S.lingua;
-  document.title = L().titolo + ' · ' + L().corso;
+  document.title = L().titolo;
   document.querySelectorAll('[data-t]').forEach(n => { n.textContent = L()[n.dataset.t]; });
   $('btnLingua').textContent = L().altraLingua;
   const ul = $('raccLista'); ul.innerHTML = '';
   L().racc.forEach(t => ul.appendChild(el('li', null, t)));
-  if (S.dati) disegna(); else disegnaStato();
+  if (S.dati) disegna();
 }
 $('btnLingua').onclick = () => { S.lingua = S.lingua === 'it' ? 'en' : 'it'; scrivi('lingua', S.lingua); applicaLingua(); };
 
 /* ---------- avvio e accesso ---------- */
 (function avvio() {
   applicaLingua();
-  $('bannerAnteprima').classList.toggle('hidden', !ANTEPRIMA);
   const c = decodeURIComponent(location.hash.slice(1)) || leggi('codiceEsercitazione');
   if (c) carica(c, $('msgRiprendi'));
 })();
 
 $('chkImpegno').onchange = () => { $('btnNuovo').disabled = !$('chkImpegno').checked; };
-
 $('btnNuovo').onclick = async () => {
   const box = $('msgNuovo');
-  $('btnNuovo').disabled = true;
-  box.textContent = L().attendere; box.className = 'msg';
-  try {
-    const r = await api({ azione: 'nuovo' });
-    if (r.errore) throw { srv: r.errore };
-    box.textContent = '';
-    S.appenaCreato = true;
-    apri(r);
-  } catch (e) {
-    box.textContent = e.srv ? erroreTesto(e.srv) : L().err.rete; box.className = 'msg err';
-    $('btnNuovo').disabled = false;
-  }
+  $('btnNuovo').disabled = true; box.textContent = L().attendere; box.className = 'msg';
+  const r = await api({ azione: 'nuovo' });
+  if (r.errore) { box.textContent = erroreTesto(r.errore); box.className = 'msg err'; $('btnNuovo').disabled = false; return; }
+  box.textContent = ''; S.appenaCreato = true; apri(r);
 };
-
 $('btnRiprendi').onclick = () => carica($('inCodice').value, $('msgRiprendi'));
 $('inCodice').addEventListener('keydown', e => { if (e.key === 'Enter') $('btnRiprendi').click(); });
 
 async function carica(codice, box) {
   box.textContent = L().caricamento; box.className = 'msg';
-  try {
-    const r = await api({ azione: 'carica', codice });
-    if (r.errore) throw { srv: r.errore };
-    box.textContent = '';
-    apri(r);
-  } catch (e) {
-    box.textContent = e.srv ? erroreTesto(e.srv) : L().err.rete; box.className = 'msg err';
-    if (e.srv === 'codice') scrivi('codiceEsercitazione', null);
-    mostra('home');
+  const r = await api({ azione: 'carica', codice });
+  if (r.errore) {
+    box.textContent = erroreTesto(r.errore); box.className = 'msg err';
+    if (r.errore === 'codice') scrivi('codiceEsercitazione', null);
+    mostra('home'); return;
   }
+  box.textContent = ''; apri(r);
 }
 
 $('btnCopia').onclick = async () => {
@@ -474,275 +382,192 @@ $('btnEsci').onclick = () => {
 $('fabTesto').onclick = () => { $('foglioTesto').innerHTML = $('testo').innerHTML; $('foglio').classList.remove('hidden'); };
 $('btnChiudiFoglio').onclick = () => $('foglio').classList.add('hidden');
 $('foglio').onclick = e => { if (e.target.id === 'foglio') $('foglio').classList.add('hidden'); };
-new IntersectionObserver(([e]) => {
-  $('fabTesto').classList.toggle('hidden', e.isIntersecting || !S.dati);
-}).observe($('testo'));
+new IntersectionObserver(([e]) => { $('fabTesto').classList.toggle('hidden', e.isIntersecting || !S.dati); }).observe($('testo'));
 
 /* ---------- rendering ---------- */
 function apri(r) {
-  S.codice = r.codice; S.dati = r; S.aperto = r.aperto && !r.inviato;
-  S.risposte = r.risposte || r.blocchi.map(vuota);
+  const passoPrima = S.dati && S.dati.stato ? S.dati.stato.passo + S.dati.stato.fase : null;
+  S.codice = r.codice; S.dati = r;
+  if (passoPrima !== r.stato.passo + r.stato.fase) S.bozza = null;
   scrivi('codiceEsercitazione', r.codice);
   history.replaceState(null, '', location.pathname + '#' + r.codice);
-  if (r.inviato) setStato('inviatoStato');
-  else if (r.salvato) setStato('salvatoAlle', ora(r.salvato)); else setStato(r.aperto ? 'nessunSalvataggio' : null);
   mostra('quiz');
   disegna();
-  window.scrollTo(0, 0);
 }
 
-/* Testo nella lingua scelta: originale se coincide con la lingua del Form, altrimenti traduzione. */
-function T(orig, tradotto) { return S.lingua === S.dati.lingua || !S.dati.tr ? orig : (tradotto || orig); }
+const T = (orig, tradotto) => (S.lingua === S.dati.lingua || !S.dati.tr ? orig : (tradotto || orig));
+function blocco(i) {
+  const b0 = S.dati.blocchi[i], t = (S.dati.tr && S.dati.tr.blocchi[i]) || {};
+  return Object.assign({}, b0, { testo: T(b0.testo, t.testo), opzioni: b0.opzioni.map((o, j) => T(o, t.opzioni && t.opzioni[j])) });
+}
 
 function disegna() {
-  const r = S.dati, tr = r.tr || { blocchi: [] };
-  $('chip').classList.remove('hidden');
-  $('chipCodice').textContent = r.codice;
-  $('nuovoCodice').classList.toggle('hidden', !S.appenaCreato);
-  $('nuovoCodiceK').textContent = r.codice;
-  $('titoloDom').textContent = L().domanda + ' ' + r.domanda;
-  disegnaStato();
+  const r = S.dati, st = r.stato, n = r.blocchi.length;
+  $('chip').classList.remove('hidden'); $('chipCodice').textContent = r.codice;
+  $('nuovoCodice').classList.toggle('hidden', !S.appenaCreato); $('nuovoCodiceK').textContent = r.codice;
+  $('titoloDom').textContent = L().dibattito + ' ' + r.domanda;
+  const fatte = Math.min(st.passo, n);
+  $('contatore').textContent = st.fase === 'fine' ? L().completato : L().avanzamento.replace('{k}', st.passo + 1).replace('{n}', n);
+  $('barra').style.width = (100 * fatte / n) + '%';
+  disegnaTesto();
 
-  const ch = $('chiuso');
-  ch.classList.toggle('hidden', S.aperto);
-  ch.classList.toggle('inviato', !!r.inviato);
-  ch.textContent = S.aperto ? '' : (r.inviato ? L().inviatoMsg.replace('{t}', dataOra(r.inviato)) : L().chiuso) + (r.soluzioni ? L().legenda : '');
-  $('notaSalva').classList.toggle('hidden', !S.aperto);
-  $('promemoria').classList.toggle('hidden', !S.aperto);
-  $('zonaInvio').classList.toggle('hidden', !S.aperto);
+  const attivo = r.aperto && !r.inviato;
+  $('promemoria').classList.toggle('hidden', !attivo || st.fase === 'fine');
+  const box = $('passo'); box.innerHTML = '';
+  if (r.inviato) box.appendChild(avviso(L().inviatoMsg.replace('{t}', dataOra(r.inviato)) + (r.soluzioni ? L().legenda : '')));
+  else if (!r.aperto) box.appendChild(avviso(L().chiuso + (r.soluzioni ? L().legenda : '')));
+  else if (st.fase === 'domanda') box.appendChild(cartaDomanda(st.passo));
+  else if (st.fase === 'controllo') box.appendChild(cartaControllo(st.passo));
+  else box.appendChild(cartaFine());
 
-  // blocchi tradotti
-  const blocchi = r.blocchi.map((b0, i) => {
-    const t = tr.blocchi[i] || {};
-    return Object.assign({}, b0, {
-      testo: T(b0.testo, t.testo), aiuto: T(b0.aiuto, t.aiuto),
-      opzioni: b0.opzioni && b0.opzioni.map((o, j) => T(o, t.opzioni && t.opzioni[j])),
-      righe: b0.righe && b0.righe.map((o, j) => T(o, t.righe && t.righe[j])),
-      colonne: b0.colonne && b0.colonne.map((o, j) => T(o, t.colonne && t.colonne[j]))
-    });
-  });
-  const primo = blocchi.findIndex(b => b.risposta);
-
-  // colonna del testo: titolo, descrizione e blocchi informativi prima del primo quesito
-  const tx = $('testo');
-  tx.innerHTML = '';
-  tx.appendChild(el('div', 'etichetta', L().domanda + ' ' + r.domanda));
-  if (r.titolo) tx.appendChild(el('h2', null, T(r.titolo, tr.titolo)));
-  if (r.descrizione) tx.appendChild(el('div', 'pre', T(r.descrizione, tr.descrizione)));
-  blocchi.slice(0, primo).forEach(b => informativo(b, tx));
-  if (r.righe) {
-    const tr2 = (tr.righe || []);
-    const lista = el('div', 'righe');
-    r.righe.forEach((rr, k) => {
-      const t = tr2[k] || {};
-      const riga = el('div', 'riga-d' + (rr.chi === 'Moderator' ? ' mod' : ''));
-      const corpo = el('div');
-      corpo.append(el('div', 'chi', T(rr.chi, t.chi)), el('div', null, T(rr.testo, t.testo)));
-      riga.append(el('div', 'num', String(k + 1)), corpo);
-      lista.appendChild(riga);
-    });
-    tx.appendChild(lista);
+  // riepilogo delle risposte già date (sempre in sola lettura)
+  const rv = $('rivedi'); rv.innerHTML = '';
+  const date = r.blocchi.map((_, i) => i).filter(i => st.risposte[i] !== null && st.risposte[i] !== undefined);
+  if (!attivo && date.length) {
+    rv.appendChild(el('h3', null, L().rivediTitolo));
+    date.forEach(i => rv.appendChild(cartaRiepilogo(i)));
   }
+}
+
+function disegnaTesto() {
+  const r = S.dati, tr = r.tr || {}, tx = $('testo');
+  tx.innerHTML = '';
+  tx.appendChild(el('div', 'etichetta', L().dibattito + ' ' + r.domanda));
+  tx.appendChild(el('h2', null, T(r.titolo, tr.titolo)));
+  const lista = el('div', 'righe');
+  r.righe.forEach((rr, k) => {
+    const t = (tr.righe || [])[k] || {};
+    const riga = el('div', 'riga-d' + (rr.chi === 'Moderator' ? ' mod' : '')), corpo = el('div');
+    corpo.append(el('div', 'chi', T(rr.chi, t.chi)), el('div', null, T(rr.testo, t.testo)));
+    riga.append(el('div', 'num', String(k + 1)), corpo);
+    lista.appendChild(riga);
+  });
+  tx.appendChild(lista);
   if (S.lingua !== r.lingua && r.tr) { const n = el('div', 'muted', L().tradotto); n.style.marginTop = '12px'; tx.appendChild(n); }
-
-  // colonna dei quesiti
-  const box = $('blocchi');
-  box.innerHTML = '';
-  box.classList.toggle('ro', !S.aperto);
-  let nq = 0;
-  blocchi.forEach((b, i) => {
-    if (i < primo) return;
-    const c = el('div', 'card q');
-    if (!b.risposta) { c.classList.add('info'); informativo(b, c); box.appendChild(c); return; }
-    c.dataset.i = i;
-    const qt = el('div', 'qt');
-    qt.append(el('span', 'badge', String(++nq)), el('span', 't pre', b.testo || L().quesito + ' ' + nq));
-    c.appendChild(qt);
-    if (b.categoria) c.appendChild(el('div', 'tag', L().cat[b.categoria]));
-    if (b.aiuto) c.appendChild(el('div', 'muted pre', b.aiuto));
-    if (b.tipo === 'singola') c.appendChild(singola(b, i));
-    if (b.tipo === 'multipla') c.appendChild(multipla(b, i));
-    if (b.tipo === 'griglia') c.appendChild(griglia(b, i));
-    if (b.tipo === 'aperta') c.appendChild(aperta(b, i));
-    box.appendChild(c);
-  });
-  progresso();
 }
 
-function informativo(b, dove) {
-  if (b.testo) dove.appendChild(el('h3', 'pre', b.testo));
-  if (b.aiuto) dove.appendChild(el('div', 'pre', b.aiuto));
-  if (b.tipo === 'immagine') { const im = el('img'); im.src = b.src; im.alt = b.testo || ''; dove.appendChild(im); }
+function avviso(testo) { const c = el('div', 'card esito', testo); return c; }
+
+function intestazione(c, numero, testo, cat) {
+  const qt = el('div', 'qt');
+  qt.append(el('span', 'badge', numero), el('span', 't pre', testo));
+  c.appendChild(qt);
+  if (cat) c.appendChild(el('div', 'tag', cat));
 }
 
-function risposto(b, x) {
-  if (b.tipo === 'singola') return x !== null && x !== undefined;
-  if (b.tipo === 'multipla') return x.length > 0;
-  if (b.tipo === 'griglia') return x.some(v => Array.isArray(v) ? v.length : v !== null);
-  return !!(x && String(x).trim());
+/* Domanda corrente: si risponde, poi «Avanti». */
+function cartaDomanda(i) {
+  const b = blocco(i), c = el('div', 'card q');
+  intestazione(c, String(i + 1), b.testo, L().cat[b.categoria]);
+  if (!S.bozza || S.bozza.i !== i) S.bozza = { i, v: b.tipo === 'singola' ? null : [] };
+  const pronto = () => b.tipo === 'singola' ? S.bozza.v !== null : S.bozza.v.length > 0;
+  const btn = el('button', 'grande', L().avanti);
+  const aggiorna = () => { btn.disabled = !pronto() || S.invio; };
+  if (b.tipo === 'singola') c.appendChild(radio(b.opzioni, () => S.bozza.v, j => { S.bozza.v = j; aggiorna(); }));
+  else {
+    c.appendChild(celle(b.opzioni, () => S.bozza.v, j => { S.bozza.v = S.bozza.v.includes(j) ? S.bozza.v.filter(x => x !== j) : S.bozza.v.concat(j); aggiorna(); }));
+    c.appendChild(el('div', 'nota', L().selCat[b.categoria] || ''));
+  }
+  const az = el('div', 'azioni');
+  az.append(el('span', 'nota', L().bloccata), btn);
+  c.appendChild(az);
+  aggiorna();
+  btn.onclick = () => passo({ azione: 'rispondi', q: i, risposta: S.bozza.v }, btn);
+  return c;
 }
 
-function progresso() {
-  const bl = S.dati.blocchi;
-  let tot = 0, fatti = 0;
-  bl.forEach((b, i) => {
-    if (!b.risposta) return;
-    tot++;
-    const ok = risposto(b, S.risposte[i]);
-    if (ok) fatti++;
-    const c = document.querySelector('.q[data-i="' + i + '"]');
-    if (c) c.classList.toggle('fatto', ok);
-  });
-  $('contatore').textContent = L().risposte + ': ' + fatti + '/' + tot;
-  const cp = $('completo');
-  cp.className = 'completo ' + (fatti === tot ? 'si' : 'no');
-  cp.textContent = fatti === tot ? L().completoSi : L().completoNo.replace('{k}', tot - fatti);
-  cp.classList.toggle('hidden', !S.aperto);
-  $('btnInvia').disabled = fatti !== tot;
-  $('barra').style.width = (tot ? 100 * fatti / tot : 0) + '%';
+/* Domanda di controllo sulla domanda i (opzioni decise dal server). */
+function cartaControllo(i) {
+  const b = blocco(i), k = S.dati.stato.controlli[i], c = el('div', 'card q controllo');
+  const testo = k.formato === 'coppia' ? L().controlloCoppia.replace('{k}', i + 1)
+                                      : L().controlloConferma.replace('{k}', i + 1).replace('{a}', b.opzioni[k.a]);
+  intestazione(c, '✓', testo, L().controlloTitolo);
+  c.appendChild(el('div', 'citazione', b.testo));
+  if (!S.bozza || S.bozza.i !== 'c' + i) S.bozza = { i: 'c' + i, v: null };
+  const valori = k.formato === 'coppia' ? k.ordine : [0, 1];
+  const etichette = k.formato === 'coppia' ? k.ordine.map(j => b.opzioni[j]) : [L().vero, L().falso];
+  const btn = el('button', 'grande', L().avanti);
+  c.appendChild(radio(etichette, () => valori.indexOf(S.bozza.v) < 0 ? null : valori.indexOf(S.bozza.v), j => { S.bozza.v = valori[j]; btn.disabled = S.invio; }));
+  const az = el('div', 'azioni');
+  az.append(el('span', 'nota', L().bloccata), btn);
+  c.appendChild(az);
+  btn.disabled = S.bozza.v === null;
+  btn.onclick = () => passo({ azione: 'controllo', q: i, scelta: S.bozza.v }, btn);
+  return c;
 }
 
-function vuota(b) {
-  if (!b.risposta || b.tipo === 'singola') return null;
-  if (b.tipo === 'multipla') return [];
-  if (b.tipo === 'griglia') return b.righe.map(() => b.multipla ? [] : null);
-  return '';
+/* Fine: disponibilità per un altro questionario e invio. */
+function cartaFine() {
+  const c = el('div', 'card');
+  c.appendChild(el('h2', null, L().fineTitolo));
+  c.appendChild(el('p', null, L().disponibileDomanda));
+  if (!S.bozza || S.bozza.i !== 'fine') S.bozza = { i: 'fine', v: null };
+  const btn = el('button', 'grande', L().invia);
+  c.appendChild(radio([L().si, L().no], () => S.bozza.v === null ? null : (S.bozza.v ? 0 : 1), j => { S.bozza.v = j === 0; btn.disabled = S.invio; }));
+  const az = el('div', 'azioni');
+  az.append(el('span', 'nota', L().invioNota), btn);
+  c.appendChild(az);
+  btn.disabled = S.bozza.v === null;
+  btn.onclick = () => passo({ azione: 'invia', disponibile: S.bozza.v }, btn);
+  return c;
 }
 
-function segna(nodo, scelto, giusto) {
-  if (!S.dati.soluzioni || giusto === undefined) return;
-  if (giusto) nodo.classList.add('giusta'); else if (scelto) nodo.classList.add('sbagliata');
+/* Riepilogo in sola lettura di una risposta data. */
+function cartaRiepilogo(i) {
+  const b = blocco(i), x = S.dati.stato.risposte[i], c = el('div', 'card q');
+  intestazione(c, String(i + 1), b.testo, L().cat[b.categoria]);
+  const segna = (nodo, scelto, j) => {
+    if (!S.dati.soluzioni) return;
+    const giusto = b.tipo === 'singola' ? b.corretta === j : (b.corrette || []).includes(j);
+    if (giusto) nodo.classList.add('giusta'); else if (scelto) nodo.classList.add('sbagliata');
+  };
+  if (b.tipo === 'singola') c.appendChild(radio(b.opzioni, () => x, null, segna));
+  else c.appendChild(celle(b.opzioni, () => x || [], null, segna));
+  return c;
 }
 
-function singola(b, i) {
-  const w = el('div', 'opts');
-  b.opzioni.forEach((o, j) => {
+function radio(etichette, valore, cambia, segna) {
+  const w = el('div', 'opts'), nome = 'r' + Math.random().toString(36).slice(2);
+  etichette.forEach((o, j) => {
     const l = el('label'), inp = el('input');
-    inp.type = 'radio'; inp.name = 'b' + i; inp.checked = S.risposte[i] === j; inp.disabled = !S.aperto;
-    inp.onchange = () => { S.risposte[i] = j; w.querySelectorAll('label').forEach((x, k) => x.classList.toggle('scelta', k === j)); modificato(); };
-    l.classList.toggle('scelta', S.risposte[i] === j);
+    inp.type = 'radio'; inp.name = nome; inp.checked = valore() === j; inp.disabled = !cambia;
+    l.classList.toggle('scelta', valore() === j);
+    inp.onchange = () => { cambia(j); w.querySelectorAll('label').forEach((x, k) => x.classList.toggle('scelta', k === j)); };
     l.append(inp, el('span', null, o));
-    segna(l, S.risposte[i] === j, b.corretta === undefined ? undefined : b.corretta === j);
+    if (segna) segna(l, valore() === j, j);
     w.appendChild(l);
   });
   return w;
 }
 
-function multipla(b, i) {
+function celle(etichette, valore, cambia, segna) {
   const w = el('div', 'celle');
-  b.opzioni.forEach((o, j) => {
-    const c = el('div', 'cella', o), on = () => S.risposte[i].includes(j);
+  etichette.forEach((o, j) => {
+    const c = el('div', 'cella', o), on = () => valore().includes(j);
     c.classList.toggle('on', on());
-    c.onclick = () => {
-      if (!S.aperto) return;
-      S.risposte[i] = on() ? S.risposte[i].filter(x => x !== j) : S.risposte[i].concat(j);
-      c.classList.toggle('on', on()); modificato();
-    };
-    segna(c, on(), b.corrette === undefined ? undefined : b.corrette.includes(j));
+    if (cambia) c.onclick = () => { cambia(j); c.classList.toggle('on', on()); };
+    if (segna) segna(c, on(), j);
     w.appendChild(c);
   });
-  const f = document.createDocumentFragment(); f.append(w, el('div', 'nota', (b.categoria && L().sel[b.categoria]) || L().selTutte)); return f;
+  return w;
 }
 
-function griglia(b, i) {
-  const w = el('div', 'griglia'), t = el('table'), hr = el('tr');
-  hr.appendChild(el('th'));
-  b.colonne.forEach(c => hr.appendChild(el('th', null, c)));
-  t.appendChild(hr);
-  b.righe.forEach((riga, k) => {
-    const tr = el('tr');
-    tr.appendChild(el('th', 'r', riga));
-    const celle = b.colonne.map((_, j) => {
-      const td = el('td', 'cella');
-      td.onclick = () => {
-        if (!S.aperto) return;
-        if (b.multipla) {
-          const s = S.risposte[i][k];
-          S.risposte[i][k] = s.includes(j) ? s.filter(x => x !== j) : s.concat(j);
-        } else {
-          S.risposte[i][k] = S.risposte[i][k] === j ? null : j;
-        }
-        aggiorna(); modificato();
-      };
-      tr.appendChild(td);
-      return td;
-    });
-    const aggiorna = () => celle.forEach((td, j) => {
-      const v = S.risposte[i][k];
-      td.classList.toggle('on', b.multipla ? v.includes(j) : v === j);
-    });
-    aggiorna();
-    t.appendChild(tr);
-  });
-  w.appendChild(t);
-  const f = document.createDocumentFragment(); f.append(w, el('div', 'nota', b.multipla ? L().selTutte : L().selRiga)); return f;
-}
-
-function aperta(b, i) {
-  const x = el(b.lunga ? 'textarea' : 'input');
-  if (!b.lunga) x.type = 'text';
-  x.value = S.risposte[i] || ''; x.disabled = !S.aperto; x.maxLength = 5000;
-  x.oninput = () => { S.risposte[i] = x.value; modificato(); };
-  x.style.marginTop = '10px';
-  return x;
-}
-
-/* ---------- invio definitivo ---------- */
-$('btnInvia').onclick = async () => {
-  if (!confirm(L().confermaInvio)) return;
-  clearTimeout(S.timer); S.timer = null;
-  const box = $('msgInvia');
-  $('btnInvia').disabled = true;
-  box.textContent = L().attendere; box.className = 'msg';
-  try {
-    const r = await api({ azione: 'invia', codice: S.codice, risposte: S.risposte });
-    if (r.errore) throw { srv: r.errore };
-    box.textContent = '';
-    S.dati.inviato = r.inviato; S.dati.salvato = r.salvato;
-    S.aperto = false;
-    setStato('inviatoStato');
-    disegna();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  } catch (e) {
-    box.textContent = e.srv ? erroreTesto(e.srv) : L().err.rete; box.className = 'msg err';
-    $('btnInvia').disabled = false;
+/* Invia un passo al server e ridisegna con lo stato restituito. */
+async function passo(corpo, btn) {
+  if (S.invio) return;
+  S.invio = true; btn.disabled = true; stato(L().salvataggio);
+  const r = await api(Object.assign({ codice: S.codice }, corpo));
+  S.invio = false;
+  if (r.errore && !r.stato) {
+    stato(erroreTesto(r.errore), true); btn.disabled = false;
+    if (r.errore === 'inviato' || r.errore === 'chiuso') carica(S.codice, $('msgRiprendi'));
+    return;
   }
-};
-
-/* ---------- salvataggio automatico ---------- */
-function modificato() {
-  progresso();
-  setStato('nonSalvate');
-  clearTimeout(S.timer);
-  S.timer = setTimeout(salva, 1200);
+  stato(r.errore === 'passo' ? L().err.passo : L().salvato, r.errore === 'passo');
+  S.appenaCreato = false;
+  apri(r);
+  document.querySelector('.layout > div').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
-
-async function salva(keepalive) {
-  clearTimeout(S.timer); S.timer = null;
-  if (S.inVolo) { S.pendente = true; return; }
-  S.inVolo = true;
-  setStato('salvataggio');
-  try {
-    const r = await api({ azione: 'salva', codice: S.codice, risposte: S.risposte }, keepalive);
-    if (r.errore) {
-      setStato(r.errore, '', 'srv');
-      if (r.errore === 'chiuso' || r.errore === 'inviato') { const c = await api({ azione: 'carica', codice: S.codice }); if (!c.errore) apri(c); }
-    } else setStato('salvatoAlle', ora(r.salvato));
-  } catch (e) {
-    setStato('nonSalvato', '', 'err');
-    S.timer = setTimeout(salva, 4000);
-  } finally {
-    S.inVolo = false;
-    if (S.pendente) { S.pendente = false; salva(); }
-  }
-}
-
-document.addEventListener('visibilitychange', () => {
-  if (document.visibilityState === 'hidden' && S.timer) salva(true);
-});
-window.addEventListener('beforeunload', e => {
-  if (S.timer || S.inVolo) { e.preventDefault(); e.returnValue = ''; }
-});
 </script>
 </body>
 </html>
