@@ -269,7 +269,8 @@ const UI = {
       chiuso: 'Il questionario è chiuso.', esauriti: 'Posti esauriti: tutte le domande sono state assegnate.',
       nonImportate: 'Il questionario non è ancora pronto.', formato: 'Errore nei dati inviati: ricarica la pagina.',
       richiesta: 'Richiesta non valida.', rete: 'Errore di connessione, riprova.',
-      inviato: 'Il questionario è già stato inviato.', incompleto: 'Rispondi a tutte le domande prima di inviare.'
+      inviato: 'Il questionario è già stato inviato.', incompleto: 'Rispondi a tutte le domande prima di inviare.',
+      aula: 'Per iniziare usa il QR code mostrato a lezione.', occupato: 'Il server è molto occupato: riprova tra qualche secondo.'
     }
   },
   en: {
@@ -318,7 +319,8 @@ const UI = {
       chiuso: 'The questionnaire is closed.', esauriti: 'No places left: all questions have been assigned.',
       nonImportate: 'The questionnaire is not ready yet.', formato: 'Invalid data sent: please reload the page.',
       richiesta: 'Invalid request.', rete: 'Connection error, please try again.',
-      inviato: 'The questionnaire has already been submitted.', incompleto: 'Answer all the questions before submitting.'
+      inviato: 'The questionnaire has already been submitted.', incompleto: 'Answer all the questions before submitting.',
+      aula: 'To start, use the QR code shown in class.', occupato: 'The server is very busy: please try again in a few seconds.'
     }
   }
 };
@@ -333,8 +335,24 @@ S.lingua = leggi('lingua') || ((navigator.language || 'it').toLowerCase().starts
 const L = () => UI[S.lingua];
 
 const ANTEPRIMA = /INCOLLA/.test(API_URL);
+// codice aula: arriva dal link del QR (?a=...) e resta memorizzato in questo browser
+const AULA = (() => {
+  const a = new URLSearchParams(location.search).get('a');
+  try { if (a) localStorage.setItem('codiceAula', a); return a || localStorage.getItem('codiceAula') || ''; } catch (e) { return a || ''; }
+})();
+if (new URLSearchParams(location.search).has('a')) history.replaceState(null, '', location.pathname + location.hash);
+
 async function api(body, keepalive) {
   if (ANTEPRIMA) return apiAnteprima(body);
+  if (body.azione === 'nuovo') body = Object.assign({ aula: AULA }, body);
+  // se il server è occupato (molti studenti insieme) riprova da solo
+  for (let tentativo = 0; ; tentativo++) {
+    const r = await apiUnaVolta(body, keepalive);
+    if (r.errore !== 'occupato' || tentativo >= 6 || keepalive) return r;
+    await new Promise(ok => setTimeout(ok, 800 + Math.random() * 1500 * (tentativo + 1)));
+  }
+}
+async function apiUnaVolta(body, keepalive) {
   // text/plain evita la richiesta preflight CORS, che Apps Script non gestisce
   const r = await fetch(API_URL, { method: 'POST', keepalive: !!keepalive,
     headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(body) });
@@ -696,7 +714,7 @@ function modificato() {
   progresso();
   setStato('nonSalvate');
   clearTimeout(S.timer);
-  S.timer = setTimeout(salva, 800);
+  S.timer = setTimeout(salva, 1200);
 }
 
 async function salva(keepalive) {
