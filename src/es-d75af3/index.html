@@ -88,7 +88,6 @@
   .riga-d .num { color:var(--muted); font:500 .8rem ui-monospace,Menlo,Consolas,monospace; text-align:right; padding-top:3px; }
   .riga-d .chi { font-weight:650; color:var(--acc); font-size:.82rem; text-transform:uppercase; letter-spacing:.03em; }
   .riga-d.mod .chi { color:var(--muted); }
-  .regola { margin-top:12px; font-size:.85rem; color:var(--muted); border-left:3px solid var(--acc2); padding-left:10px; }
   .tag { display:inline-block; font-size:.72rem; font-weight:600; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); border:1px solid var(--line); border-radius:999px; padding:1px 8px; margin:0 0 6px 38px; }
   .completo { font-size:.9rem; border-radius:10px; padding:9px 12px; margin-bottom:16px; }
   .completo.si { color:var(--ok); background:var(--okbg); border:1px solid #24452f; }
@@ -220,7 +219,7 @@
 
 <script>
 // URL dell'app web Apps Script (termina con /exec)
-const API_URL = 'INCOLLA_QUI_URL_APPS_SCRIPT';
+const API_URL = 'https://script.google.com/macros/s/AKfycbwZU4c-v4UuYf670VSgaTaDWeua_GGeqSmh-NxHOs-ag0JfaUsRJPPILkmGjXDPTsbIkA/exec';
 
 /* ---------- testi dell'interfaccia (modificabili) ---------- */
 const UI = {
@@ -245,7 +244,6 @@ const UI = {
     annotaCodice: 'Annotalo o fai uno screenshot: serve per riprendere o rivedere le risposte, anche da un altro dispositivo. Senza codice non è possibile recuperarle.',
     annotato: 'Ho annotato il codice',
     etichettaTesto: 'Dibattito', domanda: 'Dibattito', quesito: 'Domanda', risposte: 'Domande con risposta',
-    regola: 'Provenienza degli speaker e luoghi (stati, città, paesi) si ricavano solo dalla riga 1, la presentazione del moderatore. Dal resto del dibattito si ricavano le relazioni: chi attacca o sostiene chi.',
     completoSi: 'Hai risposto a tutte le domande: ricontrolla e poi premi «Invia il questionario».',
     invia: 'Invia il questionario', invioNota: 'Dopo l\'invio non potrai più modificare le risposte, ma potrai rivederle con il tuo codice.',
     confermaInvio: 'Confermi l\'invio? Dopo l\'invio non potrai più modificare le risposte.',
@@ -254,7 +252,7 @@ const UI = {
     cat: { speaker: 'Speaker', stato: 'Stato', luogo: 'Luogo', nazione: 'Paese o area', partito: 'Partito', bool: 'Vero o falso' },
     sel: { speaker: 'Seleziona uno o più speaker.', stato: 'Seleziona uno o più stati.', luogo: 'Seleziona uno o più luoghi.',
            nazione: 'Seleziona uno o più paesi o aree.', partito: 'Seleziona uno o più partiti.' },
-    anteprima: 'ANTEPRIMA: il backend non è ancora collegato. Le risposte restano solo in questo browser e il testo non è tradotto.',
+    anteprima: 'ANTEPRIMA: il backend non è ancora collegato. Le risposte restano solo in questo browser.',
     salvatoAlle: 'Salvato alle', nessunSalvataggio: 'Nessuna risposta ancora salvata',
     nonSalvate: 'Modifiche non ancora salvate…', salvataggio: 'Salvataggio…',
     nonSalvato: 'Non salvato: controlla la connessione. Riprovo tra poco.',
@@ -264,7 +262,7 @@ const UI = {
     chiuso: 'Il questionario è chiuso: puoi rivedere le tue risposte ma non modificarle.',
     legenda: ' I bordi verdi indicano le risposte corrette, quelli rossi le scelte errate.',
     selTutte: 'Seleziona tutte le celle che ritieni corrette.', selRiga: 'Seleziona una cella per riga.',
-    tradotto: 'Traduzione automatica: in caso di dubbio fa fede il testo originale.',
+    tradotto: 'Traduzione dall\'inglese: in caso di dubbio fa fede il testo originale (pulsante «English» in alto).',
     mostraTesto: 'Mostra il dibattito', chiudi: 'Chiudi', attendere: 'Attendere…', caricamento: 'Caricamento…',
     err: {
       codice: 'Codice non trovato: controlla di averlo scritto correttamente.',
@@ -295,7 +293,6 @@ const UI = {
     annotaCodice: 'Write it down or take a screenshot: you need it to resume or review your answers, even from another device. Without it your answers cannot be recovered.',
     annotato: 'I have saved my code',
     etichettaTesto: 'Debate', domanda: 'Debate', quesito: 'Question', risposte: 'Questions answered',
-    regola: 'Where speakers come from and all places (states, cities, countries) are taken only from line 1, the moderator\'s introduction. The rest of the debate tells you the relations: who attacks or supports whom.',
     completoSi: 'You have answered all the questions: check them and then press "Submit the questionnaire".',
     invia: 'Submit the questionnaire', invioNota: 'After submitting you can no longer change your answers, but you can review them with your code.',
     confermaInvio: 'Submit now? After submitting you can no longer change your answers.',
@@ -304,7 +301,7 @@ const UI = {
     cat: { speaker: 'Speaker', stato: 'State', luogo: 'Place', nazione: 'Country or area', partito: 'Party', bool: 'True or false' },
     sel: { speaker: 'Select one or more speakers.', stato: 'Select one or more states.', luogo: 'Select one or more places.',
            nazione: 'Select one or more countries or areas.', partito: 'Select one or more parties.' },
-    anteprima: 'PREVIEW: the backend is not connected yet. Answers stay in this browser only and the text is not translated.',
+    anteprima: 'PREVIEW: the backend is not connected yet. Answers stay in this browser only.',
     salvatoAlle: 'Saved at', nessunSalvataggio: 'No answers saved yet',
     nonSalvate: 'Unsaved changes…', salvataggio: 'Saving…',
     nonSalvato: 'Not saved: check your connection. Retrying shortly.',
@@ -314,7 +311,7 @@ const UI = {
     chiuso: 'The questionnaire is closed: you can review your answers but not change them.',
     legenda: ' Green borders mark the correct answers, red borders the wrong choices.',
     selTutte: 'Select all the cells you believe are correct.', selRiga: 'Select one cell per row.',
-    tradotto: 'Automatic translation: if in doubt, the original text prevails.',
+    tradotto: 'Translated text: if in doubt, the original prevails.',
     mostraTesto: 'Show the debate', chiudi: 'Close', attendere: 'Please wait…', caricamento: 'Loading…',
     err: {
       codice: 'Code not found: check that you typed it correctly.',
@@ -352,7 +349,7 @@ async function apiAnteprima(body) {
   const pacchetto = (codice) => {
     const v = db[codice], d = window.DATI_ANTEPRIMA[v.n - 1];
     return { codice, domanda: v.n, aperto: true, soluzioni: false, lingua: 'en', titolo: d.titolo, descrizione: '',
-             righe: d.righe, blocchi: d.blocchi, tr: null, risposte: v.risposte, salvato: v.salvato, inviato: v.inviato || '' };
+             righe: d.righe, blocchi: d.blocchi, tr: d.tr, risposte: v.risposte, salvato: v.salvato, inviato: v.inviato || '' };
   };
   if (body.azione === 'nuovo') {
     const n = Object.keys(db).length % window.DATI_ANTEPRIMA.length + 1;
@@ -527,7 +524,6 @@ function disegna() {
       lista.appendChild(riga);
     });
     tx.appendChild(lista);
-    tx.appendChild(el('div', 'regola', L().regola));
   }
   if (S.lingua !== r.lingua && r.tr) { const n = el('div', 'muted', L().tradotto); n.style.marginTop = '12px'; tx.appendChild(n); }
 
