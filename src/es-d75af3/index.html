@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <meta name="referrer" content="no-referrer">
-<title>Esercitazione</title>
+<title>Chi sostiene chi?</title>
 <style>
   :root {
     --bg:#0d1016; --bg2:#121620; --card:#161b25; --card2:#1b2130; --fg:#e8ebf1; --muted:#98a1b3; --line:#262d3b;
@@ -21,7 +21,7 @@
   /* barra superiore */
   .top { position:sticky; top:0; z-index:20; backdrop-filter:blur(10px); background:rgba(13,16,22,.82); border-bottom:1px solid var(--line); }
   .top .in { max-width:1280px; margin:0 auto; padding:10px 20px; display:flex; align-items:center; gap:12px; }
-  .logo { width:34px; height:34px; border-radius:9px; background:linear-gradient(135deg,var(--acc),var(--acc2)); display:grid; place-items:center; font-weight:700; color:#fff; font-size:.9rem; flex:none; }
+  .logo { width:34px; height:34px; border-radius:9px; background:linear-gradient(135deg,var(--acc),var(--acc2)); display:grid; place-items:center; font-weight:700; color:#fff; font-size:1.15rem; flex:none; }
   .top h1 { font-size:1.05rem; margin:0; font-weight:600; }
   .top .sub { color:var(--muted); font-size:.82rem; }
   .spazio { flex:1; }
@@ -93,6 +93,9 @@
   .completo { font-size:.9rem; border-radius:10px; padding:9px 12px; margin-bottom:16px; }
   .completo.si { color:var(--ok); background:var(--okbg); border:1px solid #24452f; }
   .completo.no { color:var(--muted); background:var(--bg2); border:1px solid var(--line); }
+  .invio { text-align:center; }
+  #btnInvia { font-size:1.05rem; padding:13px 28px; background:linear-gradient(135deg,var(--acc2),#5b5be0); }
+  .inviato { background:var(--okbg); border-color:#24452f; color:var(--ok); }
   .anteprima { background:#2a1630; border:1px solid #5b2d66; color:#f0c4ff; border-radius:10px; padding:8px 12px; margin-bottom:16px; font-size:.88rem; }
   .q .badge { display:inline-grid; place-items:center; min-width:28px; height:28px; border-radius:8px; background:var(--accbg); color:var(--acc); font-weight:700; font-size:.85rem; margin-right:10px; padding:0 6px; }
   .q .qt { display:flex; align-items:flex-start; font-weight:600; margin-bottom:6px; }
@@ -139,7 +142,7 @@
 <body>
 <div class="top">
   <div class="in">
-    <div class="logo">GA</div>
+    <div class="logo" aria-hidden="true">⇄</div>
     <div>
       <h1 data-t="titolo"></h1>
       <div class="sub" data-t="corso"></div>
@@ -200,6 +203,11 @@
         <div class="promemoria" id="promemoria" data-t="promemoria"></div>
         <div class="completo" id="completo"></div>
         <div id="blocchi"></div>
+        <div class="card invio" id="zonaInvio">
+          <button id="btnInvia" data-t="invia" disabled></button>
+          <div class="muted" style="margin-top:10px" data-t="invioNota"></div>
+          <div id="msgInvia" class="msg"></div>
+        </div>
         <p class="muted" id="notaSalva" data-t="notaSalva"></p>
         <button class="sec" id="btnEsci" data-t="esci"></button>
       </div>
@@ -217,7 +225,7 @@ const API_URL = 'INCOLLA_QUI_URL_APPS_SCRIPT';
 /* ---------- testi dell'interfaccia (modificabili) ---------- */
 const UI = {
   it: {
-    titolo: 'Esercitazione', corso: 'Analisi di dibattiti', altraLingua: 'English',
+    titolo: 'Chi sostiene chi?', corso: 'Leggi un dibattito e ricostruisci chi attacca e chi sostiene chi', altraLingua: 'English',
     anonTitolo: 'Questionario anonimo',
     anonTesto: 'Non ti chiediamo nome, matricola o email e non registriamo dati che ti identifichino. Le tue risposte sono collegate solo a un codice personale casuale che vedi soltanto tu.',
     raccTitolo: 'Raccomandazioni',
@@ -227,7 +235,7 @@ const UI = {
       'Lavora da solo/a, senza confrontarti con i compagni.',
       'Non usare strumenti di intelligenza artificiale, motori di ricerca o materiale non consentito.',
       'Non condividere il tuo codice personale né il testo del dibattito.',
-      'Apri il questionario una sola volta: ogni nuovo accesso occupa un posto che serve a un compagno.'
+      'Premi «Inizia» una sola volta: ogni nuovo accesso occupa un posto destinato a un compagno. Se ti interrompi, potrai riprendere il questionario in qualsiasi momento, purché tu abbia il tuo codice personale.'
     ],
     impegno: 'Ho letto le raccomandazioni e mi impegno a rispettarle.',
     primaVolta: 'Prima volta?', primaVoltaNota: 'Premendo il pulsante ricevi il tuo dibattito e il tuo codice personale.',
@@ -238,7 +246,10 @@ const UI = {
     annotato: 'Ho annotato il codice',
     etichettaTesto: 'Dibattito', domanda: 'Dibattito', quesito: 'Domanda', risposte: 'Domande con risposta',
     regola: 'Provenienza degli speaker e luoghi (stati, città, paesi) si ricavano solo dalla riga 1, la presentazione del moderatore. Dal resto del dibattito si ricavano le relazioni: chi attacca o sostiene chi.',
-    completoSi: 'Hai risposto a tutte le domande. Puoi ancora modificarle finché il questionario è aperto.',
+    completoSi: 'Hai risposto a tutte le domande: ricontrolla e poi premi «Invia il questionario».',
+    invia: 'Invia il questionario', invioNota: 'Dopo l\'invio non potrai più modificare le risposte, ma potrai rivederle con il tuo codice.',
+    confermaInvio: 'Confermi l\'invio? Dopo l\'invio non potrai più modificare le risposte.',
+    inviatoMsg: 'Questionario inviato il {t}. Grazie! Con il tuo codice puoi rivedere le risposte, ma non modificarle.', inviatoStato: 'Inviato',
     completoNo: 'Rispondi a tutte le domande: ne mancano {k}.',
     cat: { speaker: 'Speaker', stato: 'Stato', luogo: 'Luogo', nazione: 'Paese o area', partito: 'Partito', bool: 'Vero o falso' },
     sel: { speaker: 'Seleziona uno o più speaker.', stato: 'Seleziona uno o più stati.', luogo: 'Seleziona uno o più luoghi.',
@@ -248,7 +259,7 @@ const UI = {
     nonSalvate: 'Modifiche non ancora salvate…', salvataggio: 'Salvataggio…',
     nonSalvato: 'Non salvato: controlla la connessione. Riprovo tra poco.',
     promemoria: 'Lavora individualmente, senza strumenti esterni, e rispondi a tutte le domande.',
-    notaSalva: 'Le risposte vengono salvate automaticamente e restano modificabili finché il questionario è aperto. Puoi chiudere la pagina e tornare quando vuoi.',
+    notaSalva: 'Le risposte vengono salvate automaticamente: puoi chiudere la pagina e riprendere più tardi con il tuo codice.',
     esci: 'Usa un altro codice', esciConferma: 'Vuoi uscire da questo codice? Le risposte restano salvate, ma per tornarci ti servirà il codice {c}.',
     chiuso: 'Il questionario è chiuso: puoi rivedere le tue risposte ma non modificarle.',
     legenda: ' I bordi verdi indicano le risposte corrette, quelli rossi le scelte errate.',
@@ -259,11 +270,12 @@ const UI = {
       codice: 'Codice non trovato: controlla di averlo scritto correttamente.',
       chiuso: 'Il questionario è chiuso.', esauriti: 'Posti esauriti: tutte le domande sono state assegnate.',
       nonImportate: 'Il questionario non è ancora pronto.', formato: 'Errore nei dati inviati: ricarica la pagina.',
-      richiesta: 'Richiesta non valida.', rete: 'Errore di connessione, riprova.'
+      richiesta: 'Richiesta non valida.', rete: 'Errore di connessione, riprova.',
+      inviato: 'Il questionario è già stato inviato.', incompleto: 'Rispondi a tutte le domande prima di inviare.'
     }
   },
   en: {
-    titolo: 'Exercise', corso: 'Debate analysis', altraLingua: 'Italiano',
+    titolo: 'Who backs whom?', corso: 'Read a debate and work out who attacks and who supports whom', altraLingua: 'Italiano',
     anonTitolo: 'Anonymous questionnaire',
     anonTesto: 'We do not ask for your name, student ID or email, and we do not store any data that identifies you. Your answers are linked only to a random personal code that only you can see.',
     raccTitolo: 'Guidelines',
@@ -273,7 +285,7 @@ const UI = {
       'Work on your own, without discussing with other students.',
       'Do not use AI tools, search engines or unauthorised material.',
       'Do not share your personal code or the text of the debate.',
-      'Open the questionnaire only once: every new access takes a place meant for a classmate.'
+      'Press "Start" only once: every new access takes a place meant for a classmate. If you stop, you can resume the questionnaire at any time, as long as you have your personal code.'
     ],
     impegno: 'I have read the guidelines and commit to following them.',
     primaVolta: 'First time?', primaVoltaNota: 'Press the button to receive your debate and your personal code.',
@@ -284,7 +296,10 @@ const UI = {
     annotato: 'I have saved my code',
     etichettaTesto: 'Debate', domanda: 'Debate', quesito: 'Question', risposte: 'Questions answered',
     regola: 'Where speakers come from and all places (states, cities, countries) are taken only from line 1, the moderator\'s introduction. The rest of the debate tells you the relations: who attacks or supports whom.',
-    completoSi: 'You have answered all the questions. You can still change them while the questionnaire is open.',
+    completoSi: 'You have answered all the questions: check them and then press "Submit the questionnaire".',
+    invia: 'Submit the questionnaire', invioNota: 'After submitting you can no longer change your answers, but you can review them with your code.',
+    confermaInvio: 'Submit now? After submitting you can no longer change your answers.',
+    inviatoMsg: 'Questionnaire submitted on {t}. Thank you! With your code you can review your answers but not change them.', inviatoStato: 'Submitted',
     completoNo: 'Answer all the questions: {k} still missing.',
     cat: { speaker: 'Speaker', stato: 'State', luogo: 'Place', nazione: 'Country or area', partito: 'Party', bool: 'True or false' },
     sel: { speaker: 'Select one or more speakers.', stato: 'Select one or more states.', luogo: 'Select one or more places.',
@@ -294,7 +309,7 @@ const UI = {
     nonSalvate: 'Unsaved changes…', salvataggio: 'Saving…',
     nonSalvato: 'Not saved: check your connection. Retrying shortly.',
     promemoria: 'Work individually, without external tools, and answer all the questions.',
-    notaSalva: 'Your answers are saved automatically and can be edited while the questionnaire is open. You can close the page and come back at any time.',
+    notaSalva: 'Your answers are saved automatically: you can close the page and resume later with your code.',
     esci: 'Use a different code', esciConferma: 'Leave this code? Your answers stay saved, but you will need the code {c} to come back.',
     chiuso: 'The questionnaire is closed: you can review your answers but not change them.',
     legenda: ' Green borders mark the correct answers, red borders the wrong choices.',
@@ -305,7 +320,8 @@ const UI = {
       codice: 'Code not found: check that you typed it correctly.',
       chiuso: 'The questionnaire is closed.', esauriti: 'No places left: all questions have been assigned.',
       nonImportate: 'The questionnaire is not ready yet.', formato: 'Invalid data sent: please reload the page.',
-      richiesta: 'Invalid request.', rete: 'Connection error, please try again.'
+      richiesta: 'Invalid request.', rete: 'Connection error, please try again.',
+      inviato: 'The questionnaire has already been submitted.', incompleto: 'Answer all the questions before submitting.'
     }
   }
 };
@@ -336,7 +352,7 @@ async function apiAnteprima(body) {
   const pacchetto = (codice) => {
     const v = db[codice], d = window.DATI_ANTEPRIMA[v.n - 1];
     return { codice, domanda: v.n, aperto: true, soluzioni: false, lingua: 'en', titolo: d.titolo, descrizione: '',
-             righe: d.righe, blocchi: d.blocchi, tr: null, risposte: v.risposte, salvato: v.salvato };
+             righe: d.righe, blocchi: d.blocchi, tr: null, risposte: v.risposte, salvato: v.salvato, inviato: v.inviato || '' };
   };
   if (body.azione === 'nuovo') {
     const n = Object.keys(db).length % window.DATI_ANTEPRIMA.length + 1;
@@ -348,15 +364,22 @@ async function apiAnteprima(body) {
   const c = String(body.codice || '').toUpperCase().trim();
   if (!db[c]) return { errore: 'codice' };
   if (body.azione === 'carica') return pacchetto(c);
+  if (db[c].inviato) return { errore: 'inviato' };
+  if (body.azione === 'invia') {
+    const d = window.DATI_ANTEPRIMA[db[c].n - 1];
+    if (!d.blocchi.every((b, i) => risposto(b, body.risposte[i]))) return { errore: 'incompleto' };
+    db[c].inviato = new Date().toISOString();
+  }
   db[c].risposte = body.risposte; db[c].salvato = new Date().toISOString();
   scrivi('anteprimaDb', JSON.stringify(db));
-  return { ok: true, salvato: db[c].salvato };
+  return { ok: true, salvato: db[c].salvato, inviato: db[c].inviato };
 }
 
 const erroreTesto = c => L().err[c] || L().err.richiesta;
 function el(tag, cls, testo) { const e = document.createElement(tag); if (cls) e.className = cls; if (testo != null) e.textContent = testo; return e; }
 function mostra(id) { ['home', 'quiz'].forEach(s => $(s).classList.toggle('hidden', s !== id)); }
 function ora(iso) { return new Date(iso).toLocaleTimeString(S.lingua === 'it' ? 'it-IT' : 'en-GB', { hour: '2-digit', minute: '2-digit' }); }
+function dataOra(iso) { return new Date(iso).toLocaleString(S.lingua === 'it' ? 'it-IT' : 'en-GB', { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' }); }
 function linkPersonale() { return location.origin + location.pathname + '#' + S.codice; }
 
 /* stato del salvataggio, memorizzato come chiave per seguire il cambio di lingua */
@@ -442,11 +465,12 @@ new IntersectionObserver(([e]) => {
 
 /* ---------- rendering ---------- */
 function apri(r) {
-  S.codice = r.codice; S.dati = r; S.aperto = r.aperto;
+  S.codice = r.codice; S.dati = r; S.aperto = r.aperto && !r.inviato;
   S.risposte = r.risposte || r.blocchi.map(vuota);
   scrivi('codiceEsercitazione', r.codice);
   history.replaceState(null, '', location.pathname + '#' + r.codice);
-  if (r.salvato) setStato('salvatoAlle', ora(r.salvato)); else setStato(r.aperto ? 'nessunSalvataggio' : null);
+  if (r.inviato) setStato('inviatoStato');
+  else if (r.salvato) setStato('salvatoAlle', ora(r.salvato)); else setStato(r.aperto ? 'nessunSalvataggio' : null);
   mostra('quiz');
   disegna();
   window.scrollTo(0, 0);
@@ -465,10 +489,12 @@ function disegna() {
   disegnaStato();
 
   const ch = $('chiuso');
-  ch.classList.toggle('hidden', r.aperto);
-  ch.textContent = r.aperto ? '' : L().chiuso + (r.soluzioni ? L().legenda : '');
-  $('notaSalva').classList.toggle('hidden', !r.aperto);
-  $('promemoria').classList.toggle('hidden', !r.aperto);
+  ch.classList.toggle('hidden', S.aperto);
+  ch.classList.toggle('inviato', !!r.inviato);
+  ch.textContent = S.aperto ? '' : (r.inviato ? L().inviatoMsg.replace('{t}', dataOra(r.inviato)) : L().chiuso) + (r.soluzioni ? L().legenda : '');
+  $('notaSalva').classList.toggle('hidden', !S.aperto);
+  $('promemoria').classList.toggle('hidden', !S.aperto);
+  $('zonaInvio').classList.toggle('hidden', !S.aperto);
 
   // blocchi tradotti
   const blocchi = r.blocchi.map((b0, i) => {
@@ -508,7 +534,7 @@ function disegna() {
   // colonna dei quesiti
   const box = $('blocchi');
   box.innerHTML = '';
-  box.classList.toggle('ro', !r.aperto);
+  box.classList.toggle('ro', !S.aperto);
   let nq = 0;
   blocchi.forEach((b, i) => {
     if (i < primo) return;
@@ -557,7 +583,8 @@ function progresso() {
   const cp = $('completo');
   cp.className = 'completo ' + (fatti === tot ? 'si' : 'no');
   cp.textContent = fatti === tot ? L().completoSi : L().completoNo.replace('{k}', tot - fatti);
-  cp.classList.toggle('hidden', !S.dati.aperto);
+  cp.classList.toggle('hidden', !S.aperto);
+  $('btnInvia').disabled = fatti !== tot;
   $('barra').style.width = (tot ? 100 * fatti / tot : 0) + '%';
 }
 
@@ -646,6 +673,28 @@ function aperta(b, i) {
   return x;
 }
 
+/* ---------- invio definitivo ---------- */
+$('btnInvia').onclick = async () => {
+  if (!confirm(L().confermaInvio)) return;
+  clearTimeout(S.timer); S.timer = null;
+  const box = $('msgInvia');
+  $('btnInvia').disabled = true;
+  box.textContent = L().attendere; box.className = 'msg';
+  try {
+    const r = await api({ azione: 'invia', codice: S.codice, risposte: S.risposte });
+    if (r.errore) throw { srv: r.errore };
+    box.textContent = '';
+    S.dati.inviato = r.inviato; S.dati.salvato = r.salvato;
+    S.aperto = false;
+    setStato('inviatoStato');
+    disegna();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } catch (e) {
+    box.textContent = e.srv ? erroreTesto(e.srv) : L().err.rete; box.className = 'msg err';
+    $('btnInvia').disabled = false;
+  }
+};
+
 /* ---------- salvataggio automatico ---------- */
 function modificato() {
   progresso();
@@ -663,7 +712,7 @@ async function salva(keepalive) {
     const r = await api({ azione: 'salva', codice: S.codice, risposte: S.risposte }, keepalive);
     if (r.errore) {
       setStato(r.errore, '', 'srv');
-      if (r.errore === 'chiuso') { const c = await api({ azione: 'carica', codice: S.codice }); if (!c.errore) apri(c); }
+      if (r.errore === 'chiuso' || r.errore === 'inviato') { const c = await api({ azione: 'carica', codice: S.codice }); if (!c.errore) apri(c); }
     } else setStato('salvatoAlle', ora(r.salvato));
   } catch (e) {
     setStato('nonSalvato', '', 'err');

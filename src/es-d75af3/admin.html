@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>Chi sostiene chi? · Risultati</title>
+<style>
+  :root { --bg:#0d1016; --card:#161b25; --card2:#1b2130; --fg:#e8ebf1; --muted:#98a1b3; --line:#262d3b;
+          --acc:#6aa6ff; --acc2:#3d7be0; --ok:#4cd18a; --okbg:#122219; --warn:#f4b860; --err:#ff6b6b; --in:#0f131b; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
+  .wrap { max-width:1280px; margin:0 auto; padding:24px 20px 80px; }
+  header { display:flex; align-items:center; gap:12px; margin-bottom:20px; flex-wrap:wrap; }
+  .logo { width:36px; height:36px; border-radius:9px; background:linear-gradient(135deg,var(--acc),var(--acc2)); display:grid; place-items:center; color:#fff; font-size:1.15rem; }
+  h1 { font-size:1.2rem; margin:0; } h2 { font-size:1.05rem; margin:0 0 12px; }
+  .spazio { flex:1; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px; margin-bottom:16px; }
+  .muted { color:var(--muted); font-size:.88rem; }
+  button { font:inherit; padding:8px 16px; border:0; border-radius:9px; background:var(--acc2); color:#fff; cursor:pointer; }
+  button.sec { background:transparent; border:1px solid var(--line); color:var(--fg); }
+  input { padding:10px 12px; font:inherit; border-radius:9px; border:1px solid var(--line); background:var(--in); color:var(--fg); width:320px; max-width:100%; }
+  .kpi { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:12px; margin-bottom:16px; }
+  .kpi .card { margin:0; } .kpi .v { font-size:1.6rem; font-weight:650; } .kpi .l { color:var(--muted); font-size:.85rem; }
+  table { width:100%; border-collapse:collapse; }
+  th, td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { color:var(--muted); font-weight:500; font-size:.82rem; text-transform:uppercase; letter-spacing:.04em; }
+  tr.clic { cursor:pointer; } tr.clic:hover td { background:rgba(255,255,255,.02); }
+  .pill { display:inline-block; padding:1px 9px; border-radius:99px; font-size:.8rem; border:1px solid var(--line); }
+  .pill.ok { color:var(--ok); border-color:#24452f; background:var(--okbg); }
+  .pill.wip { color:var(--warn); border-color:#4a3a1c; }
+  .barra { height:6px; background:var(--line); border-radius:99px; overflow:hidden; min-width:80px; }
+  .barra div { height:100%; background:linear-gradient(90deg,var(--acc2),var(--acc)); }
+  .dett td { background:var(--card2); }
+  .dett table td, .dett table th { border-color:#2c3446; font-size:.88rem; }
+  .si { color:var(--ok); font-weight:700; } .no { color:var(--err); font-weight:700; }
+  .mono { font-family:ui-monospace,Menlo,Consolas,monospace; }
+  .err { color:var(--err); }
+  .hidden { display:none !important; }
+  .scroll { overflow-x:auto; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo" aria-hidden="true">⇄</div>
+    <div><h1>Chi sostiene chi? · Risultati</h1><div class="muted">Pagina riservata</div></div>
+    <div class="spazio"></div>
+    <span class="muted" id="agg"></span>
+    <button class="sec hidden" id="btnCsv">Scarica CSV</button>
+    <button class="sec hidden" id="btnAgg">Aggiorna</button>
+    <button class="sec hidden" id="btnEsci">Esci</button>
+  </header>
+
+  <section id="login" class="card">
+    <h2>Accesso</h2>
+    <p class="muted">Inserisci la chiave (CHIAVE_ADMIN nel file Code.gs).</p>
+    <input id="inChiave" type="password" autocomplete="off">
+    <button id="btnEntra">Entra</button>
+    <div id="msg" class="err" style="margin-top:10px"></div>
+  </section>
+
+  <section id="dati" class="hidden">
+    <div class="kpi" id="kpi"></div>
+    <div class="card"><h2>Per dibattito</h2><div class="muted" style="margin:-6px 0 10px">Clicca su un dibattito per vedere le risposte corrette per domanda (solo questionari inviati).</div><div class="scroll"><table id="tabDib"></table></div></div>
+    <div class="card"><h2>Per studente</h2><div class="muted" style="margin:-6px 0 10px">Clicca su una riga per il dettaglio delle risposte.</div><div class="scroll"><table id="tabStu"></table></div></div>
+  </section>
+</div>
+
+<script>
+// Stesso URL dell'app web usato in index.html
+const API_URL = 'INCOLLA_QUI_URL_APPS_SCRIPT';
+
+const $ = id => document.getElementById(id);
+let DATI = null, timer = null;
+function leggi(k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } }
+function scrivi(k, v) { try { v == null ? sessionStorage.removeItem(k) : sessionStorage.setItem(k, v); } catch (e) {} }
+function el(tag, cls, testo) { const e = document.createElement(tag); if (cls) e.className = cls; if (testo != null) e.textContent = testo; return e; }
+const dt = iso => iso ? new Date(iso).toLocaleString('it-IT', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }) : '—';
+
+async function carica() {
+  if (/INCOLLA/.test(API_URL)) { $('msg').textContent = 'Backend non ancora collegato: inserisci l\'URL di Apps Script in API_URL.'; return; }
+  const chiave = leggi('chiaveAdmin');
+  if (!chiave) return;
+  try {
+    const r = await (await fetch(API_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({ azione: 'admin', chiave }) })).json();
+    if (r.errore) { scrivi('chiaveAdmin', null); $('msg').textContent = 'Chiave non valida.'; mostra(false); return; }
+    DATI = r; disegna(); mostra(true);
+    $('agg').textContent = 'Aggiornato alle ' + new Date().toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  } catch (e) { $('msg').textContent = 'Errore di connessione.'; }
+}
+function mostra(si) {
+  $('login').classList.toggle('hidden', si); $('dati').classList.toggle('hidden', !si);
+  ['btnCsv', 'btnAgg', 'btnEsci'].forEach(id => $(id).classList.toggle('hidden', !si));
+  clearInterval(timer); if (si) timer = setInterval(carica, 30000);
+}
+$('btnEntra').onclick = () => { scrivi('chiaveAdmin', $('inChiave').value.trim()); $('msg').textContent = ''; carica(); };
+$('inChiave').addEventListener('keydown', e => { if (e.key === 'Enter') $('btnEntra').click(); });
+$('btnAgg').onclick = carica;
+$('btnEsci').onclick = () => { scrivi('chiaveAdmin', null); location.reload(); };
+carica();
+
+function disegna() {
+  const S = DATI.studenti, inviati = S.filter(s => s.inviato), tot = DATI.dibattiti.length * DATI.posti;
+  const media = inviati.length ? (inviati.reduce((a, s) => a + s.punti / s.valutabili, 0) / inviati.length * 100).toFixed(0) + '%' : '—';
+  $('kpi').innerHTML = '';
+  [[S.length + '/' + tot, 'Posti assegnati'], [inviati.length, 'Questionari inviati'],
+   [S.filter(s => !s.inviato).length, 'In corso'], [media, 'Accuratezza media (inviati)'],
+   [DATI.aperto ? 'Aperto' : 'Chiuso', 'Stato del questionario']].forEach(([v, l]) => {
+    const c = el('div', 'card'); c.append(el('div', 'v', String(v)), el('div', 'l', l)); $('kpi').appendChild(c);
+  });
+
+  // per dibattito
+  const td = $('tabDib'); td.innerHTML = '';
+  const h = el('tr'); ['#', 'Dibattito', 'Assegnati', 'Inviati', 'Accuratezza media', 'Codici'].forEach(t => h.appendChild(el('th', null, t))); td.appendChild(h);
+  DATI.dibattiti.forEach(d => {
+    const ss = S.filter(s => s.dibattito === d.n), inv = ss.filter(s => s.inviato);
+    const acc = inv.length ? inv.reduce((a, s) => a + s.punti / s.valutabili, 0) / inv.length : null;
+    const tr = el('tr', 'clic');
+    const b = el('div', 'barra'), bi = el('div'); bi.style.width = (acc === null ? 0 : acc * 100) + '%'; b.appendChild(bi);
+    const cAcc = el('td'); cAcc.append(el('div', null, acc === null ? '—' : (acc * 100).toFixed(0) + '%'), b);
+    tr.append(el('td', null, d.n), el('td', null, d.titolo), el('td', null, ss.length + '/' + DATI.posti), el('td', null, inv.length + '/' + DATI.posti), cAcc,
+      el('td', 'mono muted', ss.map(s => s.codice).join(' ')));
+    const det = el('tr', 'dett hidden'), c = el('td'); c.colSpan = 6;
+    const t = el('table'), hh = el('tr'); ['Q', 'Domanda', 'Corrette (inviati)'].forEach(x => hh.appendChild(el('th', null, x))); t.appendChild(hh);
+    d.domande.forEach((q, i) => {
+      const ok = inv.filter(s => s.dettaglio[i].ok).length;
+      const r = el('tr'); r.append(el('td', null, 'Q' + (i + 1)), el('td', null, q), el('td', null, inv.length ? ok + '/' + inv.length : '—')); t.appendChild(r);
+    });
+    c.appendChild(t); det.appendChild(c);
+    tr.onclick = () => det.classList.toggle('hidden');
+    td.append(tr, det);
+  });
+
+  // per studente
+  const ts = $('tabStu'); ts.innerHTML = '';
+  const h2 = el('tr'); ['Codice', 'Dibattito', 'Stato', 'Risposte date', 'Punteggio', 'Primo accesso', 'Ultimo salvataggio', 'Inviato'].forEach(t => h2.appendChild(el('th', null, t))); ts.appendChild(h2);
+  S.slice().sort((a, b) => a.dibattito - b.dibattito || (a.primo < b.primo ? -1 : 1)).forEach(s => {
+    const tr = el('tr', 'clic'), st = el('td'); st.appendChild(el('span', 'pill ' + (s.inviato ? 'ok' : 'wip'), s.inviato ? 'Inviato' : 'In corso'));
+    tr.append(el('td', 'mono', s.codice), el('td', null, s.dibattito), st, el('td', null, s.date + '/' + s.dettaglio.length),
+      el('td', null, s.punti + '/' + s.valutabili), el('td', null, dt(s.primo)), el('td', null, dt(s.ultimo)), el('td', null, dt(s.inviato)));
+    const det = el('tr', 'dett hidden'), c = el('td'); c.colSpan = 8;
+    const t = el('table'), hh = el('tr'); ['Q', 'Domanda', 'Risposta', 'Soluzione', ''].forEach(x => hh.appendChild(el('th', null, x))); t.appendChild(hh);
+    s.dettaglio.forEach(x => {
+      const r = el('tr'); r.append(el('td', null, 'Q' + x.q), el('td', null, x.domanda), el('td', null, x.risposta), el('td', null, x.corretta || ''),
+        el('td', x.ok ? 'si' : 'no', x.ok === null ? '' : x.ok ? '✓' : '✗')); t.appendChild(r);
+    });
+    c.appendChild(t); det.appendChild(c);
+    tr.onclick = () => det.classList.toggle('hidden');
+    ts.append(tr, det);
+  });
+}
+
+$('btnCsv').onclick = () => {
+  const q = v => '"' + String(v == null ? '' : v).replace(/"/g, '""') + '"';
+  const righe = [['codice', 'dibattito', 'stato', 'inviato', 'domanda_n', 'categoria', 'domanda', 'risposta', 'soluzione', 'corretta'].join(',')];
+  DATI.studenti.forEach(s => s.dettaglio.forEach(x => righe.push([s.codice, s.dibattito, s.inviato ? 'inviato' : 'in corso', s.inviato, x.q, x.categoria,
+    x.domanda, x.risposta, x.corretta, x.ok === null ? '' : x.ok ? 1 : 0].map(q).join(','))));
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob(['﻿' + righe.join('\n')], { type: 'text/csv;charset=utf-8' }));
+  a.download = 'chi-sostiene-chi_risultati.csv'; a.click();
+};
+</script>
+</body>
+</html>
