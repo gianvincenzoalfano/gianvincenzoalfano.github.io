@@ -12,6 +12,9 @@ export default function (eleventyConfig) {
   // Pagina nascosta dell'esercitazione: copiata così com'è, fuori da sitemap e collezioni.
   eleventyConfig.addPassthroughCopy({ "src/es-d75af3": "es-d75af3" });
   eleventyConfig.ignores.add("src/es-d75af3/**");
+  // Indirizzo breve /chi che porta alla pagina dell'esercitazione.
+  eleventyConfig.addPassthroughCopy({ "src/chi": "chi" });
+  eleventyConfig.ignores.add("src/chi/**");
   const font = "node_modules/@fontsource-variable/alegreya/files";
   for (const f of ["latin", "latin-ext"]) {
     for (const s of ["normal", "italic"]) {

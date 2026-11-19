@@ -220,6 +220,11 @@ const UI = {
     promemoria: 'Lavora individualmente e senza strumenti esterni.',
     fineTitolo: 'Hai risposto a tutte le domande',
     disponibileDomanda: 'Ultima cosa: saresti disponibile a partecipare a un altro questionario simile, su un altro testo?',
+    disponibileNota: 'Se rispondi Sì, dopo l\'invio potrai iniziare subito un nuovo questionario su un dibattito diverso.',
+    ancoraTitolo: 'Vuoi continuare con un altro dibattito?',
+    ancoraTesto: 'Riceverai un nuovo codice personale e un dibattito diverso da quello appena svolto. Annota anche il nuovo codice.',
+    ancoraBtn: 'Inizia un nuovo questionario',
+    successivo: 'Questionario successivo (codice precedente: {c})',
     si: 'Sì', no: 'No',
     invia: 'Invia il questionario', invioNota: 'Dopo l\'invio potrai rivedere le risposte con il tuo codice.',
     inviatoMsg: 'Questionario inviato il {t}. Grazie per la partecipazione!',
@@ -237,7 +242,9 @@ const UI = {
       nonImportate: 'Il questionario non è ancora pronto.', richiesta: 'Richiesta non valida: ricarica la pagina.',
       rete: 'Errore di connessione, riprova.', inviato: 'Il questionario è già stato inviato.',
       aula: 'Per iniziare usa il QR code mostrato a lezione.', occupato: 'Il server è molto occupato: riprova tra qualche secondo.',
-      passo: 'La pagina era rimasta indietro: ho ripreso dal punto corretto.'
+      passo: 'La pagina era rimasta indietro: ho ripreso dal punto corretto.',
+      finiti: 'Hai già svolto tutti i dibattiti disponibili. Grazie davvero!',
+      nonDisponibile: 'Per iniziare un altro questionario serve aver risposto Sì alla domanda sulla disponibilità.'
     }
   },
   en: {
@@ -272,6 +279,11 @@ const UI = {
     promemoria: 'Work individually and without external tools.',
     fineTitolo: 'You have answered all the questions',
     disponibileDomanda: 'One last thing: would you be willing to take part in another similar questionnaire, on a different text?',
+    disponibileNota: 'If you answer Yes, after submitting you can start a new questionnaire on a different debate straight away.',
+    ancoraTitolo: 'Would you like to continue with another debate?',
+    ancoraTesto: 'You will get a new personal code and a debate different from the one you just did. Write down the new code too.',
+    ancoraBtn: 'Start a new questionnaire',
+    successivo: 'Follow-up questionnaire (previous code: {c})',
     si: 'Yes', no: 'No',
     invia: 'Submit the questionnaire', invioNota: 'After submitting you can review your answers with your code.',
     inviatoMsg: 'Questionnaire submitted on {t}. Thank you for taking part!',
@@ -289,7 +301,9 @@ const UI = {
       nonImportate: 'The questionnaire is not ready yet.', richiesta: 'Invalid request: please reload the page.',
       rete: 'Connection error, please try again.', inviato: 'The questionnaire has already been submitted.',
       aula: 'To start, use the QR code shown in class.', occupato: 'The server is very busy: please try again in a few seconds.',
-      passo: 'The page was out of date: resumed from the right point.'
+      passo: 'The page was out of date: resumed from the right point.',
+      finiti: 'You have already done all the available debates. Thank you!',
+      nonDisponibile: 'To start another questionnaire you need to have answered Yes to the availability question.'
     }
   }
 };
@@ -407,14 +421,18 @@ function disegna() {
   $('nuovoCodice').classList.toggle('hidden', !S.appenaCreato); $('nuovoCodiceK').textContent = r.codice;
   $('titoloDom').textContent = L().dibattito + ' ' + r.domanda;
   const fatte = Math.min(st.passo, n);
-  $('contatore').textContent = st.fase === 'fine' ? L().completato : L().avanzamento.replace('{k}', st.passo + 1).replace('{n}', n);
+  $('contatore').textContent = (st.fase === 'fine' ? L().completato : L().avanzamento.replace('{k}', st.passo + 1).replace('{n}', n)) +
+    (r.precedente ? ' · ' + L().successivo.replace('{c}', r.precedente) : '');
   $('barra').style.width = (100 * fatte / n) + '%';
   disegnaTesto();
 
   const attivo = r.aperto && !r.inviato;
   $('promemoria').classList.toggle('hidden', !attivo || st.fase === 'fine');
   const box = $('passo'); box.innerHTML = '';
-  if (r.inviato) box.appendChild(avviso(L().inviatoMsg.replace('{t}', dataOra(r.inviato)) + (r.soluzioni ? L().legenda : '')));
+  if (r.inviato) {
+    box.appendChild(avviso(L().inviatoMsg.replace('{t}', dataOra(r.inviato)) + (r.soluzioni ? L().legenda : '')));
+    if (r.aperto && st.disponibile === true) box.appendChild(cartaAncora());
+  }
   else if (!r.aperto) box.appendChild(avviso(L().chiuso + (r.soluzioni ? L().legenda : '')));
   else if (st.fase === 'domanda') box.appendChild(cartaDomanda(st.passo));
   else if (st.fase === 'controllo') box.appendChild(cartaControllo(st.passo));
@@ -447,6 +465,24 @@ function disegnaTesto() {
 }
 
 function avviso(testo) { const c = el('div', 'card esito', testo); return c; }
+
+/* Dopo l'invio, a chi si è detto disponibile: nuovo questionario con nuovo codice e altro dibattito. */
+function cartaAncora() {
+  const c = el('div', 'card nuovoCodice');
+  c.append(el('h3', null, L().ancoraTitolo), el('div', 'muted', L().ancoraTesto));
+  const btn = el('button', 'grande', L().ancoraBtn), msg = el('div', 'msg');
+  btn.style.marginTop = '14px';
+  btn.onclick = async () => {
+    btn.disabled = true; msg.textContent = L().attendere; msg.className = 'msg';
+    const r = await api({ azione: 'nuovo', precedente: S.codice });
+    if (r.errore) { msg.textContent = erroreTesto(r.errore); msg.className = 'msg err'; btn.disabled = r.errore === 'finiti'; return; }
+    S.appenaCreato = true; S.bozza = null;
+    apri(r);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+  c.append(btn, msg);
+  return c;
+}
 
 function intestazione(c, numero, testo, cat) {
   const qt = el('div', 'qt');
@@ -501,6 +537,7 @@ function cartaFine() {
   const c = el('div', 'card');
   c.appendChild(el('h2', null, L().fineTitolo));
   c.appendChild(el('p', null, L().disponibileDomanda));
+  c.appendChild(el('div', 'nota', L().disponibileNota));
   if (!S.bozza || S.bozza.i !== 'fine') S.bozza = { i: 'fine', v: null };
   const btn = el('button', 'grande', L().invia);
   c.appendChild(radio([L().si, L().no], () => S.bozza.v === null ? null : (S.bozza.v ? 0 : 1), j => { S.bozza.v = j === 0; btn.disabled = S.invio; }));

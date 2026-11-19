@@ -139,13 +139,13 @@ function disegna() {
 
   // per studente
   const ts = $('tabStu'); ts.innerHTML = '';
-  const h2 = el('tr'); ['Codice', 'Dibattito', 'Stato', 'Avanzamento', 'Punteggio', 'Critiche', 'Disponibile', 'Primo accesso', 'Inviato'].forEach(t => h2.appendChild(el('th', null, t))); ts.appendChild(h2);
+  const h2 = el('tr'); ['Codice', 'Precedente', 'Dibattito', 'Stato', 'Avanzamento', 'Punteggio', 'Critiche', 'Disponibile', 'Primo accesso', 'Inviato'].forEach(t => h2.appendChild(el('th', null, t))); ts.appendChild(h2);
   S.slice().sort((a, b) => a.dibattito - b.dibattito || (a.primo < b.primo ? -1 : 1)).forEach(s => {
     const tr = el('tr', 'clic'), st = el('td'); st.appendChild(el('span', 'pill ' + (s.inviato ? 'ok' : 'wip'), s.inviato ? 'Inviato' : 'In corso'));
-    tr.append(el('td', 'mono', s.codice), el('td', null, s.dibattito), st, el('td', null, s.passo + '/' + s.totale),
+    tr.append(el('td', 'mono', s.codice), el('td', 'mono muted', s.precedente || '—'), el('td', null, s.dibattito), st, el('td', null, s.passo + '/' + s.totale),
       el('td', null, s.punti + '/' + s.valutabili), el('td', s.critiche ? 'no' : null, String(s.critiche)),
       el('td', null, s.disponibile === true ? 'Sì' : s.disponibile === false ? 'No' : '—'), el('td', null, dt(s.primo)), el('td', null, dt(s.inviato)));
-    const det = el('tr', 'dett hidden'), c = el('td'); c.colSpan = 9;
+    const det = el('tr', 'dett hidden'), c = el('td'); c.colSpan = 10;
     const t = el('table'), hh = el('tr'); ['Q', 'Domanda', 'Risposta', 'Soluzione', '', 'Controllo'].forEach(x => hh.appendChild(el('th', null, x))); t.appendChild(hh);
     s.dettaglio.forEach(x => {
       const r = el('tr'); r.append(el('td', null, 'Q' + x.q), el('td', null, x.domanda), el('td', null, x.risposta), el('td', null, x.corretta || ''),
@@ -162,8 +162,8 @@ function disegna() {
 
 $('btnCsv').onclick = () => {
   const q = v => '"' + String(v == null ? '' : v).replace(/"/g, '""') + '"';
-  const righe = [['codice', 'dibattito', 'stato', 'inviato', 'disponibile', 'domanda_n', 'categoria', 'domanda', 'risposta', 'soluzione', 'corretta', 'controllo', 'coerente'].join(',')];
-  DATI.studenti.forEach(s => s.dettaglio.forEach(x => righe.push([s.codice, s.dibattito, s.inviato ? 'inviato' : 'in corso', s.inviato,
+  const righe = [['codice', 'precedente', 'dibattito', 'stato', 'inviato', 'disponibile', 'domanda_n', 'categoria', 'domanda', 'risposta', 'soluzione', 'corretta', 'controllo', 'coerente'].join(',')];
+  DATI.studenti.forEach(s => s.dettaglio.forEach(x => righe.push([s.codice, s.precedente, s.dibattito, s.inviato ? 'inviato' : 'in corso', s.inviato,
     s.disponibile === null ? '' : s.disponibile ? 1 : 0, x.q, x.categoria, x.domanda, x.risposta, x.corretta, x.ok === null ? '' : x.ok ? 1 : 0,
     x.controllo, x.coerente === null ? '' : x.coerente ? 1 : 0].map(q).join(','))));
   const a = document.createElement('a');
